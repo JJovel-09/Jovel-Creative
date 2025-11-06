@@ -1,0 +1,53 @@
+# JOVEL CREATIVE - ROBOTS.TXT
+# This file tells search engine crawlers which pages they can and cannot access
+
+# Allow all search engines to crawl the entire site
+User-agent: *
+Allow: /
+
+# Disallow crawling of admin/private areas (add any private folders here)
+# Disallow: /admin/
+# Disallow: /private/
+
+# Disallow crawling of JavaScript and CSS files is NOT recommended
+# Modern search engines need to see these for proper rendering
+# Allow: /css/
+# Allow: /js/
+
+# Disallow crawling of specific file types if needed
+# Disallow: /*.pdf$
+
+# IMPORTANT: Add your sitemap location
+# Replace jovelcreative.com with your actual domain
+Sitemap: https://jovelcreative.com/sitemap.xml
+
+# Crawl delay (optional, use only if you experience server load issues)
+# This tells crawlers to wait X seconds between requests
+# Crawl-delay: 10
+
+# ============================================
+# SPECIFIC SEARCH ENGINE INSTRUCTIONS
+# ============================================
+
+# Google (no special instructions needed, follows User-agent: *)
+# User-agent: Googlebot
+# Allow: /
+
+# Bing
+# User-agent: Bingbot
+# Allow: /
+
+# ============================================
+# NOTES:
+# ============================================
+# 1. After deploying, test this file at:
+#    https://www.google.com/webmasters/tools/robots-testing-tool
+#
+# 2. Submit your sitemap in Google Search Console:
+#    https://search.google.com/search-console
+#
+# 3. Common issues:
+#    - Make sure this file is at the root: https://yourdomain.com/robots.txt
+#    - Use Unix line endings (LF, not CRLF)
+#    - Don't block CSS/JS files (needed for mobile-first indexing)
+#    - Don't use wildcards in sitemap URL
