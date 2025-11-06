@@ -130,15 +130,25 @@ function initQuoteCalculator() {
       features.push('Bilingual support (English & Spanish)');
     }
 
+    // Calculate founding client price (30% off)
+    const foundingPrice = Math.round(price * 0.7);
+
     // Update result card
     finalPriceEl.textContent = `$${price.toLocaleString()}`;
+
+    // Update founding price if element exists
+    const foundingPriceEl = document.getElementById('founding-price');
+    if (foundingPriceEl) {
+      foundingPriceEl.textContent = `$${foundingPrice.toLocaleString()}`;
+    }
+
     packageNameEl.textContent = packageName;
     packageFeaturesEl.innerHTML = features.map(f => `<li>${f}</li>`).join('');
 
-    // Update booking link
+    // Update booking link with founding price
     const bookBtn = resultCard.querySelector('.btn-accent');
     const packageSlug = packageName.toLowerCase().replace(' package', '').replace(' ', '-');
-    bookBtn.href = `/contact.html?quote=${packageSlug}&price=${price}`;
+    bookBtn.href = `/contact.html?founding=true&quote=${packageSlug}&price=${foundingPrice}`;
 
     // Show result card with animation
     resultCard.classList.add('show');
@@ -168,61 +178,51 @@ function initInteractiveMap() {
 
   if (!tooltip) return;
 
-  const caseStudies = {
+  const cityData = {
     'frederick': {
       name: 'Frederick',
-      projects: 8,
-      example: '"Local Brewery – 8-page site, +65% online orders"'
+      info: 'In-person consultations available'
     },
     'urbana': {
       name: 'Urbana',
-      projects: 3,
-      example: '"Family Restaurant – Mobile-first design, +40% reservations"'
+      info: 'In-person consultations available'
     },
     'mount-airy': {
       name: 'Mount Airy',
-      projects: 2,
-      example: '"Home Services – Lead generation site, 2x inquiries"'
+      info: 'In-person consultations available'
     },
     'rockville': {
       name: 'Rockville',
-      projects: 5,
-      example: '"Professional Services – Portfolio site, +180% leads"'
+      info: 'In-person consultations available'
     },
     'gaithersburg': {
       name: 'Gaithersburg',
-      projects: 6,
-      example: '"Dental Practice – 5-page site, +40% appointment bookings"'
+      info: 'In-person consultations available'
     },
     'germantown': {
       name: 'Germantown',
-      projects: 4,
-      example: '"Retail Shop – E-commerce site, $50K first quarter"'
+      info: 'In-person consultations available'
     },
     'silver-spring': {
       name: 'Silver Spring',
-      projects: 7,
-      example: '"Nonprofit – Donation platform, 3x monthly contributions"'
+      info: 'In-person consultations available'
     },
     'bethesda': {
       name: 'Bethesda',
-      projects: 5,
-      example: '"Boutique Fitness – Booking system, fully booked for 2 months"'
+      info: 'In-person consultations available'
     }
   };
 
   cityMarkers.forEach(marker => {
     marker.addEventListener('mouseenter', (e) => {
       const cityId = marker.dataset.city;
-      const data = caseStudies[cityId];
+      const data = cityData[cityId];
 
       if (!data) return;
 
       // Update tooltip content
       tooltip.querySelector('.tooltip-city').textContent = data.name;
-      tooltip.querySelector('.tooltip-projects').innerHTML =
-        `<strong>${data.projects}</strong> local projects`;
-      tooltip.querySelector('.tooltip-example').textContent = data.example;
+      tooltip.querySelector('.tooltip-info').textContent = data.info;
 
       // Position tooltip
       const rect = marker.getBoundingClientRect();
