@@ -765,7 +765,7 @@ strong, b {
 .card-icon {
   width: 70px;
   height: 70px;
-  background: var(--gradient-accent);
+  background: rgba(249, 115, 22, 0.05);
   border-radius: var(--radius-xl);
   display: flex;
   align-items: center;
@@ -775,11 +775,26 @@ strong, b {
   font-size: var(--text-3xl);
   box-shadow: var(--shadow-glow);
   transition: all var(--transition-bounce);
+  position: relative;
+  overflow: visible;
+}
+
+.card-icon svg {
+  width: 48px;
+  height: 48px;
+  transition: all var(--transition-bounce);
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.15));
 }
 
 .card:hover .card-icon {
-  transform: scale(1.1) rotate(5deg);
+  transform: scale(1.15) translateY(-5px);
   box-shadow: var(--shadow-glow-hover);
+  background: rgba(249, 115, 22, 0.1);
+}
+
+.card:hover .card-icon svg {
+  transform: scale(1.1);
+  filter: drop-shadow(0 8px 16px rgba(249, 115, 22, 0.3));
 }
 
 .card h3 {
