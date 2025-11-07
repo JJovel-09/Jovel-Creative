@@ -67,8 +67,8 @@ function showConsentBanner() {
   `;
 
   banner.innerHTML = `
-    <p style="margin: 0; flex: 1; min-width: 200px;">
-      This site uses analytics to improve your experience. We respect your privacy.
+    <p style="margin: 0; flex: 1; min-width: 200px; line-height: 1.5;">
+      We use cookies to enhance your user experience. By clicking <strong>ACCEPT</strong> or continuing to browse, you agree to our use of cookies and analytics.
     </p>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
       <button id="ga-accept" style="
@@ -79,6 +79,7 @@ function showConsentBanner() {
         border-radius: 0.5rem;
         cursor: pointer;
         font-weight: 600;
+        text-transform: uppercase;
       ">Accept</button>
       <button id="ga-decline" style="
         background: transparent;
@@ -88,6 +89,7 @@ function showConsentBanner() {
         border-radius: 0.5rem;
         cursor: pointer;
         font-weight: 600;
+        text-transform: uppercase;
       ">Decline</button>
     </div>
   `;
