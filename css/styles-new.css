@@ -394,14 +394,16 @@ body.dark-mode .moon-icon {
 }
 
 .btn-secondary {
-  background: transparent;
-  color: var(--color-primary);
-  border: 2px solid var(--color-primary);
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-white);
+  border: 2px solid var(--color-white);
+  backdrop-filter: blur(10px);
 }
 
 .btn-secondary:hover {
-  background: var(--gradient-primary);
-  color: var(--color-white);
+  background: var(--color-white);
+  color: var(--color-primary);
+  border-color: var(--color-white);
 }
 
 .btn-accent {
@@ -1121,7 +1123,7 @@ body.dark-mode .result-card {
 /* ==================== FOOTER ==================== */
 .site-footer {
   background: var(--color-primary-dark);
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--color-white);
   padding: var(--space-16) 0 var(--space-8);
   position: relative;
 }
@@ -1146,6 +1148,7 @@ body.dark-mode .result-card {
 .footer-column h3 {
   color: var(--color-white);
   font-size: var(--text-lg);
+  font-weight: var(--font-bold);
   margin-bottom: var(--space-4);
   position: relative;
   padding-bottom: var(--space-2);
@@ -1170,7 +1173,7 @@ body.dark-mode .result-card {
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--color-white);
   text-decoration: none;
   transition: all var(--transition-fast);
   display: inline-block;
@@ -1186,9 +1189,10 @@ body.dark-mode .result-card {
 }
 
 .footer-contact a {
-  color: rgba(255, 255, 255, 0.95);
+  color: var(--color-white);
   text-decoration: underline;
-  text-decoration-color: rgba(249, 115, 22, 0.4);
+  text-decoration-color: var(--color-accent);
+  font-weight: var(--font-semibold);
 }
 
 .footer-contact a:hover {
@@ -1198,9 +1202,10 @@ body.dark-mode .result-card {
 .footer-bottom {
   text-align: center;
   padding-top: var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: rgba(255, 255, 255, 0.85);
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  color: var(--color-white);
   font-size: var(--text-sm);
+  opacity: 0.9;
 }
 
 /* ==================== UTILITY CLASSES ==================== */
