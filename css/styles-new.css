@@ -1296,24 +1296,6 @@ body.dark-mode .story-section {
   margin-bottom: var(--space-6);
 }
 
-.story-faith {
-  font-style: italic;
-  background: var(--color-neutral-100);
-  padding: var(--space-4);
-  border-left: 4px solid var(--color-accent);
-  border-radius: var(--radius-md);
-}
-
-body.dark-mode .story-faith {
-  background: var(--color-neutral-800);
-}
-
-.story-faith a {
-  color: var(--color-accent);
-  font-weight: var(--font-semibold);
-  text-decoration: underline;
-}
-
 .story-proof {
   display: flex;
   flex-direction: column;
