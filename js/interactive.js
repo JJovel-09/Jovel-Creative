@@ -383,6 +383,78 @@ function initMobileMenu() {
   });
 }
 
+// ==================== SCROLL REVEAL ANIMATIONS ====================
+function initScrollReveal() {
+  const elements = document.querySelectorAll('.fade-in, .capability-card, .benefit-item, .founding-price-card, .proof-card, .area-card');
+
+  if (elements.length === 0) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('visible');
+        // Unobserve after animation to prevent re-triggering
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.1,
+    rootMargin: '0px 0px -50px 0px'
+  });
+
+  elements.forEach(el => observer.observe(el));
+}
+
+// ==================== PARALLAX EFFECT ====================
+function initParallax() {
+  const hero = document.querySelector('.hero-gradient-bg');
+
+  if (!hero) return;
+
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const scrolled = window.pageYOffset;
+        const parallaxSpeed = 0.5;
+        hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+        ticking = false;
+      });
+      ticking = true;
+    }
+  });
+}
+
+// ==================== SMOOTH CARD INTERACTIONS ====================
+function initCardInteractions() {
+  const cards = document.querySelectorAll('.area-card, .capability-card, .proof-card, .founding-price-card');
+
+  cards.forEach(card => {
+    card.addEventListener('mouseenter', function() {
+      this.style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+    });
+
+    card.addEventListener('mousemove', function(e) {
+      const rect = this.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+
+      const centerX = rect.width / 2;
+      const centerY = rect.height / 2;
+
+      const rotateX = (y - centerY) / 20;
+      const rotateY = (centerX - x) / 20;
+
+      this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-12px)`;
+    });
+
+    card.addEventListener('mouseleave', function() {
+      this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+    });
+  });
+}
+
 // ==================== INITIALIZE ALL FEATURES ====================
 document.addEventListener('DOMContentLoaded', () => {
   initCodeEditor();
@@ -393,6 +465,9 @@ document.addEventListener('DOMContentLoaded', () => {
   initDarkMode();
   initSmoothScroll();
   initMobileMenu();
+  initScrollReveal();
+  initParallax();
+  initCardInteractions();
 
   console.log('✨ Jovel Creative interactive features loaded!');
 });
