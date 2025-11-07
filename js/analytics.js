@@ -69,6 +69,7 @@ function showConsentBanner() {
   banner.innerHTML = `
     <p style="margin: 0; flex: 1; min-width: 200px; line-height: 1.5;">
       We use cookies to enhance your user experience. By clicking <strong>ACCEPT</strong> or continuing to browse, you agree to our use of cookies and analytics.
+      <a href="/privacy-policy.html" style="color: #f97316; text-decoration: underline; font-weight: 600;">Learn more</a>
     </p>
     <div style="display: flex; gap: 1rem; flex-wrap: wrap;">
       <button id="ga-accept" style="
