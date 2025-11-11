@@ -57,9 +57,9 @@ function initQuoteCalculator() {
 
   // Pricing logic
   const basePrices = {
-    5: 2000,   // Starter
-    8: 3500,   // Professional
-    12: 5500   // Premium
+    5: 999,    // Starter
+    8: 1999,   // Professional
+    12: 2999   // Premium
   };
 
   const packageNames = {
@@ -115,8 +115,8 @@ function initQuoteCalculator() {
     // Calculate price
     let price = basePrices[pageCount];
 
-    if (hasEcommerce) price += 1500;
-    if (isBilingual) price += 800;
+    if (hasEcommerce) price += 750;
+    if (isBilingual) price += 400;
 
     // Get package details
     const packageName = packageNames[pageCount];

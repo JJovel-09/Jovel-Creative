@@ -1,57 +1,67 @@
 /*
 =====================================================
-JOVEL CREATIVE - INTERACTIVE CONVERSION ENGINE
-Phase 1: Live Demo, Instant Quotes, Local Proof
-Frederick & Montgomery County, Maryland
+JOVEL CREATIVE - APPLE-INSPIRED DESIGN SYSTEM
+Clean. Minimal. Powerful.
 =====================================================
 */
 
 /* ==================== ROOT VARIABLES ==================== */
 :root {
-  /* Color Palette - Professional Navy & Vibrant Orange */
-  --color-primary: #1a365d;
-  --color-primary-light: #2d4a7c;
-  --color-primary-dark: #0f2744;
+  /* Apple-Inspired Color Palette - White Primary, Blue & Orange Accents */
+  --color-primary: #000000;           /* Black for text (Apple uses near-black) */
+  --color-primary-light: #1d1d1f;     /* Subtle dark gray */
+  --color-primary-dark: #000000;
 
-  --color-accent: #f97316;
-  --color-accent-hover: #ea580c;
-  --color-accent-light: #ffedd5;
+  --color-blue: #0071e3;              /* Apple Blue - for links and accents */
+  --color-blue-hover: #0077ed;
+  --color-blue-light: #e8f4fd;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d4a7c 100%);
-  --gradient-accent: linear-gradient(135deg, #f97316 0%, #ff8534 100%);
-  --gradient-hero: linear-gradient(135deg, #0f2744 0%, #1a365d 50%, #2d4a7c 100%);
+  --color-accent: #f56300;            /* Vibrant Orange - hero accents */
+  --color-accent-hover: #ff6d1a;
+  --color-accent-light: #fff3e0;
 
-  --color-success: #10b981;
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
+  /* Backgrounds - White is primary */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f5f7;      /* Apple's light gray */
+  --color-bg-tertiary: #fbfbfd;
+
+  /* Subtle Gradients */
+  --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+  --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+  --gradient-accent: linear-gradient(135deg, #f56300 0%, #ff6d1a 100%);
+
+  --color-success: #30d158;           /* Apple Green */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f7;       /* Apple gray */
+  --color-neutral-200: #e8e8ed;
+  --color-neutral-300: #d2d2d7;
+  --color-neutral-600: #86868b;       /* Apple medium gray */
+  --color-neutral-700: #515154;
+  --color-neutral-800: #1d1d1f;
+  --color-neutral-900: #000000;
 
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Typography */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography - Apple uses SF Pro */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
-  --text-7xl: 4.5rem;
+  /* Font Sizes - Apple uses HUGE text */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1.0625rem; /* 17px - Apple's body size */
+  --text-lg: 1.1875rem;   /* 19px */
+  --text-xl: 1.3125rem;   /* 21px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.5rem;     /* 40px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 4rem;       /* 64px */
+  --text-7xl: 5rem;       /* 80px */
+  --text-8xl: 6rem;       /* 96px - Apple hero size */
+  --text-9xl: 7rem;       /* 112px */
 
-  /* Font Weights */
+  /* Font Weights - Apple's precise weights */
   --font-normal: 400;
   --font-medium: 500;
   --font-semibold: 600;
@@ -59,13 +69,13 @@ Frederick & Montgomery County, Maryland
   --font-extrabold: 800;
   --font-black: 900;
 
-  /* Line Heights */
-  --leading-tight: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
-  --leading-loose: 2;
+  /* Line Heights - Apple's generous spacing */
+  --leading-tight: 1.05;
+  --leading-normal: 1.2;
+  --leading-relaxed: 1.4;
+  --leading-loose: 1.6;
 
-  /* Spacing */
+  /* Spacing - Apple's generous whitespace */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -77,32 +87,34 @@ Frederick & Montgomery County, Maryland
   --space-12: 3rem;
   --space-16: 4rem;
   --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
 
-  /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* Border Radius - Apple uses larger, softer corners */
+  --radius-sm: 0.5rem;      /* 8px */
+  --radius-md: 0.75rem;     /* 12px */
+  --radius-lg: 1rem;        /* 16px */
+  --radius-xl: 1.125rem;    /* 18px - Apple card radius */
+  --radius-2xl: 1.5rem;     /* 24px */
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 20px rgba(249, 115, 22, 0.3);
-  --shadow-glow-hover: 0 0 30px rgba(249, 115, 22, 0.5);
+  /* Shadows - Apple's subtle, soft shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 8px 24px 0 rgba(0, 0, 0, 0.10);
+  --shadow-2xl: 0 12px 32px 0 rgba(0, 0, 0, 0.12);
+  --shadow-card: 2px 4px 12px rgba(0, 0, 0, 0.08);
 
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.25s ease;
-  --transition-slow: 0.4s ease;
-  --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Transitions - Apple's smooth, natural easing */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-apple: 0.4s cubic-bezier(0.28, 0.11, 0.32, 1);
 
   /* Header Height */
-  --header-height: 80px;
+  --header-height: 48px;    /* Apple's slim navigation */
 }
 
 /* Dark Mode Variables */
@@ -133,11 +145,14 @@ html {
 body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  color: var(--color-neutral-800);
-  background-color: var(--color-neutral-50);
+  line-height: var(--leading-relaxed);
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
   transition: background-color var(--transition-base), color var(--transition-base);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Smooth Scroll Reveal Animation */
@@ -468,13 +483,13 @@ body.dark-mode .moon-icon {
   bottom: 0;
   background: var(--gradient-hero);
   opacity: 1;
-  transition: transform 0.1s ease-out;
 }
 
 body.dark-mode .hero-gradient-bg {
   opacity: 0.9;
 }
 
+/* Subtle Apple-style gradient overlay */
 .hero-gradient-bg::before {
   content: '';
   position: absolute;
@@ -483,31 +498,14 @@ body.dark-mode .hero-gradient-bg {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(45, 74, 124, 0.15) 0%, transparent 50%);
-  animation: gradient-shift 15s ease infinite;
+    radial-gradient(circle at 30% 40%, rgba(0, 113, 227, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(245, 99, 0, 0.03) 0%, transparent 50%);
+  animation: subtle-pulse 20s ease infinite;
 }
 
-.hero-gradient-bg::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, transparent 20%, var(--color-primary-dark) 80%);
-  opacity: 0.3;
-  animation: rotate-gradient 30s linear infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.1); }
-}
-
-@keyframes rotate-gradient {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.7; }
 }
 
 .hero-content {
@@ -531,29 +529,35 @@ body.dark-mode .hero-gradient-bg {
 }
 
 .hero-title {
-  font-size: var(--text-7xl);
-  font-weight: var(--font-black);
-  color: var(--color-white);
-  margin-bottom: var(--space-4);
+  font-size: clamp(3rem, 8vw, var(--text-8xl));
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
   line-height: var(--leading-tight);
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .text-accent {
-  color: var(--color-accent);
+  color: var(--color-blue);
   position: relative;
 }
 
 .hero-subtitle {
   font-size: var(--text-2xl);
-  color: var(--color-white);
-  margin-bottom: var(--space-3);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: var(--color-neutral-600);
+  margin-bottom: var(--space-12);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: var(--font-normal);
 }
 
 .hero-stat {
   font-size: var(--text-lg);
-  color: var(--color-white);
+  color: var(--color-neutral-600);
   margin-bottom: var(--space-12);
 }
 
