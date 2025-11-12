@@ -1,57 +1,67 @@
 /*
 =====================================================
-JOVEL CREATIVE - INTERACTIVE CONVERSION ENGINE
-Phase 1: Live Demo, Instant Quotes, Local Proof
-Frederick & Montgomery County, Maryland
+JOVEL CREATIVE - APPLE-INSPIRED DESIGN SYSTEM
+Clean. Minimal. Powerful.
 =====================================================
 */
 
 /* ==================== ROOT VARIABLES ==================== */
 :root {
-  /* Color Palette - Professional Navy & Vibrant Orange */
-  --color-primary: #1a365d;
-  --color-primary-light: #2d4a7c;
-  --color-primary-dark: #0f2744;
+  /* Apple-Inspired Color Palette - White Primary, Blue & Orange Accents */
+  --color-primary: #000000;           /* Black for text (Apple uses near-black) */
+  --color-primary-light: #1d1d1f;     /* Subtle dark gray */
+  --color-primary-dark: #000000;
 
-  --color-accent: #f97316;
-  --color-accent-hover: #ea580c;
-  --color-accent-light: #ffedd5;
+  --color-blue: #0071e3;              /* Apple Blue - for links and accents */
+  --color-blue-hover: #0077ed;
+  --color-blue-light: #e8f4fd;
 
-  /* Gradients */
-  --gradient-primary: linear-gradient(135deg, #1a365d 0%, #2d4a7c 100%);
-  --gradient-accent: linear-gradient(135deg, #f97316 0%, #ff8534 100%);
-  --gradient-hero: linear-gradient(135deg, #0f2744 0%, #1a365d 50%, #2d4a7c 100%);
+  --color-accent: #f56300;            /* Vibrant Orange - hero accents */
+  --color-accent-hover: #ff6d1a;
+  --color-accent-light: #fff3e0;
 
-  --color-success: #10b981;
-  --color-neutral-50: #f8fafc;
-  --color-neutral-100: #f1f5f9;
-  --color-neutral-200: #e2e8f0;
-  --color-neutral-300: #cbd5e1;
-  --color-neutral-600: #475569;
-  --color-neutral-700: #334155;
-  --color-neutral-800: #1e293b;
-  --color-neutral-900: #0f172a;
+  /* Backgrounds - White is primary */
+  --color-bg-primary: #ffffff;
+  --color-bg-secondary: #f5f5f7;      /* Apple's light gray */
+  --color-bg-tertiary: #fbfbfd;
+
+  /* Subtle Gradients */
+  --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
+  --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
+  --gradient-accent: linear-gradient(135deg, #f56300 0%, #ff6d1a 100%);
+
+  --color-success: #30d158;           /* Apple Green */
+  --color-neutral-50: #fafafa;
+  --color-neutral-100: #f5f5f7;       /* Apple gray */
+  --color-neutral-200: #e8e8ed;
+  --color-neutral-300: #d2d2d7;
+  --color-neutral-600: #86868b;       /* Apple medium gray */
+  --color-neutral-700: #515154;
+  --color-neutral-800: #1d1d1f;
+  --color-neutral-900: #000000;
 
   --color-white: #ffffff;
   --color-black: #000000;
 
-  /* Typography */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  /* Typography - Apple uses SF Pro */
+  --font-primary: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', 'Helvetica Neue', sans-serif;
 
-  /* Font Sizes */
-  --text-xs: 0.75rem;
-  --text-sm: 0.875rem;
-  --text-base: 1rem;
-  --text-lg: 1.125rem;
-  --text-xl: 1.25rem;
-  --text-2xl: 1.5rem;
-  --text-3xl: 1.875rem;
-  --text-4xl: 2.25rem;
-  --text-5xl: 3rem;
-  --text-6xl: 3.75rem;
-  --text-7xl: 4.5rem;
+  /* Font Sizes - Apple uses HUGE text */
+  --text-xs: 0.75rem;     /* 12px */
+  --text-sm: 0.875rem;    /* 14px */
+  --text-base: 1.0625rem; /* 17px - Apple's body size */
+  --text-lg: 1.1875rem;   /* 19px */
+  --text-xl: 1.3125rem;   /* 21px */
+  --text-2xl: 1.5rem;     /* 24px */
+  --text-3xl: 2rem;       /* 32px */
+  --text-4xl: 2.5rem;     /* 40px */
+  --text-5xl: 3rem;       /* 48px */
+  --text-6xl: 4rem;       /* 64px */
+  --text-7xl: 5rem;       /* 80px */
+  --text-8xl: 6rem;       /* 96px - Apple hero size */
+  --text-9xl: 7rem;       /* 112px */
 
-  /* Font Weights */
+  /* Font Weights - Apple's precise weights */
   --font-normal: 400;
   --font-medium: 500;
   --font-semibold: 600;
@@ -59,13 +69,13 @@ Frederick & Montgomery County, Maryland
   --font-extrabold: 800;
   --font-black: 900;
 
-  /* Line Heights */
-  --leading-tight: 1.25;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.625;
-  --leading-loose: 2;
+  /* Line Heights - Apple's generous spacing */
+  --leading-tight: 1.05;
+  --leading-normal: 1.2;
+  --leading-relaxed: 1.4;
+  --leading-loose: 1.6;
 
-  /* Spacing */
+  /* Spacing - Apple's generous whitespace */
   --space-1: 0.25rem;
   --space-2: 0.5rem;
   --space-3: 0.75rem;
@@ -77,32 +87,34 @@ Frederick & Montgomery County, Maryland
   --space-12: 3rem;
   --space-16: 4rem;
   --space-20: 5rem;
+  --space-24: 6rem;
+  --space-32: 8rem;
+  --space-40: 10rem;
 
-  /* Border Radius */
-  --radius-sm: 0.375rem;
-  --radius-md: 0.5rem;
-  --radius-lg: 0.75rem;
-  --radius-xl: 1rem;
-  --radius-2xl: 1.5rem;
+  /* Border Radius - Apple uses larger, softer corners */
+  --radius-sm: 0.5rem;      /* 8px */
+  --radius-md: 0.75rem;     /* 12px */
+  --radius-lg: 1rem;        /* 16px */
+  --radius-xl: 1.125rem;    /* 18px - Apple card radius */
+  --radius-2xl: 1.5rem;     /* 24px */
   --radius-full: 9999px;
 
-  /* Shadows */
-  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
-  --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-  --shadow-glow: 0 0 20px rgba(249, 115, 22, 0.3);
-  --shadow-glow-hover: 0 0 30px rgba(249, 115, 22, 0.5);
+  /* Shadows - Apple's subtle, soft shadows */
+  --shadow-sm: 0 1px 3px 0 rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 2px 8px 0 rgba(0, 0, 0, 0.08);
+  --shadow-lg: 0 4px 16px 0 rgba(0, 0, 0, 0.08);
+  --shadow-xl: 0 8px 24px 0 rgba(0, 0, 0, 0.10);
+  --shadow-2xl: 0 12px 32px 0 rgba(0, 0, 0, 0.12);
+  --shadow-card: 2px 4px 12px rgba(0, 0, 0, 0.08);
 
-  /* Transitions */
-  --transition-fast: 0.15s ease;
-  --transition-base: 0.25s ease;
-  --transition-slow: 0.4s ease;
-  --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+  /* Transitions - Apple's smooth, natural easing */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-base: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-slow: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-apple: 0.4s cubic-bezier(0.28, 0.11, 0.32, 1);
 
   /* Header Height */
-  --header-height: 80px;
+  --header-height: 48px;    /* Apple's slim navigation */
 }
 
 /* Dark Mode Variables */
@@ -133,11 +145,14 @@ html {
 body {
   font-family: var(--font-primary);
   font-size: var(--text-base);
-  line-height: var(--leading-normal);
-  color: var(--color-neutral-800);
-  background-color: var(--color-neutral-50);
+  line-height: var(--leading-relaxed);
+  color: var(--color-primary);
+  background-color: var(--color-bg-primary);
   transition: background-color var(--transition-base), color var(--transition-base);
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 /* Smooth Scroll Reveal Animation */
@@ -231,16 +246,17 @@ body {
   left: 0;
   right: 0;
   height: var(--header-height);
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--color-neutral-200);
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.07);
   z-index: 1000;
-  transition: all var(--transition-base);
+  transition: all var(--transition-apple);
 }
 
 body.dark-mode .site-header {
-  background: rgba(15, 23, 42, 0.95);
-  border-bottom-color: var(--color-neutral-700);
+  background: rgba(29, 29, 31, 0.72);
+  border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .nav-container {
@@ -253,14 +269,15 @@ body.dark-mode .site-header {
 
 .logo {
   font-size: var(--text-xl);
-  font-weight: var(--font-bold);
+  font-weight: var(--font-semibold);
   color: var(--color-primary);
   text-decoration: none;
-  transition: color var(--transition-fast);
+  transition: opacity var(--transition-fast);
+  letter-spacing: -0.01em;
 }
 
 .logo:hover {
-  color: var(--color-accent);
+  opacity: 0.7;
 }
 
 .nav-menu {
@@ -271,27 +288,24 @@ body.dark-mode .site-header {
 }
 
 .nav-link {
-  color: var(--color-neutral-700);
+  color: var(--color-primary);
   text-decoration: none;
-  font-weight: var(--font-medium);
+  font-weight: var(--font-normal);
   padding: var(--space-2) 0;
   position: relative;
-  transition: color var(--transition-fast);
+  transition: opacity var(--transition-fast);
+  opacity: 0.8;
+  font-size: 0.75rem;
+  letter-spacing: 0.01em;
 }
 
-.nav-link:hover,
+.nav-link:hover {
+  opacity: 1;
+}
+
 .nav-link.active {
-  color: var(--color-primary);
-}
-
-.nav-link.active::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  height: 2px;
-  background: var(--gradient-accent);
+  opacity: 1;
+  font-weight: var(--font-medium);
 }
 
 .btn-nav-cta {
@@ -392,51 +406,50 @@ body.dark-mode .moon-icon {
 /* ==================== BUTTONS ==================== */
 .btn {
   display: inline-block;
-  padding: var(--space-4) var(--space-8);
-  border-radius: var(--radius-xl);
-  font-weight: var(--font-semibold);
+  padding: 12px 22px;
+  border-radius: var(--radius-full);
+  font-weight: var(--font-normal);
   text-decoration: none;
   text-align: center;
-  transition: all var(--transition-base);
+  transition: all var(--transition-apple);
   cursor: pointer;
   border: none;
-  font-size: var(--text-base);
-  line-height: 1.5;
+  font-size: 1rem;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
 }
 
 .btn-primary {
-  background: var(--gradient-primary);
+  background: var(--color-blue);
   color: var(--color-white);
-  box-shadow: var(--shadow-md);
+  box-shadow: none;
 }
 
 .btn-primary:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-xl);
+  background: var(--color-blue-hover);
+  transform: scale(1.02);
 }
 
 .btn-secondary {
-  background: rgba(255, 255, 255, 0.1);
-  color: var(--color-white);
-  border: 2px solid var(--color-white);
-  backdrop-filter: blur(10px);
+  background: transparent;
+  color: var(--color-blue);
+  border: 1.5px solid var(--color-blue);
 }
 
 .btn-secondary:hover {
-  background: var(--color-white);
-  color: var(--color-primary);
-  border-color: var(--color-white);
+  background: var(--color-blue);
+  color: var(--color-white);
 }
 
 .btn-accent {
-  background: var(--gradient-accent);
+  background: var(--color-accent);
   color: var(--color-white);
-  box-shadow: var(--shadow-glow);
+  box-shadow: none;
 }
 
 .btn-accent:hover {
-  transform: translateY(-3px);
-  box-shadow: var(--shadow-glow-hover);
+  background: var(--color-accent-hover);
+  transform: scale(1.02);
 }
 
 .btn-large {
@@ -468,13 +481,13 @@ body.dark-mode .moon-icon {
   bottom: 0;
   background: var(--gradient-hero);
   opacity: 1;
-  transition: transform 0.1s ease-out;
 }
 
 body.dark-mode .hero-gradient-bg {
   opacity: 0.9;
 }
 
+/* Subtle Apple-style gradient overlay */
 .hero-gradient-bg::before {
   content: '';
   position: absolute;
@@ -483,31 +496,14 @@ body.dark-mode .hero-gradient-bg {
   right: 0;
   bottom: 0;
   background-image:
-    radial-gradient(circle at 20% 50%, rgba(249, 115, 22, 0.15) 0%, transparent 50%),
-    radial-gradient(circle at 80% 80%, rgba(45, 74, 124, 0.15) 0%, transparent 50%);
-  animation: gradient-shift 15s ease infinite;
+    radial-gradient(circle at 30% 40%, rgba(0, 113, 227, 0.03) 0%, transparent 50%),
+    radial-gradient(circle at 70% 60%, rgba(245, 99, 0, 0.03) 0%, transparent 50%);
+  animation: subtle-pulse 20s ease infinite;
 }
 
-.hero-gradient-bg::after {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(circle, transparent 20%, var(--color-primary-dark) 80%);
-  opacity: 0.3;
-  animation: rotate-gradient 30s linear infinite;
-}
-
-@keyframes gradient-shift {
-  0%, 100% { opacity: 1; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.1); }
-}
-
-@keyframes rotate-gradient {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+@keyframes subtle-pulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 0.7; }
 }
 
 .hero-content {
@@ -531,29 +527,35 @@ body.dark-mode .hero-gradient-bg {
 }
 
 .hero-title {
-  font-size: var(--text-7xl);
-  font-weight: var(--font-black);
-  color: var(--color-white);
-  margin-bottom: var(--space-4);
+  font-size: clamp(3rem, 8vw, var(--text-8xl));
+  font-weight: var(--font-semibold);
+  color: var(--color-primary);
+  margin-bottom: var(--space-8);
   line-height: var(--leading-tight);
-  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  letter-spacing: -0.03em;
+  max-width: 900px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .text-accent {
-  color: var(--color-accent);
+  color: var(--color-blue);
   position: relative;
 }
 
 .hero-subtitle {
   font-size: var(--text-2xl);
-  color: var(--color-white);
-  margin-bottom: var(--space-3);
-  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  color: var(--color-neutral-600);
+  margin-bottom: var(--space-12);
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  font-weight: var(--font-normal);
 }
 
 .hero-stat {
   font-size: var(--text-lg);
-  color: var(--color-white);
+  color: var(--color-neutral-600);
   margin-bottom: var(--space-12);
 }
 
@@ -565,12 +567,12 @@ body.dark-mode .hero-gradient-bg {
 
 /* Code Editor Demo */
 .code-editor-demo {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: var(--color-white);
   border-radius: var(--radius-2xl);
-  padding: var(--space-6);
+  padding: var(--space-8);
   margin-bottom: var(--space-12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
 .editor-header {
@@ -657,20 +659,27 @@ body.dark-mode .hero-gradient-bg {
 
 /* ==================== SECTIONS ==================== */
 .section {
-  padding: var(--space-20) 0;
+  padding: var(--space-32) 0;
+  background: var(--color-bg-primary);
+}
+
+.section:nth-child(even) {
+  background: var(--color-bg-secondary);
 }
 
 .section-header {
   text-align: center;
-  max-width: 800px;
-  margin: 0 auto var(--space-16);
+  max-width: 980px;
+  margin: 0 auto var(--space-20);
 }
 
 .section-header h2 {
-  font-size: var(--text-5xl);
-  font-weight: var(--font-bold);
+  font-size: clamp(2.5rem, 5vw, var(--text-6xl));
+  font-weight: var(--font-semibold);
   color: var(--color-primary);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  line-height: var(--leading-tight);
+  letter-spacing: -0.02em;
 }
 
 body.dark-mode .section-header h2 {
@@ -678,8 +687,9 @@ body.dark-mode .section-header h2 {
 }
 
 .section-header p {
-  font-size: var(--text-xl);
+  font-size: var(--text-2xl);
   color: var(--color-neutral-600);
+  line-height: var(--leading-relaxed);
 }
 
 /* ==================== QUOTE CALCULATOR ==================== */
@@ -1176,20 +1186,15 @@ body.dark-mode .result-card {
 
 /* ==================== FOOTER ==================== */
 .site-footer {
-  background: var(--color-primary-dark);
-  color: var(--color-white);
-  padding: var(--space-16) 0 var(--space-8);
+  background: var(--color-bg-secondary);
+  color: var(--color-neutral-600);
+  padding: var(--space-20) 0 var(--space-8);
   position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .site-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-accent);
+  display: none;
 }
 
 .footer-grid {
@@ -1200,22 +1205,18 @@ body.dark-mode .result-card {
 }
 
 .footer-column h3 {
-  color: var(--color-white);
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
   margin-bottom: var(--space-4);
   position: relative;
-  padding-bottom: var(--space-2);
+  padding-bottom: 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .footer-column h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: var(--gradient-accent);
+  display: none;
 }
 
 .footer-links {
@@ -1227,15 +1228,15 @@ body.dark-mode .result-card {
 }
 
 .footer-links a {
-  color: var(--color-white);
+  color: var(--color-neutral-600);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: opacity var(--transition-fast);
   display: inline-block;
+  font-size: 0.875rem;
 }
 
 .footer-links a:hover {
-  color: var(--color-accent);
-  transform: translateX(5px);
+  opacity: 0.6;
 }
 
 .footer-contact p {
@@ -1256,10 +1257,10 @@ body.dark-mode .result-card {
 .footer-bottom {
   text-align: center;
   padding-top: var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
-  font-size: var(--text-sm);
-  opacity: 0.9;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-neutral-600);
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 /* ==================== UTILITY CLASSES ==================== */
@@ -1497,12 +1498,14 @@ body.dark-mode .founding-card {
 }
 
 .founding-price-card {
-  background: var(--color-neutral-100);
-  padding: var(--space-6);
-  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  padding: var(--space-10);
+  border-radius: var(--radius-2xl);
   text-align: center;
   position: relative;
-  transition: all var(--transition-base);
+  transition: all var(--transition-apple);
+  box-shadow: var(--shadow-card);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 body.dark-mode .founding-price-card {
@@ -1510,17 +1513,17 @@ body.dark-mode .founding-price-card {
 }
 
 .founding-price-card.featured {
-  border: 3px solid var(--color-accent);
-  transform: scale(1.05);
+  border: 2px solid var(--color-blue);
+  box-shadow: var(--shadow-lg);
 }
 
 .founding-price-card:hover {
-  transform: translateY(-4px) scale(1.02);
+  transform: translateY(-8px);
   box-shadow: var(--shadow-xl);
 }
 
 .founding-price-card.featured:hover {
-  transform: translateY(-4px) scale(1.07);
+  transform: translateY(-8px);
 }
 
 .popular-badge {
@@ -1528,12 +1531,14 @@ body.dark-mode .founding-price-card {
   top: -12px;
   left: 50%;
   transform: translateX(-50%);
-  background: var(--gradient-accent);
+  background: var(--color-blue);
   color: var(--color-white);
-  padding: var(--space-1) var(--space-4);
+  padding: 6px 16px;
   border-radius: var(--radius-full);
-  font-size: var(--text-xs);
-  font-weight: var(--font-bold);
+  font-size: 0.6875rem;
+  font-weight: var(--font-medium);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .founding-price-card h4 {
@@ -1596,10 +1601,11 @@ body.dark-mode .capabilities-section {
 
 .capability-card {
   background: var(--color-white);
-  padding: var(--space-8);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-base);
+  padding: var(--space-10);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-apple);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 body.dark-mode .capability-card {
@@ -1607,14 +1613,16 @@ body.dark-mode .capability-card {
 }
 
 .capability-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
 }
 
 .capability-card h3 {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   color: var(--color-primary);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-weight: var(--font-semibold);
+  letter-spacing: -0.01em;
 }
 
 .capability-card ul {
@@ -1623,9 +1631,10 @@ body.dark-mode .capability-card {
 }
 
 .capability-card li {
-  padding: var(--space-2) 0;
-  color: var(--color-neutral-700);
+  padding: var(--space-3) 0;
+  color: var(--color-neutral-600);
   border-bottom: 1px solid var(--color-neutral-200);
+  font-size: var(--text-base);
 }
 
 .capability-card li:last-child {
@@ -1634,9 +1643,9 @@ body.dark-mode .capability-card {
 
 .capability-card li::before {
   content: '→';
-  color: var(--color-accent);
-  margin-right: var(--space-2);
-  font-weight: var(--font-bold);
+  color: var(--color-blue);
+  margin-right: var(--space-3);
+  font-weight: var(--font-semibold);
 }
 
 /* ==================== MAP TOOLTIP UPDATE ==================== */
