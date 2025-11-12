@@ -122,10 +122,10 @@
   </header>
 
   <!-- ==================== MAIN CONTENT ==================== -->
-  <main id="main-content">
+  <main id="main-content" role="main">
 
     <!-- ==================== HERO SECTION ==================== -->
-    <section class="hero-interactive">
+    <section class="hero-interactive" aria-label="Hero introduction">
       <div class="hero-gradient-bg"></div>
       <div class="container">
         <div class="hero-content">
@@ -142,20 +142,20 @@
           </p>
 
           <!-- Live Code Editor -->
-          <div class="code-editor-demo">
+          <div class="code-editor-demo" role="region" aria-label="Interactive code editor demonstration">
             <div class="editor-header">
               <span class="editor-title">See the Code, Feel the Speed</span>
-              <span class="editor-badge">Live Editor</span>
+              <span class="editor-badge" role="status">Live Editor</span>
             </div>
             <div class="editor-container">
               <div class="editor-pane">
-                <div class="pane-label">HTML</div>
-                <textarea id="html-input" class="code-input" spellcheck="false">&lt;h1&gt;Hello Frederick!&lt;/h1&gt;
+                <label for="html-input" class="pane-label">HTML</label>
+                <textarea id="html-input" class="code-input" spellcheck="false" aria-label="HTML code editor - type HTML code here to see live preview">&lt;h1&gt;Hello Frederick!&lt;/h1&gt;
 &lt;p&gt;Custom code. No templates.&lt;/p&gt;</textarea>
               </div>
               <div class="preview-pane">
-                <div class="pane-label">Live Preview</div>
-                <iframe id="preview-frame" class="code-preview"></iframe>
+                <div class="pane-label" id="preview-label">Live Preview</div>
+                <iframe id="preview-frame" class="code-preview" title="Live preview of HTML code" aria-labelledby="preview-label"></iframe>
               </div>
             </div>
             <p class="editor-message">This is what clean code looks like — and I build it for you.</p>
@@ -170,11 +170,11 @@
     </section>
 
     <!-- ==================== WHY I SWITCHED ==================== -->
-    <section class="section story-section">
+    <section class="section story-section" aria-labelledby="story-heading">
       <div class="container">
         <div class="story-content">
           <div class="story-text fade-in">
-            <h2>Why I Made the Switch</h2>
+            <h2 id="story-heading">Why I Made the Switch</h2>
             <p>
               For over 12 years, I worked in strategic communications across the <strong>public sector, health space, and tech space</strong>,
               including creating content for public officials like <strong>Councilmember Sidney Katz</strong>. I learned how to
@@ -399,10 +399,10 @@
     </section>
 
     <!-- ==================== WHAT I CAN BUILD ==================== -->
-    <section class="section capabilities-section">
+    <section class="section capabilities-section" aria-labelledby="capabilities-heading">
       <div class="container">
         <div class="section-header fade-in">
-          <h2>What I Can Build For You</h2>
+          <h2 id="capabilities-heading">What I Can Build For You</h2>
           <p>Real technical capabilities. Not just templates.</p>
         </div>
 
@@ -484,16 +484,16 @@
     </section>
 
     <!-- ==================== PORTFOLIO ==================== -->
-    <section class="section portfolio-section">
+    <section class="section portfolio-section" aria-labelledby="portfolio-heading">
       <div class="container">
         <div class="section-header fade-in">
-          <h2>Recent Work</h2>
+          <h2 id="portfolio-heading">Recent Work</h2>
           <p>Real projects. Real results.</p>
         </div>
 
         <div class="portfolio-grid">
           <!-- ShiftEase.co -->
-          <div class="portfolio-card">
+          <article class="portfolio-card" aria-labelledby="portfolio-shiftease-title">
             <div class="portfolio-image">
               <div class="portfolio-placeholder">
                 <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -514,7 +514,7 @@
                 <span class="portfolio-tag">iOS & Android</span>
                 <span class="portfolio-tag">4.8★ Rating</span>
               </div>
-              <h3>ShiftEase.co</h3>
+              <h3 id="portfolio-shiftease-title">ShiftEase.co</h3>
               <p class="portfolio-description">
                 Mobile-first employee scheduling platform serving retail, restaurants, and healthcare.
                 Replaces spreadsheets with drag-and-drop scheduling, GPS-verified time tracking, and
@@ -532,10 +532,10 @@
                 </a>
               </div>
             </div>
-          </div>
+          </article>
 
           <!-- JuanJovel.com -->
-          <div class="portfolio-card">
+          <article class="portfolio-card" aria-labelledby="portfolio-juanjovel-title">
             <div class="portfolio-image">
               <div class="portfolio-placeholder">
                 <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -556,7 +556,7 @@
                 <span class="portfolio-tag">Bilingual</span>
                 <span class="portfolio-tag">12+ Years Experience</span>
               </div>
-              <h3>JuanJovel.com</h3>
+              <h3 id="portfolio-juanjovel-title">JuanJovel.com</h3>
               <p class="portfolio-description">
                 Personal portfolio and thought leadership platform for strategic communications expert.
                 Features crisis management insights, 25K+ monthly social impressions, and bilingual
@@ -574,10 +574,10 @@
                 </a>
               </div>
             </div>
-          </div>
+          </article>
 
           <!-- EDG Electric -->
-          <div class="portfolio-card">
+          <article class="portfolio-card" aria-labelledby="portfolio-edg-title">
             <div class="portfolio-image">
               <div class="portfolio-placeholder">
                 <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -598,7 +598,7 @@
                 <span class="portfolio-tag">NYC & Long Island</span>
                 <span class="portfolio-tag">24/7 Service</span>
               </div>
-              <h3>EDG Electric NY</h3>
+              <h3 id="portfolio-edg-title">EDG Electric NY</h3>
               <p class="portfolio-description">
                 Family-owned electrical contracting business serving all of NYC and Long Island. Licensed,
                 insured, and code-compliant services with 20+ years experience. Features 24/7 emergency
@@ -616,7 +616,7 @@
                 </a>
               </div>
             </div>
-          </div>
+          </article>
         </div>
 
         <div class="text-center" style="margin-top: var(--space-12);">
@@ -629,10 +629,10 @@
     </section>
 
     <!-- ==================== SERVICE AREA ==================== -->
-    <section class="section map-section">
+    <section class="section map-section" aria-labelledby="service-area-heading">
       <div class="container">
         <div class="section-header fade-in">
-          <h2>Serving Maryland Small Businesses</h2>
+          <h2 id="service-area-heading">Serving Maryland Small Businesses</h2>
           <p>Based in Frederick. Available throughout the region.</p>
         </div>
 
@@ -777,7 +777,7 @@
   </main>
 
   <!-- ==================== FOOTER ==================== -->
-  <footer class="site-footer">
+  <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-column">
