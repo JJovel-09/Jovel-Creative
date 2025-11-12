@@ -5,6 +5,84 @@
  * =====================================================
  */
 
+// ==================== ACCESSIBILITY UTILITIES ====================
+/**
+ * Announce messages to screen readers using ARIA live region
+ * @param {string} message - Message to announce
+ * @param {string} priority - 'polite' (default) or 'assertive'
+ */
+function announceToScreenReader(message, priority = 'polite') {
+  // Find or create the live region
+  let liveRegion = document.getElementById('aria-live-region');
+
+  if (!liveRegion) {
+    liveRegion = document.createElement('div');
+    liveRegion.id = 'aria-live-region';
+    liveRegion.setAttribute('aria-live', priority);
+    liveRegion.setAttribute('aria-atomic', 'true');
+    liveRegion.setAttribute('role', 'status');
+    liveRegion.style.position = 'absolute';
+    liveRegion.style.left = '-10000px';
+    liveRegion.style.width = '1px';
+    liveRegion.style.height = '1px';
+    liveRegion.style.overflow = 'hidden';
+    document.body.appendChild(liveRegion);
+  }
+
+  // Clear and set new message
+  liveRegion.textContent = '';
+  setTimeout(() => {
+    liveRegion.textContent = message;
+  }, 100);
+}
+
+/**
+ * Show inline error message for form field
+ * @param {HTMLElement} field - The form field with error
+ * @param {string} message - Error message to display
+ */
+function showFieldError(field, message) {
+  // Add error class to field
+  field.classList.add('error');
+  field.setAttribute('aria-invalid', 'true');
+
+  // Create error message element
+  const errorId = `${field.id}-error`;
+  let errorElement = document.getElementById(errorId);
+
+  if (!errorElement) {
+    errorElement = document.createElement('span');
+    errorElement.id = errorId;
+    errorElement.className = 'form-error';
+    errorElement.setAttribute('role', 'alert');
+    field.setAttribute('aria-describedby', errorId);
+    field.parentNode.appendChild(errorElement);
+  }
+
+  errorElement.textContent = message;
+
+  // Focus the first error field
+  if (!document.querySelector('.error:focus')) {
+    field.focus();
+  }
+}
+
+/**
+ * Clear error state for form field
+ * @param {HTMLElement} field - The form field to clear
+ */
+function clearFieldError(field) {
+  field.classList.remove('error');
+  field.removeAttribute('aria-invalid');
+
+  const errorId = `${field.id}-error`;
+  const errorElement = document.getElementById(errorId);
+  if (errorElement) {
+    errorElement.remove();
+  }
+  field.removeAttribute('aria-describedby');
+}
+
 // ==================== LIVE CODE EDITOR ====================
 function initCodeEditor() {
   const htmlInput = document.getElementById('html-input');
@@ -107,20 +185,48 @@ function initQuoteCalculator() {
   form.addEventListener('submit', (e) => {
     e.preventDefault();
 
+    // Validate form
+    const businessType = document.getElementById('business-type');
+    const pageCount = document.getElementById('page-count');
+
+    let isValid = true;
+    let errorMessage = '';
+
+    // Clear previous error states
+    form.querySelectorAll('.form-error').forEach(err => err.remove());
+    form.querySelectorAll('.error').forEach(el => el.classList.remove('error'));
+
+    if (!businessType.value) {
+      isValid = false;
+      errorMessage = 'Please select your business type. ';
+      showFieldError(businessType, 'Please select your business type');
+    }
+
+    if (!pageCount.value) {
+      isValid = false;
+      errorMessage += 'Please select the number of pages you need.';
+      showFieldError(pageCount, 'Please select the number of pages');
+    }
+
+    if (!isValid) {
+      announceToScreenReader('Form has errors. ' + errorMessage, 'assertive');
+      return;
+    }
+
     // Get form values
-    const pageCount = parseInt(document.getElementById('page-count').value);
+    const pageCountValue = parseInt(pageCount.value);
     const hasEcommerce = document.getElementById('ecommerce').checked;
     const isBilingual = document.getElementById('bilingual').checked;
 
     // Calculate price
-    let price = basePrices[pageCount];
+    let price = basePrices[pageCountValue];
 
     if (hasEcommerce) price += 750;
     if (isBilingual) price += 400;
 
     // Get package details
-    const packageName = packageNames[pageCount];
-    let features = [...packageFeatures[pageCount]];
+    const packageName = packageNames[pageCountValue];
+    let features = [...packageFeatures[pageCountValue]];
 
     // Add optional features
     if (hasEcommerce) {
@@ -152,14 +258,48 @@ function initQuoteCalculator() {
 
     // Show result card with animation
     resultCard.classList.add('show');
+
+    // Announce result to screen readers
+    const announcement = `Quote calculated. ${packageName} for ${foundingPrice} dollars with ${features.length} features included.`;
+    announceToScreenReader(announcement);
+
+    // Move focus to result card for keyboard users
+    setTimeout(() => {
+      const resultHeading = resultCard.querySelector('h3');
+      if (resultHeading) {
+        resultHeading.setAttribute('tabindex', '-1');
+        resultHeading.focus();
+      }
+    }, 300);
   });
 
   // Close result card
   if (closeBtn) {
     closeBtn.addEventListener('click', () => {
       resultCard.classList.remove('show');
+      announceToScreenReader('Quote closed. Returning to calculator.');
+
+      // Return focus to submit button
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.focus();
+      }
     });
   }
+
+  // Close with Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && resultCard.classList.contains('show')) {
+      resultCard.classList.remove('show');
+      announceToScreenReader('Quote closed. Returning to calculator.');
+
+      // Return focus to submit button
+      const submitBtn = form.querySelector('button[type="submit"]');
+      if (submitBtn) {
+        submitBtn.focus();
+      }
+    }
+  });
 
   // Close on outside click
   document.addEventListener('click', (e) => {
@@ -332,6 +472,10 @@ function initDarkMode() {
   toggle.addEventListener('click', () => {
     const isDark = document.body.classList.toggle('dark-mode');
     localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
+
+    // Announce mode change to screen readers
+    const mode = isDark ? 'dark' : 'light';
+    announceToScreenReader(`${mode.charAt(0).toUpperCase() + mode.slice(1)} mode activated.`);
   });
 }
 
@@ -366,19 +510,86 @@ function initMobileMenu() {
 
   if (!toggle || !menu) return;
 
+  let focusableElements = [];
+  let firstFocusable = null;
+  let lastFocusable = null;
+
+  function openMenu() {
+    toggle.setAttribute('aria-expanded', 'true');
+    menu.classList.add('show');
+    document.body.classList.add('menu-open');
+
+    // Get all focusable elements in the menu
+    focusableElements = menu.querySelectorAll(
+      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+    );
+
+    if (focusableElements.length > 0) {
+      firstFocusable = focusableElements[0];
+      lastFocusable = focusableElements[focusableElements.length - 1];
+
+      // Focus first menu item
+      setTimeout(() => firstFocusable.focus(), 100);
+    }
+
+    announceToScreenReader('Menu opened. Use arrow keys or tab to navigate. Press Escape to close.');
+  }
+
+  function closeMenu() {
+    toggle.setAttribute('aria-expanded', 'false');
+    menu.classList.remove('show');
+    document.body.classList.remove('menu-open');
+
+    // Return focus to toggle button
+    toggle.focus();
+    announceToScreenReader('Menu closed.');
+  }
+
   toggle.addEventListener('click', () => {
     const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-    toggle.setAttribute('aria-expanded', !isExpanded);
-    menu.classList.toggle('show');
-    document.body.classList.toggle('menu-open');
+    if (isExpanded) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+
+  // Focus trap - keep focus within menu when open
+  document.addEventListener('keydown', (e) => {
+    const isMenuOpen = menu.classList.contains('show');
+    if (!isMenuOpen) return;
+
+    // Close with Escape key
+    if (e.key === 'Escape') {
+      e.preventDefault();
+      closeMenu();
+      return;
+    }
+
+    // Tab key focus trap
+    if (e.key === 'Tab') {
+      if (e.shiftKey) {
+        // Shift + Tab (backward)
+        if (document.activeElement === firstFocusable || document.activeElement === toggle) {
+          e.preventDefault();
+          lastFocusable.focus();
+        }
+      } else {
+        // Tab (forward)
+        if (document.activeElement === lastFocusable) {
+          e.preventDefault();
+          firstFocusable.focus();
+        }
+      }
+    }
   });
 
   // Close menu when clicking outside
   document.addEventListener('click', (e) => {
     if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-      toggle.setAttribute('aria-expanded', 'false');
-      menu.classList.remove('show');
-      document.body.classList.remove('menu-open');
+      if (menu.classList.contains('show')) {
+        closeMenu();
+      }
     }
   });
 }

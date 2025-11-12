@@ -198,6 +198,64 @@ body {
   top: var(--space-4);
 }
 
+/* ==================== ACCESSIBILITY - FOCUS INDICATORS ==================== */
+/* Enhanced focus styles for keyboard navigation */
+
+/* Default focus style for all interactive elements */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Focus style for dark mode */
+body.dark-mode a:focus-visible,
+body.dark-mode button:focus-visible,
+body.dark-mode input:focus-visible,
+body.dark-mode select:focus-visible,
+body.dark-mode textarea:focus-visible,
+body.dark-mode [tabindex]:focus-visible {
+  outline-color: var(--color-accent-hover);
+}
+
+/* Specific focus styles for buttons */
+.btn:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 3px;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+}
+
+.btn-accent:focus-visible {
+  outline-color: var(--color-blue);
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.2);
+}
+
+.btn-primary:focus-visible {
+  outline-color: var(--color-white);
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.4);
+}
+
+/* Navigation links focus */
+.nav-link:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Card focus for keyboard navigation */
+.card:focus-visible,
+.pricing-card:focus-visible,
+.portfolio-card:focus-visible {
+  outline: 3px solid var(--color-blue);
+  outline-offset: 4px;
+  transform: translateY(-4px);
+}
+
 /* ==================== PERFORMANCE BADGE ==================== */
 .performance-badge {
   position: fixed;
@@ -632,8 +690,9 @@ body.dark-mode .hero-gradient-bg {
   resize: vertical;
 }
 
-.code-input:focus {
-  outline: none;
+.code-input:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: -2px;
 }
 
 .code-preview {
@@ -747,9 +806,10 @@ body.dark-mode .form-group select {
   border-color: var(--color-neutral-600);
 }
 
-.form-group select:focus {
-  outline: none;
-  border-color: var(--color-accent);
+.form-group select:focus-visible {
+  outline: 2px solid var(--color-blue);
+  outline-offset: 2px;
+  border-color: var(--color-blue);
 }
 
 .checkbox-group label {
@@ -763,6 +823,40 @@ body.dark-mode .form-group select {
   width: 20px;
   height: 20px;
   cursor: pointer;
+}
+
+/* ==================== FORM VALIDATION ERRORS ==================== */
+.form-error {
+  display: block;
+  color: #dc2626;
+  font-size: var(--text-sm);
+  margin-top: var(--space-2);
+  font-weight: var(--font-medium);
+}
+
+body.dark-mode .form-error {
+  color: #fca5a5;
+}
+
+.form-group select.error,
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+body.dark-mode .form-group select.error,
+body.dark-mode .form-group input.error,
+body.dark-mode .form-group textarea.error {
+  border-color: #fca5a5;
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+.form-group select.error:focus-visible,
+.form-group input.error:focus-visible,
+.form-group textarea.error:focus-visible {
+  outline-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
 }
 
 /* Quote Result Card */
