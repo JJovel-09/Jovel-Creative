@@ -567,12 +567,12 @@ body.dark-mode .hero-gradient-bg {
 
 /* Code Editor Demo */
 .code-editor-demo {
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
+  background: var(--color-white);
   border-radius: var(--radius-2xl);
-  padding: var(--space-6);
+  padding: var(--space-8);
   margin-bottom: var(--space-12);
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: var(--shadow-card);
 }
 
 .editor-header {
@@ -1186,20 +1186,15 @@ body.dark-mode .result-card {
 
 /* ==================== FOOTER ==================== */
 .site-footer {
-  background: var(--color-primary-dark);
-  color: var(--color-white);
-  padding: var(--space-16) 0 var(--space-8);
+  background: var(--color-bg-secondary);
+  color: var(--color-neutral-600);
+  padding: var(--space-20) 0 var(--space-8);
   position: relative;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .site-footer::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  height: 4px;
-  background: var(--gradient-accent);
+  display: none;
 }
 
 .footer-grid {
@@ -1210,22 +1205,18 @@ body.dark-mode .result-card {
 }
 
 .footer-column h3 {
-  color: var(--color-white);
-  font-size: var(--text-lg);
-  font-weight: var(--font-bold);
+  color: var(--color-primary);
+  font-size: 0.875rem;
+  font-weight: var(--font-semibold);
   margin-bottom: var(--space-4);
   position: relative;
-  padding-bottom: var(--space-2);
+  padding-bottom: 0;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
 }
 
 .footer-column h3::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 40px;
-  height: 2px;
-  background: var(--gradient-accent);
+  display: none;
 }
 
 .footer-links {
@@ -1237,15 +1228,15 @@ body.dark-mode .result-card {
 }
 
 .footer-links a {
-  color: var(--color-white);
+  color: var(--color-neutral-600);
   text-decoration: none;
-  transition: all var(--transition-fast);
+  transition: opacity var(--transition-fast);
   display: inline-block;
+  font-size: 0.875rem;
 }
 
 .footer-links a:hover {
-  color: var(--color-accent);
-  transform: translateX(5px);
+  opacity: 0.6;
 }
 
 .footer-contact p {
@@ -1266,10 +1257,10 @@ body.dark-mode .result-card {
 .footer-bottom {
   text-align: center;
   padding-top: var(--space-6);
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-  color: var(--color-white);
-  font-size: var(--text-sm);
-  opacity: 0.9;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+  color: var(--color-neutral-600);
+  font-size: 0.75rem;
+  opacity: 0.8;
 }
 
 /* ==================== UTILITY CLASSES ==================== */
@@ -1610,10 +1601,11 @@ body.dark-mode .capabilities-section {
 
 .capability-card {
   background: var(--color-white);
-  padding: var(--space-8);
-  border-radius: var(--radius-xl);
-  box-shadow: var(--shadow-md);
-  transition: all var(--transition-base);
+  padding: var(--space-10);
+  border-radius: var(--radius-2xl);
+  box-shadow: var(--shadow-card);
+  transition: all var(--transition-apple);
+  border: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 body.dark-mode .capability-card {
@@ -1621,14 +1613,16 @@ body.dark-mode .capability-card {
 }
 
 .capability-card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-6px);
   box-shadow: var(--shadow-xl);
 }
 
 .capability-card h3 {
-  font-size: var(--text-2xl);
+  font-size: var(--text-3xl);
   color: var(--color-primary);
-  margin-bottom: var(--space-4);
+  margin-bottom: var(--space-6);
+  font-weight: var(--font-semibold);
+  letter-spacing: -0.01em;
 }
 
 .capability-card ul {
@@ -1637,9 +1631,10 @@ body.dark-mode .capability-card {
 }
 
 .capability-card li {
-  padding: var(--space-2) 0;
-  color: var(--color-neutral-700);
+  padding: var(--space-3) 0;
+  color: var(--color-neutral-600);
   border-bottom: 1px solid var(--color-neutral-200);
+  font-size: var(--text-base);
 }
 
 .capability-card li:last-child {
@@ -1648,9 +1643,9 @@ body.dark-mode .capability-card {
 
 .capability-card li::before {
   content: '→';
-  color: var(--color-accent);
-  margin-right: var(--space-2);
-  font-weight: var(--font-bold);
+  color: var(--color-blue);
+  margin-right: var(--space-3);
+  font-weight: var(--font-semibold);
 }
 
 /* ==================== MAP TOOLTIP UPDATE ==================== */
