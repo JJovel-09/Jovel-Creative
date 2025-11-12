@@ -825,6 +825,40 @@ body.dark-mode .form-group select {
   cursor: pointer;
 }
 
+/* ==================== FORM VALIDATION ERRORS ==================== */
+.form-error {
+  display: block;
+  color: #dc2626;
+  font-size: var(--text-sm);
+  margin-top: var(--space-2);
+  font-weight: var(--font-medium);
+}
+
+body.dark-mode .form-error {
+  color: #fca5a5;
+}
+
+.form-group select.error,
+.form-group input.error,
+.form-group textarea.error {
+  border-color: #dc2626;
+  background-color: #fef2f2;
+}
+
+body.dark-mode .form-group select.error,
+body.dark-mode .form-group input.error,
+body.dark-mode .form-group textarea.error {
+  border-color: #fca5a5;
+  background-color: rgba(220, 38, 38, 0.1);
+}
+
+.form-group select.error:focus-visible,
+.form-group input.error:focus-visible,
+.form-group textarea.error:focus-visible {
+  outline-color: #dc2626;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.2);
+}
+
 /* Quote Result Card */
 .quote-result {
   position: absolute;
