@@ -16,8 +16,8 @@ Clean. Minimal. Powerful.
   --color-blue-hover: #0077ed;
   --color-blue-light: #e8f4fd;
 
-  --color-accent: #f56300;            /* Vibrant Orange - hero accents */
-  --color-accent-hover: #ff6d1a;
+  --color-accent: #d9580a;            /* Darker orange for better contrast (was #f56300) */
+  --color-accent-hover: #f56300;      /* Brighter on hover */
   --color-accent-light: #fff3e0;
 
   /* Backgrounds - White is primary */
@@ -28,14 +28,14 @@ Clean. Minimal. Powerful.
   /* Subtle Gradients */
   --gradient-subtle: linear-gradient(180deg, #ffffff 0%, #f5f5f7 100%);
   --gradient-hero: linear-gradient(135deg, #ffffff 0%, #f5f5f7 100%);
-  --gradient-accent: linear-gradient(135deg, #f56300 0%, #ff6d1a 100%);
+  --gradient-accent: linear-gradient(135deg, #d9580a 0%, #f56300 100%);
 
   --color-success: #30d158;           /* Apple Green */
   --color-neutral-50: #fafafa;
   --color-neutral-100: #f5f5f7;       /* Apple gray */
   --color-neutral-200: #e8e8ed;
   --color-neutral-300: #d2d2d7;
-  --color-neutral-600: #86868b;       /* Apple medium gray */
+  --color-neutral-600: #6e6e73;       /* Darker for better contrast (was #86868b) */
   --color-neutral-700: #515154;
   --color-neutral-800: #1d1d1f;
   --color-neutral-900: #000000;
