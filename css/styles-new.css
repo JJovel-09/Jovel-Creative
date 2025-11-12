@@ -764,6 +764,12 @@ body.dark-mode .quote-section {
   max-width: 600px;
   margin: 0 auto;
   position: relative;
+  min-height: 400px;
+  transition: min-height var(--transition-slow);
+}
+
+.quote-calculator:has(.quote-result.show) {
+  min-height: 700px;
 }
 
 .quote-form {
