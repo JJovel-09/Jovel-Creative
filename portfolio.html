@@ -37,7 +37,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
   <!-- Stylesheet -->
-  <link rel="stylesheet" href="/css/styles.css">
+  <link rel="stylesheet" href="/css/styles-new.css">
 
   <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
@@ -72,20 +72,37 @@
   <!-- ==================== HEADER & NAVIGATION ==================== -->
   <header class="site-header">
     <div class="container">
-      <nav class="nav-container" role="navigation" aria-label="Main navigation">
-        <a href="/" class="logo" aria-label="Jovel Creative Home">Jovel Creative</a>
-
-        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu" aria-expanded="false">
-          <span class="hamburger"></span>
-        </button>
+      <nav class="nav-container" role="navigation">
+        <a href="/" class="logo">Jovel Creative</a>
 
         <ul class="nav-menu">
           <li><a href="/" class="nav-link">Home</a></li>
           <li><a href="/services.html" class="nav-link">Services</a></li>
-          <li><a href="/portfolio.html" class="nav-link active">Portfolio</a></li>
-          <li><a href="/about.html" class="nav-link">About</a></li>
-          <li><a href="/contact.html" class="btn-nav-cta" id="nav-cta">Get Free Quote</a></li>
+          <li><a href="/about.html" class="nav-link">My Story</a></li>
+          <li><a href="/contact.html" class="btn-nav-cta">Get Free Quote</a></li>
         </ul>
+
+        <!-- Dark Mode Toggle -->
+        <button class="dark-mode-toggle" aria-label="Toggle dark mode">
+          <svg class="sun-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <svg class="moon-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
+          <span class="hamburger"></span>
+        </button>
       </nav>
     </div>
   </header>
@@ -107,180 +124,98 @@
     </section>
 
     <!-- Portfolio Section -->
-    <section class="section">
+    <section class="section portfolio-section">
       <div class="container">
-        <h2 class="text-center">Recent Website Projects</h2>
+        <h2 class="text-center">Recent Projects</h2>
         <p class="text-center" style="max-width: 800px; margin: 0 auto var(--space-10);">
-          Every website we build is custom-tailored to the client's brand, audience, and goals.
-          No templates. Just clean, fast code optimized for performance and search engines.
+          Real projects. Real results. Each built with clean code, optimized for performance, and designed to convert.
         </p>
 
-        <div class="portfolio-grid">
+        <div class="portfolio-grid" style="margin-top: var(--space-16);">
 
-          <!-- Portfolio Item 1: Creative Professional Portfolio -->
-          <article class="portfolio-item fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-            <img
-              src="/images/portfolio-1.jpg"
-              alt="Modern portfolio website design for Frederick creative professional showcasing work and services"
-              class="portfolio-image"
-              width="400"
-              height="250"
-              loading="lazy"
-              itemprop="image">
-            <div class="portfolio-content">
-              <h3 itemprop="name">Creative Professional Portfolio</h3>
-
-              <p itemprop="description">
-                Modern portfolio website for a creative professional showcasing their work, services, and expertise.
-                Features a clean, minimalist design that puts the work front and center. Built with performance
-                in mind—the site loads in under 2 seconds and scores 95+ on Google PageSpeed Insights.
-              </p>
-
-              <div style="margin: var(--space-4) 0;">
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-2);">Key Features:</h4>
-                <ul style="color: var(--color-neutral-700); margin-left: var(--space-6); line-height: var(--leading-loose);">
-                  <li>Responsive grid-based project gallery</li>
-                  <li>Filterable portfolio by category</li>
-                  <li>Smooth scroll navigation</li>
-                  <li>Contact form integration</li>
-                  <li>Social media links</li>
-                  <li>Mobile-optimized design</li>
-                </ul>
-              </div>
-
-              <div style="margin: var(--space-4) 0;">
-                <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: var(--space-2);">
-                  <strong>Industry:</strong> Creative Services
-                </p>
-                <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: var(--space-4);">
-                  <strong>Project Type:</strong> Portfolio Website
-                </p>
-              </div>
-
-              <div class="portfolio-tags">
-                <span class="tag">HTML5</span>
-                <span class="tag">CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Responsive Design</span>
-                <span class="tag">SEO Optimized</span>
-              </div>
-
-              <div style="margin-top: var(--space-6);">
-                <a href="/contact.html" class="btn btn-primary" id="portfolio-cta-1">Start Your Project</a>
+          <!-- ShiftEase.co -->
+          <div class="portfolio-card">
+            <div class="portfolio-image">
+              <div class="portfolio-placeholder">
+                <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="200" height="150" fill="url(#portfolio-gradient-1)"/>
+                  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="24" font-weight="600">ShiftEase</text>
+                  <defs>
+                    <linearGradient id="portfolio-gradient-1" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#0071e3"/>
+                      <stop offset="100%" style="stop-color:#1a365d"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
             </div>
-          </article>
-
-          <!-- Portfolio Item 2: App Support Website -->
-          <article class="portfolio-item fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-            <img
-              src="/images/portfolio-2.jpg"
-              alt="Software product support website with comprehensive documentation and FAQ section"
-              class="portfolio-image"
-              width="400"
-              height="250"
-              loading="lazy"
-              itemprop="image">
             <div class="portfolio-content">
-              <h3 itemprop="name">Software Product Support Hub</h3>
-
-              <p itemprop="description">
-                Comprehensive support and documentation site for a software product. Features an organized
-                FAQ section, step-by-step troubleshooting guides, and searchable user resources. Built to
-                reduce support tickets by empowering users to find answers quickly.
-              </p>
-
-              <div style="margin: var(--space-4) 0;">
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-2);">Key Features:</h4>
-                <ul style="color: var(--color-neutral-700); margin-left: var(--space-6); line-height: var(--leading-loose);">
-                  <li>Searchable documentation library</li>
-                  <li>Organized FAQ with jump links</li>
-                  <li>Video tutorial embeds</li>
-                  <li>Quick start guides</li>
-                  <li>Contact support form</li>
-                  <li>Mobile-friendly navigation</li>
-                </ul>
-              </div>
-
-              <div style="margin: var(--space-4) 0;">
-                <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: var(--space-2);">
-                  <strong>Industry:</strong> Technology / Software
-                </p>
-                <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: var(--space-4);">
-                  <strong>Project Type:</strong> Support & Documentation Site
-                </p>
-              </div>
-
               <div class="portfolio-tags">
-                <span class="tag">HTML5</span>
-                <span class="tag">CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Search Functionality</span>
-                <span class="tag">Documentation</span>
+                <span class="portfolio-tag">Mobile App</span>
+                <span class="portfolio-tag">iOS & Android</span>
+                <span class="portfolio-tag">4.8★ Rating</span>
               </div>
-
-              <div style="margin-top: var(--space-6);">
-                <a href="/contact.html" class="btn btn-primary" id="portfolio-cta-2">Start Your Project</a>
+              <h3>ShiftEase.co</h3>
+              <p class="portfolio-description">
+                Mobile-first employee scheduling platform serving retail, restaurants, and healthcare.
+                Replaces spreadsheets with drag-and-drop scheduling, GPS-verified time tracking, and
+                real-time team coordination. Over 10,000+ downloads with 4.8/5 star rating.
+              </p>
+              <ul class="portfolio-features">
+                <li>Drag-and-drop visual scheduling with auto-fill and recurring shifts</li>
+                <li>GPS-verified clock-in/out with automated payroll reports</li>
+                <li>Integrated team chat with shift swaps and notifications</li>
+                <li>Offline mode with cross-device sync and labor analytics dashboard</li>
+              </ul>
+              <div class="portfolio-links">
+                <a href="https://shiftease.co" target="_blank" rel="noopener" class="btn btn-secondary">
+                  Visit Site →
+                </a>
               </div>
             </div>
-          </article>
+          </div>
 
-          <!-- Portfolio Item 3: Local Service Business -->
-          <article class="portfolio-item fade-in" itemscope itemtype="https://schema.org/CreativeWork">
-            <img
-              src="/images/portfolio-3.jpg"
-              alt="Local service business website design for Frederick Maryland company with Google Maps integration"
-              class="portfolio-image"
-              width="400"
-              height="250"
-              loading="lazy"
-              itemprop="image">
-            <div class="portfolio-content">
-              <h3 itemprop="name">Local Service Company Site</h3>
-
-              <p itemprop="description">
-                Professional website for a Frederick-based service business. Designed to build trust and drive
-                conversions with clear service descriptions, authentic customer testimonials, and easy contact
-                options. Google Maps integration helps customers find the business location easily. Optimized
-                for local SEO to rank for Frederick and Montgomery County searches.
-              </p>
-
-              <div style="margin: var(--space-4) 0;">
-                <h4 style="font-size: var(--text-base); margin-bottom: var(--space-2);">Key Features:</h4>
-                <ul style="color: var(--color-neutral-700); margin-left: var(--space-6); line-height: var(--leading-loose);">
-                  <li>Service pages with detailed descriptions</li>
-                  <li>Customer testimonials with schema markup</li>
-                  <li>Google Maps integration with directions</li>
-                  <li>Click-to-call phone numbers</li>
-                  <li>Contact form with email notifications</li>
-                  <li>Service area optimization</li>
-                  <li>Local business schema for SEO</li>
-                </ul>
-              </div>
-
-              <div style="margin: var(--space-4) 0;">
-                <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: var(--space-2);">
-                  <strong>Industry:</strong> Local Services
-                </p>
-                <p style="font-size: var(--text-sm); color: var(--color-neutral-600); margin-bottom: var(--space-4);">
-                  <strong>Project Type:</strong> Business Website
-                </p>
-              </div>
-
-              <div class="portfolio-tags">
-                <span class="tag">HTML5</span>
-                <span class="tag">CSS3</span>
-                <span class="tag">JavaScript</span>
-                <span class="tag">Google Maps API</span>
-                <span class="tag">Local SEO</span>
-                <span class="tag">Mobile First</span>
-              </div>
-
-              <div style="margin-top: var(--space-6);">
-                <a href="/contact.html" class="btn btn-primary" id="portfolio-cta-3">Start Your Project</a>
+          <!-- JuanJovel.com -->
+          <div class="portfolio-card">
+            <div class="portfolio-image">
+              <div class="portfolio-placeholder">
+                <svg viewBox="0 0 200 150" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <rect width="200" height="150" fill="url(#portfolio-gradient-2)"/>
+                  <text x="50%" y="50%" text-anchor="middle" dominant-baseline="middle" fill="white" font-size="24" font-weight="600">Juan Jovel</text>
+                  <defs>
+                    <linearGradient id="portfolio-gradient-2" x1="0%" y1="0%" x2="100%" y2="100%">
+                      <stop offset="0%" style="stop-color:#f56300"/>
+                      <stop offset="100%" style="stop-color:#fbbf24"/>
+                    </linearGradient>
+                  </defs>
+                </svg>
               </div>
             </div>
-          </article>
+            <div class="portfolio-content">
+              <div class="portfolio-tags">
+                <span class="portfolio-tag">Personal Brand</span>
+                <span class="portfolio-tag">Bilingual</span>
+                <span class="portfolio-tag">12+ Years Experience</span>
+              </div>
+              <h3>JuanJovel.com</h3>
+              <p class="portfolio-description">
+                Personal portfolio and thought leadership platform for strategic communications expert.
+                Features crisis management insights, 25K+ monthly social impressions, and bilingual
+                (English/Spanish) consulting services. Includes blog with in-depth articles and newsletter.
+              </p>
+              <ul class="portfolio-features">
+                <li>Professional portfolio with animated experience metrics and case studies</li>
+                <li>Blog featuring crisis communications frameworks and real-world applications</li>
+                <li>Newsletter signup system with email subscription integration</li>
+                <li>Contact page with testimonials, services, and 24-hour response guarantee</li>
+              </ul>
+              <div class="portfolio-links">
+                <a href="https://juanjovel.com" target="_blank" rel="noopener" class="btn btn-secondary">
+                  Visit Site →
+                </a>
+              </div>
+            </div>
+          </div>
 
         </div>
       </div>
@@ -435,8 +370,7 @@
           <ul class="footer-links">
             <li><a href="/">Home</a></li>
             <li><a href="/services.html">Services & Pricing</a></li>
-            <li><a href="/portfolio.html">Portfolio</a></li>
-            <li><a href="/about.html">About Juan Jovel</a></li>
+            <li><a href="/about.html">My Story</a></li>
             <li><a href="/contact.html">Contact & Free Quote</a></li>
           </ul>
         </div>
