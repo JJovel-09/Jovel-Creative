@@ -503,97 +503,6 @@ function initSmoothScroll() {
   });
 }
 
-// ==================== MOBILE MENU ====================
-function initMobileMenu() {
-  const toggle = document.querySelector('.mobile-menu-toggle');
-  const menu = document.querySelector('.nav-menu');
-
-  if (!toggle || !menu) return;
-
-  let focusableElements = [];
-  let firstFocusable = null;
-  let lastFocusable = null;
-
-  function openMenu() {
-    toggle.setAttribute('aria-expanded', 'true');
-    menu.classList.add('show');
-    document.body.classList.add('menu-open');
-
-    // Get all focusable elements in the menu
-    focusableElements = menu.querySelectorAll(
-      'a[href], button:not([disabled]), input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
-    );
-
-    if (focusableElements.length > 0) {
-      firstFocusable = focusableElements[0];
-      lastFocusable = focusableElements[focusableElements.length - 1];
-
-      // Focus first menu item
-      setTimeout(() => firstFocusable.focus(), 100);
-    }
-
-    announceToScreenReader('Menu opened. Use arrow keys or tab to navigate. Press Escape to close.');
-  }
-
-  function closeMenu() {
-    toggle.setAttribute('aria-expanded', 'false');
-    menu.classList.remove('show');
-    document.body.classList.remove('menu-open');
-
-    // Return focus to toggle button
-    toggle.focus();
-    announceToScreenReader('Menu closed.');
-  }
-
-  toggle.addEventListener('click', () => {
-    const isExpanded = toggle.getAttribute('aria-expanded') === 'true';
-    if (isExpanded) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
-  });
-
-  // Focus trap - keep focus within menu when open
-  document.addEventListener('keydown', (e) => {
-    const isMenuOpen = menu.classList.contains('show');
-    if (!isMenuOpen) return;
-
-    // Close with Escape key
-    if (e.key === 'Escape') {
-      e.preventDefault();
-      closeMenu();
-      return;
-    }
-
-    // Tab key focus trap
-    if (e.key === 'Tab') {
-      if (e.shiftKey) {
-        // Shift + Tab (backward)
-        if (document.activeElement === firstFocusable || document.activeElement === toggle) {
-          e.preventDefault();
-          lastFocusable.focus();
-        }
-      } else {
-        // Tab (forward)
-        if (document.activeElement === lastFocusable) {
-          e.preventDefault();
-          firstFocusable.focus();
-        }
-      }
-    }
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!toggle.contains(e.target) && !menu.contains(e.target)) {
-      if (menu.classList.contains('show')) {
-        closeMenu();
-      }
-    }
-  });
-}
-
 // ==================== SCROLL REVEAL ANIMATIONS ====================
 function initScrollReveal() {
   const elements = document.querySelectorAll('.fade-in, .capability-card, .benefit-item, .founding-price-card, .proof-card, .area-card');
@@ -675,7 +584,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initCountUpAnimations();
   initDarkMode();
   initSmoothScroll();
-  initMobileMenu();
   initScrollReveal();
   initParallax();
   initCardInteractions();
