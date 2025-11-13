@@ -461,6 +461,30 @@ body.dark-mode .moon-icon {
   top: 8px;
 }
 
+.mobile-menu-toggle.active .hamburger {
+  background: transparent;
+}
+
+.mobile-menu-toggle.active .hamburger::before {
+  top: 0;
+  transform: rotate(45deg);
+}
+
+.mobile-menu-toggle.active .hamburger::after {
+  top: 0;
+  transform: rotate(-45deg);
+}
+
+body.dark-mode .hamburger,
+body.dark-mode .hamburger::before,
+body.dark-mode .hamburger::after {
+  background: var(--color-white);
+}
+
+body.dark-mode .mobile-menu-toggle.active .hamburger {
+  background: transparent;
+}
+
 /* ==================== BUTTONS ==================== */
 .btn {
   display: inline-block;
@@ -1380,6 +1404,61 @@ body.dark-mode .result-card {
 
   .nav-menu {
     display: none;
+    position: fixed;
+    top: 80px;
+    left: 0;
+    right: 0;
+    background: var(--color-white);
+    flex-direction: column;
+    gap: 0;
+    padding: var(--space-6) var(--space-4);
+    box-shadow: var(--shadow-lg);
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.3s ease;
+    z-index: 100;
+  }
+
+  .nav-menu.active {
+    display: flex;
+    max-height: 500px;
+    opacity: 1;
+  }
+
+  body.dark-mode .nav-menu {
+    background: var(--color-neutral-900);
+    border-bottom: 1px solid var(--color-neutral-700);
+  }
+
+  .nav-menu li {
+    width: 100%;
+    border-bottom: 1px solid var(--color-neutral-200);
+  }
+
+  body.dark-mode .nav-menu li {
+    border-bottom-color: var(--color-neutral-700);
+  }
+
+  .nav-menu li:last-child {
+    border-bottom: none;
+  }
+
+  .nav-link,
+  .btn-nav-cta {
+    display: block;
+    width: 100%;
+    padding: var(--space-4);
+    text-align: left;
+    font-size: var(--text-base);
+  }
+
+  .btn-nav-cta {
+    background: var(--color-accent);
+    color: var(--color-white);
+    border-radius: var(--radius-md);
+    text-align: center;
+    margin-top: var(--space-2);
   }
 
   .mobile-menu-toggle {
