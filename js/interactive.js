@@ -457,28 +457,6 @@ function initCountUpAnimations() {
   counters.forEach(counter => observer.observe(counter));
 }
 
-// ==================== DARK MODE TOGGLE ====================
-function initDarkMode() {
-  const toggle = document.querySelector('.dark-mode-toggle');
-
-  if (!toggle) return;
-
-  // Check for saved preference
-  const savedMode = localStorage.getItem('darkMode');
-  if (savedMode === 'enabled') {
-    document.body.classList.add('dark-mode');
-  }
-
-  toggle.addEventListener('click', () => {
-    const isDark = document.body.classList.toggle('dark-mode');
-    localStorage.setItem('darkMode', isDark ? 'enabled' : 'disabled');
-
-    // Announce mode change to screen readers
-    const mode = isDark ? 'dark' : 'light';
-    announceToScreenReader(`${mode.charAt(0).toUpperCase() + mode.slice(1)} mode activated.`);
-  });
-}
-
 // ==================== SMOOTH SCROLL FOR ANCHOR LINKS ====================
 function initSmoothScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -582,7 +560,6 @@ document.addEventListener('DOMContentLoaded', () => {
   initInteractiveMap();
   initTimelineAnimations();
   initCountUpAnimations();
-  initDarkMode();
   initSmoothScroll();
   initScrollReveal();
   initParallax();
