@@ -904,6 +904,7 @@ body.dark-mode .form-group textarea.error {
   opacity: 0;
   pointer-events: none;
   transition: all var(--transition-slow);
+  z-index: 500;
 }
 
 body.dark-mode .quote-result {
