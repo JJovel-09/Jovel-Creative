@@ -385,34 +385,92 @@ function initInteractiveMap() {
 // ==================== PROCESS TIMELINE ANIMATIONS ====================
 function initTimelineAnimations() {
   const timelineSteps = document.querySelectorAll('.timeline-step');
+  const timeline = document.querySelector('.process-timeline');
 
   if (timelineSteps.length === 0) return;
+
+  let visibleCount = 0;
+  let lineAnimated = false;
 
   // Intersection Observer for scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
+        // Add visible class with slight delay for stagger effect
+        setTimeout(() => {
+          entry.target.classList.add('visible');
+          visibleCount++;
+
+          // Animate connecting line when first step becomes visible
+          if (!lineAnimated && timeline) {
+            timeline.classList.add('animate-line');
+            lineAnimated = true;
+          }
+
+          // Add pulse effect to step number
+          const stepNumber = entry.target.querySelector('.step-number');
+          if (stepNumber) {
+            stepNumber.style.animation = 'step-number-bounce 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55)';
+          }
+        }, 100);
       }
     });
   }, {
-    threshold: 0.2
+    threshold: 0.2,
+    rootMargin: '0px 0px -50px 0px'
   });
 
-  timelineSteps.forEach(step => {
+  timelineSteps.forEach((step, index) => {
     observer.observe(step);
 
-    // Click to expand details
-    step.addEventListener('click', () => {
+    // Enhanced click interactions
+    step.addEventListener('click', (e) => {
       const isExpanded = step.classList.contains('expanded');
 
-      // Close all other steps
-      timelineSteps.forEach(s => s.classList.remove('expanded'));
+      // Close all other steps with smooth animation
+      timelineSteps.forEach(s => {
+        if (s !== step) {
+          s.classList.remove('expanded');
+        }
+      });
 
       // Toggle current step
       if (!isExpanded) {
         step.classList.add('expanded');
+
+        // Announce expansion to screen readers
+        const stepTitle = step.querySelector('h3').textContent;
+        announceToScreenReader(`Expanded: ${stepTitle}`);
+      } else {
+        step.classList.remove('expanded');
+        announceToScreenReader('Step collapsed');
       }
+    });
+
+    // Add keyboard support for expansion
+    step.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        step.click();
+      }
+    });
+
+    // Add tabindex for keyboard navigation
+    step.setAttribute('tabindex', '0');
+    step.setAttribute('role', 'button');
+    step.setAttribute('aria-expanded', 'false');
+
+    // Update aria-expanded when expanded class changes
+    const updateAriaExpanded = () => {
+      const isExpanded = step.classList.contains('expanded');
+      step.setAttribute('aria-expanded', isExpanded.toString());
+    };
+
+    // Watch for class changes
+    const classObserver = new MutationObserver(updateAriaExpanded);
+    classObserver.observe(step, {
+      attributes: true,
+      attributeFilter: ['class']
     });
   });
 }
