@@ -1503,14 +1503,16 @@ body.dark-mode .result-card {
 }
 
 .footer-contact a {
-  color: var(--color-white);
+  color: var(--color-primary);
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
   font-weight: var(--font-semibold);
+  transition: color var(--transition-fast);
 }
 
 .footer-contact a:hover {
   color: var(--color-accent);
+  text-decoration-color: var(--color-accent-hover);
 }
 
 .footer-bottom {
