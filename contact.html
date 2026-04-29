@@ -224,7 +224,7 @@
     <section class="request-hero">
       <div class="container">
         <h1>Request Your Promo Kit</h1>
-        <p>Tell me about your listing or event and I'll follow up with your kit details within a few hours.</p>
+        <p>Tell me about your listing or event and I’ll follow up with your kit details within a few hours.</p>
         <div class="hero-badges">
           <span class="hero-badge">24–48 hour turnaround</span>
           <span class="hero-badge">Starting at $89</span>
@@ -241,15 +241,20 @@
           <h2>Kit Request Form</h2>
 
           <!--
-            FORMSPREE SETUP:
-            1. Sign up at https://formspree.io (free tier)
-            2. Create a new form
-            3. Replace YOUR_FORM_ID below with your real Formspree form ID
-            4. Test a submission to confirm you receive it in your inbox
+            TALLY SETUP (3 steps):
+            1. Go to https://tally.so and create a free account.
+            2. Build your form (or skip — this HTML form posts directly to Tally).
+            3. In your Tally dashboard, create a new form, then go to
+               Share > Embed > "HTML form" and copy your form ID.
+               Replace YOUR_TALLY_ID in the action URL below:
+               action="https://tally.so/r/YOUR_TALLY_ID"
+            4. In Tally settings for that form, enable "Accept external submissions".
+            5. Test by submitting once — you should see the entry in Tally
+               and receive an email notification.
           -->
           <form
             id="contact-form"
-            action="https://formspree.io/f/YOUR_FORM_ID"
+            action="https://tally.so/r/YOUR_TALLY_ID"
             method="POST"
             novalidate>
 
@@ -314,12 +319,12 @@
             </div>
             <div class="form-group">
               <label for="notes" class="form-label">Key Details / CTA</label>
-              <textarea id="notes" name="notes" class="form-textarea" placeholder="e.g. 3 bed / 2 bath, asking $425k, light-filled colonial — want the CTA to say 'RSVP to tour'"></textarea>
+              <textarea id="notes" name="notes" class="form-textarea" placeholder="e.g. 3 bed / 2 bath, asking $425k, light-filled colonial — want the CTA to say ‘RSVP to tour’"></textarea>
             </div>
 
             <button type="submit" class="request-cta">Send My Request →</button>
             <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-            <p class="request-disclaimer">Submitting this form is not a commitment. I'll reply to confirm details and next steps before any work begins.</p>
+            <p class="request-disclaimer">Submitting this form is not a commitment. I’ll reply to confirm details and next steps before any work begins.</p>
           </form>
         </div>
       </div>
@@ -350,7 +355,7 @@
             <div class="pkg-mini-name">Premium <span class="pkg-mini-price">$199</span></div>
             <div class="pkg-mini-desc">Standard + 30-second AI video invite</div>
           </div>
-          <p style="font-size:0.8rem;color:#6b7280;margin-top:0.75rem;">Not sure which fits? Just submit the form — I'll recommend one based on your event.</p>
+          <p style="font-size:0.8rem;color:#6b7280;margin-top:0.75rem;">Not sure which fits? Just submit the form — I’ll recommend one based on your event.</p>
         </div>
 
         <div class="sidebar-info-card contact-direct">
@@ -411,7 +416,7 @@
         status.textContent = '';
 
         var action = form.getAttribute('action') || '';
-        if (!action || action.indexOf('YOUR_FORM_ID') !== -1) {
+        if (!action || action.indexOf('YOUR_TALLY_ID') !== -1) {
           status.className = 'form-status error show';
           status.textContent = 'The form is not connected yet. Please email juan@jovelcreative.com or call 240-579-7858 directly.';
           return;
@@ -436,12 +441,8 @@
             status.className = 'form-status success show';
             status.textContent = 'Thank you — your request was sent successfully! I will review your details and follow up with next steps within a few hours.';
           } else {
-            var data = {};
-            try { data = await response.json(); } catch (err) {}
             status.className = 'form-status error show';
-            status.textContent = (data && data.errors && data.errors.length)
-              ? data.errors.map(function (item) { return item.message; }).join(' ')
-              : 'Something went wrong. Please try again or email juan@jovelcreative.com directly.';
+            status.textContent = 'Something went wrong. Please try again or email juan@jovelcreative.com directly.';
           }
         } catch (error) {
           status.className = 'form-status error show';
