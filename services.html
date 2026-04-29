@@ -1,87 +1,226 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- ==================== META TAGS - SEO ==================== -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <!-- Primary Meta Tags -->
-  <title>Brand Strategy & Web Development Services | Frederick MD | Jovel Creative</title>
-  <meta name="title" content="Brand Strategy & Web Development Services | Frederick MD | Jovel Creative">
-  <meta name="description" content="Clarify your message. Build your brand. Get clients who finally get it. Strategic communications and web development for mission-driven organizations in Frederick, MD.">
-  <meta name="keywords" content="brand strategy Frederick MD, web development, strategic communications, website design, brand messaging, digital experience">
+  <title>Packages & Pricing | Jovel Creative — Realtor Promo Kits</title>
+  <meta name="description" content="Open house and listing promo kits for realtors. Flyer, social posts, QR code, and lead-capture landing page. Base $89, Standard $149, Premium $199. 24-hour turnaround.">
   <meta name="author" content="Juan Jovel - Jovel Creative">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://jovelcreative.com/services.html">
-
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://jovelcreative.com/services.html">
-  <meta property="og:title" content="Brand Strategy & Web Development Services | Frederick MD">
-  <meta property="og:description" content="Clarify your message. Build your brand. Get clients who finally get it.">
+  <meta property="og:title" content="Packages & Pricing | Jovel Creative">
+  <meta property="og:description" content="24-hour realtor promo kits. Flyer, social, QR, and lead page. Starting at $89.">
   <meta property="og:image" content="https://jovelcreative.com/images/og-image.jpg">
-
-  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://jovelcreative.com/services.html">
-  <meta name="twitter:title" content="Brand Strategy & Web Development Services | Frederick MD">
-  <meta name="twitter:description" content="Clarify your message. Build your brand. Get clients who finally get it.">
+  <meta name="twitter:title" content="Packages & Pricing | Jovel Creative">
+  <meta name="twitter:description" content="24-hour realtor promo kits starting at $89.">
   <meta name="twitter:image" content="https://jovelcreative.com/images/twitter-card.jpg">
-
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
-
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <!-- Stylesheet -->
   <link rel="stylesheet" href="/css/styles-new.css">
-
-  <!-- Google Analytics 4 -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
   <script src="/js/analytics.js"></script>
-
-  <!-- Breadcrumb Schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "Home",
-        "item": "https://jovelcreative.com/"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "Services",
-        "item": "https://jovelcreative.com/services.html"
-      }
+      {"@type":"ListItem","position":1,"name":"Home","item":"https://jovelcreative.com/"},
+      {"@type":"ListItem","position":2,"name":"Packages & Pricing","item":"https://jovelcreative.com/services.html"}
     ]
   }
   </script>
+  <style>
+    .pkg-hero {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+      color: #fff;
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+    .pkg-hero h1 { font-size: clamp(1.8rem, 4vw, 2.8rem); margin-bottom: 0.75rem; }
+    .pkg-hero p  { font-size: 1.1rem; opacity: 0.85; max-width: 600px; margin: 0 auto 1.5rem; }
+    .hero-badges { display: flex; justify-content: center; flex-wrap: wrap; gap: 0.6rem; }
+    .hero-badge {
+      background: rgba(255,255,255,0.12);
+      border: 1px solid rgba(255,255,255,0.25);
+      border-radius: 999px;
+      padding: 0.3rem 1rem;
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }
+    /* Packages section */
+    .packages-section { padding: 3.5rem 0; background: #f9fafb; }
+    .packages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.5rem;
+      max-width: 1020px;
+      margin: 2rem auto 0;
+      padding: 0 1.25rem;
+    }
+    .pkg-card {
+      background: #fff;
+      border: 2px solid #e5e7eb;
+      border-radius: 14px;
+      padding: 2rem 1.75rem;
+      position: relative;
+      transition: box-shadow 200ms, border-color 200ms;
+    }
+    .pkg-card:hover { box-shadow: 0 8px 28px rgba(0,0,0,0.1); }
+    .pkg-card.featured {
+      border-color: #e05a2b;
+      box-shadow: 0 4px 20px rgba(224,90,43,0.15);
+    }
+    .featured-badge {
+      position: absolute;
+      top: -13px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #e05a2b;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      padding: 0.25rem 0.9rem;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+    .pkg-name { font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: #6b7280; margin-bottom: 0.4rem; }
+    .pkg-price { font-size: 2.4rem; font-weight: 800; color: #111827; line-height: 1; margin-bottom: 0.25rem; }
+    .pkg-price span { font-size: 1rem; font-weight: 400; color: #6b7280; }
+    .pkg-tagline { font-size: 0.9rem; color: #374151; margin-bottom: 1.25rem; line-height: 1.4; }
+    .pkg-features { list-style: none; padding: 0; margin: 0 0 1.5rem; }
+    .pkg-features li {
+      font-size: 0.88rem;
+      color: #374151;
+      padding: 0.35rem 0;
+      border-bottom: 1px solid #f3f4f6;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    .pkg-features li:last-child { border-bottom: none; }
+    .check { color: #16a34a; font-weight: 700; flex-shrink: 0; }
+    .pkg-cta {
+      display: block;
+      width: 100%;
+      padding: 0.7rem 1rem;
+      background: #e05a2b;
+      color: #fff;
+      font-size: 0.92rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      transition: background 180ms;
+    }
+    .pkg-cta:hover { background: #c74d22; }
+    .pkg-cta.outline {
+      background: transparent;
+      border: 2px solid #e05a2b;
+      color: #e05a2b;
+    }
+    .pkg-cta.outline:hover { background: #e05a2b; color: #fff; }
+    /* Add-ons */
+    .addons-section { padding: 2.5rem 0; }
+    .addons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1rem;
+      max-width: 900px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem;
+    }
+    .addon-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.25rem;
+    }
+    .addon-name { font-weight: 700; font-size: 0.92rem; margin-bottom: 0.2rem; color: #111827; }
+    .addon-price { color: #e05a2b; font-weight: 700; font-size: 1rem; margin-bottom: 0.3rem; }
+    .addon-desc { font-size: 0.82rem; color: #6b7280; line-height: 1.45; }
+    /* What you need to send */
+    .needs-section { padding: 2.5rem 0; background: #f9fafb; }
+    .needs-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      max-width: 860px;
+      margin: 1.5rem auto 0;
+      padding: 0 1.25rem;
+    }
+    @media (max-width: 640px) { .needs-grid { grid-template-columns: 1fr; } }
+    .needs-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 10px;
+      padding: 1.5rem;
+    }
+    .needs-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.75rem; color: #111827; }
+    .needs-card ul { list-style: none; padding: 0; margin: 0; }
+    .needs-card ul li { font-size: 0.85rem; color: #374151; padding: 0.3rem 0; border-bottom: 1px solid #f3f4f6; }
+    .needs-card ul li:last-child { border-bottom: none; }
+    /* FAQ */
+    .faq-section { padding: 3rem 0; }
+    .faq-list { max-width: 740px; margin: 1.5rem auto 0; padding: 0 1.25rem; }
+    .faq-item { border-bottom: 1px solid #e5e7eb; padding: 1.1rem 0; }
+    .faq-q { font-weight: 700; font-size: 0.95rem; color: #111827; margin-bottom: 0.4rem; }
+    .faq-a { font-size: 0.88rem; color: #374151; line-height: 1.55; }
+    /* CTA strip */
+    .cta-strip {
+      background: #e05a2b;
+      color: #fff;
+      text-align: center;
+      padding: 3rem 1.25rem;
+    }
+    .cta-strip h2 { font-size: clamp(1.4rem, 3vw, 2rem); margin-bottom: 0.75rem; }
+    .cta-strip p { font-size: 1rem; opacity: 0.9; max-width: 520px; margin: 0 auto 1.5rem; }
+    .cta-strip-btn {
+      display: inline-block;
+      padding: 0.85rem 2rem;
+      background: #fff;
+      color: #e05a2b;
+      font-size: 1rem;
+      font-weight: 700;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: opacity 180ms;
+    }
+    .cta-strip-btn:hover { opacity: 0.9; }
+    .section-label {
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #e05a2b;
+      margin-bottom: 0.5rem;
+    }
+    .section-title { text-align: center; font-size: clamp(1.3rem, 3vw, 1.9rem); margin-bottom: 0.5rem; }
+    .section-sub { text-align: center; color: #6b7280; font-size: 0.95rem; max-width: 520px; margin: 0 auto; }
+  </style>
 </head>
 <body>
-  <!-- Skip to main content -->
   <a href="#main-content" class="skip-to-main">Skip to main content</a>
 
-  <!-- ==================== HEADER & NAVIGATION ==================== -->
   <header class="site-header">
     <div class="container">
       <nav class="nav-container" role="navigation">
         <a href="/" class="logo">Jovel Creative</a>
-
         <ul class="nav-menu">
           <li><a href="/" class="nav-link">Home</a></li>
-          <li><a href="/services.html" class="nav-link active">Services</a></li>
-          <li><a href="/about.html" class="nav-link">My Story</a></li>
-          <li><a href="/contact.html" class="btn-nav-cta">Get Free Quote</a></li>
+          <li><a href="/services.html" class="nav-link active">Packages</a></li>
+          <li><a href="/about.html" class="nav-link">About</a></li>
+          <li><a href="/contact.html" class="btn-nav-cta">Request Kit</a></li>
         </ul>
-
         <button class="mobile-menu-toggle" aria-label="Toggle mobile menu">
           <span class="hamburger"></span>
         </button>
@@ -89,379 +228,215 @@
     </div>
   </header>
 
-  <!-- ==================== MAIN CONTENT ==================== -->
   <main id="main-content" role="main">
 
-    <!-- Hero Section -->
-    <section class="hero-interactive">
-      <div class="hero-gradient-bg"></div>
+    <!-- Hero -->
+    <section class="pkg-hero">
       <div class="container">
-        <div class="hero-content">
-          <h1 class="hero-title">
-            <span class="text-accent">Clarify your message. Build your brand. Get clients who finally get it.</span>
-          </h1>
-          <p class="hero-subtitle">
-            You know what you do. We help you show it — through strategic communications, design and digital experience that drives results.
-          </p>
+        <h1>Packages & Pricing</h1>
+        <p>Everything a listing or open house needs to get attention, capture leads, and look professional — delivered in 24 hours.</p>
+        <div class="hero-badges">
+          <span class="hero-badge">Open house kits</span>
+          <span class="hero-badge">Just listed / just sold</span>
+          <span class="hero-badge">Events & broker tours</span>
+        </div>
+      </div>
+    </section>
 
-          <div class="hero-cta-group">
-            <a href="#strategy-call" class="btn btn-accent btn-large">Book Your Free Consult</a>
-            <a href="#services" class="btn btn-secondary btn-large">See What We Do</a>
+    <!-- Packages -->
+    <section class="packages-section">
+      <div class="container">
+        <p class="section-label">Choose your package</p>
+        <h2 class="section-title">Three Fixed Packages. No Surprises.</h2>
+        <p class="section-sub">Every kit includes a 24–48 hour turnaround and one round of revisions.</p>
+
+        <div class="packages-grid">
+
+          <!-- Base -->
+          <div class="pkg-card">
+            <div class="pkg-name">Base</div>
+            <div class="pkg-price">$89 <span>flat</span></div>
+            <div class="pkg-tagline">The essentials — fast, clean, ready to share.</div>
+            <ul class="pkg-features">
+              <li><span class="check">✓</span> Primary promo flyer (print + digital)</li>
+              <li><span class="check">✓</span> 3 social media graphics (square + story)</li>
+              <li><span class="check">✓</span> QR code linking to your listing</li>
+              <li><span class="check">✓</span> 24–48 hr turnaround</li>
+              <li><span class="check">✓</span> 1 revision round</li>
+              <li><span class="check">✓</span> All files delivered by email</li>
+            </ul>
+            <a href="/contact.html?package=base" class="pkg-cta outline">Get Base Kit →</a>
+          </div>
+
+          <!-- Standard (featured) -->
+          <div class="pkg-card featured">
+            <span class="featured-badge">Most Popular</span>
+            <div class="pkg-name">Standard</div>
+            <div class="pkg-price">$149 <span>flat</span></div>
+            <div class="pkg-tagline">Flyer + landing page that captures real leads.</div>
+            <ul class="pkg-features">
+              <li><span class="check">✓</span> Everything in Base</li>
+              <li><span class="check">✓</span> Lead-capture landing page (RSVP / book / claim)</li>
+              <li><span class="check">✓</span> Tracked QR code + short link</li>
+              <li><span class="check">✓</span> Response count report after event</li>
+              <li><span class="check">✓</span> 24–48 hr turnaround</li>
+              <li><span class="check">✓</span> 1 revision round</li>
+            </ul>
+            <a href="/contact.html?package=standard" class="pkg-cta">Get Standard Kit →</a>
+          </div>
+
+          <!-- Premium -->
+          <div class="pkg-card">
+            <div class="pkg-name">Premium</div>
+            <div class="pkg-price">$199 <span>flat</span></div>
+            <div class="pkg-tagline">Everything above + a 30-second AI video invite.</div>
+            <ul class="pkg-features">
+              <li><span class="check">✓</span> Everything in Standard</li>
+              <li><span class="check">✓</span> 30-second AI video invite (HeyGen / D-ID)</li>
+              <li><span class="check">✓</span> Video embedded in landing page</li>
+              <li><span class="check">✓</span> Share-ready for email + social</li>
+              <li><span class="check">✓</span> 24–48 hr turnaround</li>
+              <li><span class="check">✓</span> 1 revision round</li>
+            </ul>
+            <a href="/contact.html?package=premium" class="pkg-cta outline">Get Premium Kit →</a>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Add-ons -->
+    <section class="addons-section">
+      <div class="container">
+        <p class="section-label">Optional add-ons</p>
+        <h2 class="section-title">Extras You Can Add to Any Kit</h2>
+        <div class="addons-grid">
+          <div class="addon-card">
+            <div class="addon-name">Weekly Promo Pack</div>
+            <div class="addon-price">$99 / week</div>
+            <div class="addon-desc">New flyer + 3 social posts every week for active listings, price drops, or weekly open houses.</div>
+          </div>
+          <div class="addon-card">
+            <div class="addon-name">Extra Revision</div>
+            <div class="addon-price">$25</div>
+            <div class="addon-desc">One additional round of changes beyond what's included in your package.</div>
+          </div>
+          <div class="addon-card">
+            <div class="addon-name">Rush Delivery</div>
+            <div class="addon-price">+$30</div>
+            <div class="addon-desc">Need it in under 12 hours? Rush fee gets you to the front of the queue.</div>
+          </div>
+          <div class="addon-card">
+            <div class="addon-name">Print-Ready File</div>
+            <div class="addon-price">+$15</div>
+            <div class="addon-desc">PDF pre-flighted for commercial printing with bleed marks and CMYK color profile.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Intro / Problem Statement Section -->
-    <section class="section">
+    <!-- What you need to send -->
+    <section class="needs-section">
       <div class="container">
-        <div style="max-width: 900px; margin: 0 auto;">
-          <h2 class="text-center" style="margin-bottom: var(--space-8);">You're Juggling a Lot</h2>
-          <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); text-align: center;">
-            Your brand has value, your work has impact — but your website, visuals and messaging don't reflect that.
-          </p>
-          <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin-bottom: var(--space-6); text-align: center;">
-            You're losing time, you're missing leads, and you feel like you're not standing out.
-          </p>
-          <p style="font-size: var(--text-lg); color: var(--color-primary); line-height: var(--leading-relaxed); font-weight: var(--font-semibold); text-align: center;">
-            At Jovel Creative we specialise in helping mission-driven organisations and community-first brands get clarity, craft their voice and build digital assets that convert.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- Service Summary Section -->
-    <section id="services" class="section" style="background: var(--color-neutral-100);">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>How We Help You Stand Out</h2>
-          <p>Strategic services designed to clarify your message and grow your business.</p>
-        </div>
-
-        <div class="card-grid">
-          <!-- Brand Strategy -->
-          <div class="card fade-in">
-            <div class="card-icon" style="font-size: 3rem; margin-bottom: var(--space-4);">🎯</div>
-            <h3>Brand Strategy</h3>
-            <p>
-              We uncover the story beneath your work so your audience sees you clearly and chooses you purposefully.
-            </p>
+        <p class="section-label">Before you request</p>
+        <h2 class="section-title">What to Have Ready</h2>
+        <div class="needs-grid">
+          <div class="needs-card">
+            <h3>📎 What to send me</h3>
+            <ul>
+              <li>Listing address or event name and date</li>
+              <li>Key property details (beds, baths, price)</li>
+              <li>Listing URL (if live)</li>
+              <li>Your headshot or brokerage logo (optional)</li>
+              <li>Your desired CTA (RSVP, book a tour, claim offer, etc.)</li>
+            </ul>
           </div>
-
-          <!-- Design & Visual Identity -->
-          <div class="card fade-in">
-            <div class="card-icon" style="font-size: 3rem; margin-bottom: var(--space-4);">🎨</div>
-            <h3>Design & Visual Identity</h3>
-            <p>
-              From logos to landing pages we create visuals that reflect your values and strengthen trust.
-            </p>
-          </div>
-
-          <!-- Website & Digital Experience -->
-          <div class="card fade-in">
-            <div class="card-icon" style="font-size: 3rem; margin-bottom: var(--space-4);">💻</div>
-            <h3>Website & Digital Experience</h3>
-            <p>
-              We build websites that work: fast, mobile-friendly and built to convert visitors into supporters or clients.
-            </p>
-          </div>
-
-          <!-- Content & Communications -->
-          <div class="card fade-in">
-            <div class="card-icon" style="font-size: 3rem; margin-bottom: var(--space-4);">✍️</div>
-            <h3>Content & Communications</h3>
-            <p>
-              Messaging, social-media templates, email campaigns: we help you speak with coherence, consistency and impact.
-            </p>
-          </div>
-        </div>
-
-        <!-- Credibility Statement -->
-        <div style="max-width: 900px; margin: var(--space-16) auto 0; padding: var(--space-8); background: var(--color-white); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); text-align: center;">
-          <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin: 0;">
-            <strong style="color: var(--color-primary);">I bring years of real-world experience</strong> in strategic communication, visual storytelling and user-focused design. You get direct one-on-one support and a tailored approach designed to grow your brand.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- 3-Step Plan Section -->
-    <section class="section timeline-section">
-      <div class="container">
-        <div class="section-header fade-in">
-          <h2>Our 3-Step Process</h2>
-          <p>From strategy to launch — a clear path to results.</p>
-        </div>
-
-        <div class="process-timeline">
-          <!-- Step 1 -->
-          <div class="timeline-step" data-step="1">
-            <div class="step-number">1</div>
-            <div class="step-content">
-              <h3>Discover & Define</h3>
-              <p>We listen, ask deep questions, and uncover the truth</p>
-              <div class="step-details">
-                <p>We determine who you serve, what they actually want and how you differ. This is where clarity begins — and it's the foundation for everything that follows.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 2 -->
-          <div class="timeline-step" data-step="2">
-            <div class="step-number">2</div>
-            <div class="step-content">
-              <h3>Design & Build</h3>
-              <p>Craft your visuals, design your site, write your message</p>
-              <div class="step-details">
-                <p>Aligned, polished and user-friendly. We create digital assets that look professional and work even better.</p>
-              </div>
-            </div>
-          </div>
-
-          <!-- Step 3 -->
-          <div class="timeline-step" data-step="3">
-            <div class="step-number">3</div>
-            <div class="step-content">
-              <h3>Launch & Grow</h3>
-              <p>Deploy your new brand and monitor performance</p>
-              <div class="step-details">
-                <p>We make sure your assets aren't just beautiful — they deliver results. We track what works, refine what doesn't, and help you grow.</p>
-              </div>
-            </div>
+          <div class="needs-card">
+            <h3>✅ Good to know</h3>
+            <ul>
+              <li>No photos? I can source high-quality stock visuals.</li>
+              <li>Landing page is hosted — you get a shareable link and QR.</li>
+              <li>All files delivered via email as print-ready PDFs and web-ready PNGs.</li>
+              <li>Payment due before delivery. I accept Venmo, Zelle, or PayPal.</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Client Spotlight Section -->
-    <section class="section" style="background: var(--color-white);">
+    <!-- FAQ -->
+    <section class="faq-section">
       <div class="container">
-        <div style="max-width: 1000px; margin: 0 auto;">
-          <div class="section-header fade-in">
-            <h2>Client Spotlight: EDG Electric</h2>
+        <h2 class="section-title">Frequently Asked Questions</h2>
+        <div class="faq-list">
+          <div class="faq-item">
+            <div class="faq-q">How fast will I get my kit?</div>
+            <div class="faq-a">Most kits are delivered within 24–48 hours after you confirm the details and package. Rush delivery (under 12 hours) is available for an additional $30.</div>
           </div>
-
-          <div style="background: var(--color-neutral-100); padding: var(--space-12); border-radius: var(--radius-2xl); box-shadow: var(--shadow-lg);">
-            <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin-bottom: var(--space-6);">
-              EDG Electric is a young company with big ambitions. They are building a reputation based on honesty, craftsmanship and a commitment to doing things the right way. What they needed was a digital presence that matched their potential — something that would help customers see the quality and reliability that defines their work.
-            </p>
-
-            <blockquote style="background: var(--color-white); padding: var(--space-6); border-left: 4px solid var(--color-accent); font-style: italic; color: var(--color-primary); font-size: var(--text-xl); margin: var(--space-8) 0;">
-              "We want a website that makes us look like the business we are becoming."
-            </blockquote>
-
-            <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin-bottom: var(--space-6);">
-              Even without photos or brand assets in place, I helped bring that vision to life. By selecting high-quality stock images, creating a clean visual identity and crafting their message with clarity, we built a website that captures who they are and who they aim to be.
-            </p>
-
-            <p style="font-size: var(--text-lg); color: var(--color-primary); line-height: var(--leading-relaxed); font-weight: var(--font-semibold); margin-bottom: var(--space-8);">
-              The result is a polished, professional online presence that supports their growth, strengthens their credibility and gives them the confidence to step forward as a company on the rise.
-            </p>
-
-            <div class="text-center">
-              <a href="https://darkslategrey-dragonfly-554704.hostingersite.com" target="_blank" rel="noopener" class="btn btn-primary btn-large">
-                View EDG Electric →
-              </a>
-            </div>
+          <div class="faq-item">
+            <div class="faq-q">How many revisions are included?</div>
+            <div class="faq-a">One round of revisions is included with every package. Additional rounds are $25 each.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Who hosts the landing page?</div>
+            <div class="faq-a">I host the landing page for you. You get a clean short link and matching QR code. No setup or technical knowledge needed on your end.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">What if I don't have photos?</div>
+            <div class="faq-a">Not a problem. I can source high-quality stock imagery or use AI-generated visuals that match your listing's style.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">Can I reuse the kit for a future listing?</div>
+            <div class="faq-a">You own all the files. Restyling an existing kit for a new listing is available at a reduced rate — just ask when you request.</div>
+          </div>
+          <div class="faq-item">
+            <div class="faq-q">How do I pay?</div>
+            <div class="faq-a">Payment is due before delivery. I accept Venmo, Zelle, and PayPal. I'll include payment instructions in my reply after you submit the request form.</div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Avoiding Failure / Success Outcome Section -->
-    <section class="section" style="background: var(--color-neutral-100);">
-      <div class="container">
-        <div style="max-width: 1100px; margin: 0 auto;">
-          <div class="card-grid" style="grid-template-columns: repeat(auto-fit, minmax(450px, 1fr)); gap: var(--space-10);">
-
-            <!-- What Happens If You Don't Act -->
-            <div style="background: var(--color-white); padding: var(--space-10); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); border-left: 4px solid #dc2626;">
-              <h3 style="color: #dc2626; margin-bottom: var(--space-4); font-size: var(--text-2xl);">
-                ⚠️ The Cost of Waiting
-              </h3>
-              <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin: 0;">
-                Don't let unclear messaging or dated visuals cost you clients, credibility and time.
-              </p>
-              <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin-top: var(--space-4); font-weight: var(--font-semibold);">
-                Every day that you're not being seen the way you should is a missed opportunity.
-              </p>
-            </div>
-
-            <!-- Success Outcome -->
-            <div style="background: var(--color-white); padding: var(--space-10); border-radius: var(--radius-xl); box-shadow: var(--shadow-md); border-left: 4px solid var(--color-success);">
-              <h3 style="color: var(--color-success); margin-bottom: var(--space-4); font-size: var(--text-2xl);">
-                ✓ What Success Looks Like
-              </h3>
-              <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin-bottom: var(--space-4);">
-                Imagine a website that becomes your best team member. A brand that resonates. A message that lands.
-              </p>
-              <p style="font-size: var(--text-lg); color: var(--color-neutral-700); line-height: var(--leading-relaxed); margin: 0; font-weight: var(--font-semibold);">
-                You feel confident showing up, your audience thinks "this is who I trust", and you spend less time chasing leads and more time doing what you do best.
-              </p>
-            </div>
-
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Primary CTA Section -->
-    <section id="strategy-call" class="cta-final">
-      <div class="container">
-        <div class="cta-content">
-          <h2>Ready to Stop Being Invisible?</h2>
-          <p>Let's talk strategy. Book your free consultation and discover how we can clarify your message, strengthen your brand, and help you get the clients who finally get it.</p>
-          <a href="/contact.html?strategy=true" class="btn btn-accent btn-large btn-cta">
-            Book Your Free Consult
-          </a>
-          <p class="cta-subtext">No pressure. Just an honest conversation about your needs.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- FAQ Section -->
-    <section class="section">
-      <div class="container">
-        <h2 class="text-center">Frequently Asked Questions</h2>
-        <p class="text-center" style="max-width: 700px; margin: 0 auto var(--space-10);">
-          Everything you need to know about our services.
-        </p>
-
-        <div style="max-width: 900px; margin: 0 auto;">
-
-          <!-- FAQ Item 1 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              How long does it take to build a website?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              Most websites are completed within 2-4 weeks, depending on the package selected and the
-              complexity of your requirements. Starter packages typically take 2-3 weeks, while more complex
-              projects may take 3-4 weeks to ensure everything is perfect.
-            </p>
-          </div>
-
-          <!-- FAQ Item 2 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              Do I own my website?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              Yes, absolutely! You own all the content, design, and code for your website. You can take it
-              anywhere, host it with any provider, or work with any developer you choose. There are no
-              proprietary systems or lock-in contracts.
-            </p>
-          </div>
-
-          <!-- FAQ Item 3 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              What's included in your services?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              Services include brand strategy, visual identity design, website development, content strategy,
-              and ongoing support. Each project is tailored to your specific needs, and we work with you
-              one-on-one throughout the entire process.
-            </p>
-          </div>
-
-          <!-- FAQ Item 4 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              Do you build e-commerce sites?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              Yes! We can integrate payment processing (Stripe, PayPal, Square), product catalogs, shopping
-              carts, inventory management, and order tracking based on your needs. Perfect for retail
-              businesses or service businesses selling products.
-            </p>
-          </div>
-
-          <!-- FAQ Item 5 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              What areas do you serve?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              We serve small businesses and organizations throughout Frederick County and Montgomery County,
-              Maryland, including Frederick, Urbana, Mount Airy, Rockville, Gaithersburg, and surrounding areas.
-              We also work remotely with clients throughout Maryland and beyond.
-            </p>
-          </div>
-
-          <!-- FAQ Item 6 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              What makes you different from other web developers?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              I bring years of strategic communications experience to every project. This isn't just about
-              building a website — it's about clarifying your message, understanding your audience, and
-              creating digital assets that support your business goals. You get direct one-on-one support,
-              not templates or cookie-cutter solutions.
-            </p>
-          </div>
-
-          <!-- FAQ Item 7 -->
-          <div class="card mb-6 fade-in">
-            <h3 style="font-size: var(--text-xl); margin-bottom: var(--space-3); color: var(--color-primary);">
-              How much does it cost?
-            </h3>
-            <p style="margin: 0; color: var(--color-neutral-700);">
-              Every project is unique, so pricing depends on your specific needs and goals. During your free
-              consultation, we'll discuss your requirements and provide a transparent quote. No hidden fees,
-              no surprises — just honest pricing based on the value we'll deliver.
-            </p>
-          </div>
-
-        </div>
-      </div>
+    <!-- CTA strip -->
+    <section class="cta-strip">
+      <h2>Ready to promote your listing?</h2>
+      <p>Submit a quick request and I'll follow up with your kit details within a few hours.</p>
+      <a href="/contact.html" class="cta-strip-btn">Request Your Kit →</a>
     </section>
 
   </main>
 
-  <!-- ==================== FOOTER ==================== -->
   <footer class="site-footer" role="contentinfo">
     <div class="container">
       <div class="footer-grid">
         <div class="footer-column">
           <h3>Jovel Creative</h3>
-          <p>
-            Professional web development for small businesses in Frederick and Montgomery County, Maryland.
-            Strategic communications expert turned developer. Building websites that work.
-          </p>
+          <p>24-hour promo kits for realtors and local businesses. Flyer, social, QR, and lead page — delivered fast.</p>
         </div>
-
         <div class="footer-column">
           <h3>Quick Links</h3>
           <ul class="footer-links">
             <li><a href="/">Home</a></li>
-            <li><a href="/services.html">Services & Pricing</a></li>
-            <li><a href="/about.html">My Story</a></li>
-            <li><a href="/contact.html">Contact & Free Quote</a></li>
-            <li><a href="/accessibility.html">Accessibility</a></li>
+            <li><a href="/services.html">Packages & Pricing</a></li>
+            <li><a href="/about.html">About</a></li>
+            <li><a href="/contact.html">Request a Kit</a></li>
           </ul>
         </div>
-
         <div class="footer-column">
           <h3>Get In Touch</h3>
           <div class="footer-contact">
             <p><strong>Email:</strong> <a href="mailto:juan@jovelcreative.com">juan@jovelcreative.com</a></p>
             <p><strong>Phone:</strong> <a href="tel:+12405797858">240-579-7858</a></p>
-            <p><strong>Location:</strong> Frederick, MD 21704</p>
-            <p><strong>Hours:</strong> Mon-Fri 9am-6pm<br>Saturday by appointment</p>
+            <p><strong>Location:</strong> Frederick, MD</p>
           </div>
         </div>
       </div>
-
       <div class="footer-bottom">
-        <p>&copy; 2025 Jovel Creative. All rights reserved. | Built by Juan Jovel | Frederick & Montgomery County, MD | <a href="/accessibility.html">WCAG 2.1 AA Compliant</a></p>
+        <p>&copy; 2025 Jovel Creative. All rights reserved. | Frederick, MD</p>
       </div>
     </div>
   </footer>
 
-  <!-- JavaScript -->
-  <script src="/js/interactive.js"></script>
   <script src="/js/main.js"></script>
 </body>
 </html>
