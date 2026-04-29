@@ -220,14 +220,14 @@ Contact info appears in multiple places:
 
 **Search and Replace:**
 1. Open each HTML file
-2. Find: `240-579-7858`
+2. Find: `240-381-5207`
 3. Replace with: Your new phone number
-4. Find: `juan@jovelcreative.com`
+4. Find: `hello@jovelcreative.com`
 5. Replace with: Your new email
 
 **Update All Instances:**
-- Phone: `240-579-7858` and `tel:+12405797858`
-- Email: `juan@jovelcreative.com` and `mailto:juan@jovelcreative.com`
+- Phone: `240-381-5207` and `tel:+12403815207`
+- Email: `hello@jovelcreative.com` and `mailto:hello@jovelcreative.com`
 - Address: `Frederick, MD 21704`
 - Hours: `Monday-Friday 9am-6pm`
 
@@ -631,14 +631,14 @@ When works best for you? I'm available:
 - [Time slot 2]
 - [Time slot 3]
 
-Or feel free to call me directly at 240-579-7858.
+Or feel free to call me directly at 240-381-5207.
 
 Looking forward to working with you!
 
 Best regards,
 Juan Jovel
 Jovel Creative
-240-579-7858
+240-381-5207
 https://jovelcreative.com
 ```
 
@@ -723,7 +723,7 @@ ANNUAL (Once Per Year):
 - **Form Issues**: Formspree Support (support@formspree.io)
 - **SEO Questions**: Google Search Central Help
 - **Design Changes**: Review this guide or hire a developer
-- **Emergency**: Contact juan@jovelcreative.com or 240-579-7858
+- **Emergency**: Contact hello@jovelcreative.com or 240-381-5207
 
 ---
 

@@ -163,7 +163,7 @@ Complete these **WITHIN 1 WEEK** of launching.
   - [ ] Business name: "Jovel Creative"
   - [ ] Category: "Website Designer" or "Web Developer"
   - [ ] Address: Frederick, MD 21704
-  - [ ] Phone: 240-579-7858
+  - [ ] Phone: 240-381-5207
   - [ ] Website: https://jovelcreative.com
   - [ ] Service areas: Frederick County, Montgomery County (list all cities)
   - [ ] Business hours entered
@@ -276,7 +276,7 @@ Complete these for maximum Frederick & Montgomery County visibility.
 - [ ] All directory listings have identical:
   - Name: "Jovel Creative"
   - Address: "Frederick, MD 21704"
-  - Phone: "240-579-7858"
+  - Phone: "240-381-5207"
 - [ ] Check top 20 citations monthly
 - [ ] Fix any discrepancies immediately
 
