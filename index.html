@@ -402,11 +402,46 @@
     }
     .faq-item.open .faq-answer { max-height: 400px; padding-bottom: 1.1rem; }
 
+    /* Mid-Page CTA */
+    .mid-cta-section { padding: 4.5rem 0; background: #f8fafc; }
+    .mid-cta-card {
+      max-width: 680px; margin: 0 auto;
+      background: #fff;
+      border: 2px solid #0f2340;
+      border-radius: 14px;
+      padding: 3rem 2.5rem;
+      text-align: center;
+    }
+    .cta-badge {
+      display: inline-block;
+      background: #f97316; color: #fff;
+      font-size: 0.75rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding: 0.35rem 1rem; border-radius: 20px;
+      margin-bottom: 1.25rem;
+    }
+    .mid-cta-card h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); font-weight: 800; color: #0f2340; margin-bottom: 0.75rem; line-height: 1.2; }
+    .mid-cta-card > p { color: #444; font-size: 0.97rem; line-height: 1.65; margin-bottom: 1.5rem; max-width: 520px; margin-left: auto; margin-right: auto; }
+    .cta-perks { display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.75rem; }
+    .cta-perk { font-size: 0.85rem; color: #0f2340; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; }
+    .cta-perk span { color: #22c55e; font-weight: 800; }
+    .btn-mid-cta {
+      display: inline-block;
+      background: #f97316; color: #fff;
+      padding: 0.95rem 2.5rem; border-radius: 7px;
+      font-size: 1.05rem; font-weight: 700;
+      text-decoration: none; transition: background 0.18s;
+    }
+    .btn-mid-cta:hover { background: #ea6500; }
+    .cta-note { margin-top: 1rem; font-size: 0.8rem; color: #888; margin-bottom: 0; }
+
     /* Responsive tweaks */
     @media (max-width: 640px) {
       .hero-realtor { padding: 3.5rem 0 3rem; }
       .offer-card { padding: 2rem 1.25rem; }
       .compare-grid { grid-template-columns: 1fr; }
+      .mid-cta-card { padding: 2rem 1.25rem; }
+      .cta-perks { gap: 1rem; }
     }
   </style>
 </head>

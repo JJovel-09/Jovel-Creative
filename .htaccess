@@ -27,8 +27,8 @@
   # RewriteCond %{REQUEST_FILENAME} !-d
   # RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
-  # Redirect old pages (add your own redirects here)
-  # Example: Redirect 301 /old-page.html /new-page.html
+  # Redirect old pages
+  Redirect 301 /portfolio.html /
 </IfModule>
 
 # ============================================
