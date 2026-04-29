@@ -56,7 +56,7 @@
     }
     .request-layout {
       display: grid;
-      grid-template-columns: 1fr 380px;
+      grid-template-columns: 1fr 360px;
       gap: 2.5rem;
       max-width: 1060px;
       margin: 3rem auto;
@@ -67,97 +67,14 @@
       .request-layout { grid-template-columns: 1fr; }
       .request-sidebar { order: -1; }
     }
-    .request-card {
+    .tally-wrap {
       background: #fff;
       border: 1px solid #e5e7eb;
       border-radius: 12px;
-      padding: 2rem;
+      padding: 2rem 1.75rem;
       box-shadow: 0 2px 12px rgba(0,0,0,0.06);
     }
-    .request-card h2 { font-size: 1.35rem; margin-bottom: 1.25rem; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    @media (max-width: 560px) { .form-row { grid-template-columns: 1fr; } }
-    .form-group { margin-bottom: 1.1rem; }
-    .form-label {
-      display: block;
-      font-size: 0.82rem;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 0.35rem;
-      text-transform: uppercase;
-      letter-spacing: 0.04em;
-    }
-    .form-label .req { color: #e05a2b; margin-left: 2px; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%;
-      padding: 0.6rem 0.85rem;
-      border: 1px solid #d1d5db;
-      border-radius: 7px;
-      font-size: 0.95rem;
-      font-family: inherit;
-      color: #111827;
-      background: #fff;
-      transition: border-color 180ms, box-shadow 180ms;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus {
-      outline: none;
-      border-color: #e05a2b;
-      box-shadow: 0 0 0 3px rgba(224,90,43,0.15);
-    }
-    .form-textarea { resize: vertical; min-height: 90px; }
-    .form-divider {
-      font-size: 0.78rem;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: 0.06em;
-      color: #6b7280;
-      margin: 1.5rem 0 1rem;
-      padding-bottom: 0.4rem;
-      border-bottom: 1px solid #e5e7eb;
-    }
-    .request-cta {
-      display: block;
-      width: 100%;
-      padding: 0.85rem 1.5rem;
-      background: #e05a2b;
-      color: #fff;
-      font-size: 1rem;
-      font-weight: 700;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      text-align: center;
-      transition: background 180ms;
-      margin-top: 0.5rem;
-    }
-    .request-cta:hover { background: #c74d22; }
-    .request-cta:disabled { background: #9ca3af; cursor: not-allowed; }
-    .form-status {
-      display: none;
-      margin-top: 1rem;
-      padding: 1rem 1.1rem;
-      border-radius: 8px;
-      font-size: 0.92rem;
-      line-height: 1.55;
-    }
-    .form-status.show { display: block; }
-    .form-status.success {
-      background: #ecfdf5;
-      border: 1px solid #a7f3d0;
-      color: #065f46;
-    }
-    .form-status.error {
-      background: #fef2f2;
-      border: 1px solid #fecaca;
-      color: #991b1b;
-    }
-    .request-disclaimer {
-      font-size: 0.78rem;
-      color: #9ca3af;
-      margin-top: 0.75rem;
-      line-height: 1.5;
-      text-align: center;
-    }
+    .tally-wrap h2 { font-size: 1.35rem; margin-bottom: 1.5rem; color: #111827; }
     /* Sidebar */
     .sidebar-info-card {
       background: #fff;
@@ -235,98 +152,19 @@
 
     <div class="request-layout">
 
-      <!-- Form -->
-      <div>
-        <div class="request-card">
-          <h2>Kit Request Form</h2>
-
-          <!--
-            TALLY SETUP (3 steps):
-            1. Go to https://tally.so and create a free account.
-            2. Build your form (or skip — this HTML form posts directly to Tally).
-            3. In your Tally dashboard, create a new form, then go to
-               Share > Embed > "HTML form" and copy your form ID.
-               Replace YOUR_TALLY_ID in the action URL below:
-               action="https://tally.so/r/YOUR_TALLY_ID"
-            4. In Tally settings for that form, enable "Accept external submissions".
-            5. Test by submitting once — you should see the entry in Tally
-               and receive an email notification.
-          -->
-          <form
-            id="contact-form"
-            action="https://tally.so/r/YOUR_TALLY_ID"
-            method="POST"
-            novalidate>
-
-            <div class="form-divider">Your Contact Info</div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="name" class="form-label">Name <span class="req">*</span></label>
-                <input type="text" id="name" name="name" class="form-input" placeholder="Jane Smith" required aria-required="true">
-              </div>
-              <div class="form-group">
-                <label for="email" class="form-label">Email <span class="req">*</span></label>
-                <input type="email" id="email" name="email" class="form-input" placeholder="jane@brokerage.com" required aria-required="true">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="phone" class="form-label">Phone</label>
-                <input type="tel" id="phone" name="phone" class="form-input" placeholder="240-555-0123">
-              </div>
-              <div class="form-group">
-                <label for="brokerage" class="form-label">Brokerage / Team</label>
-                <input type="text" id="brokerage" name="brokerage" class="form-input" placeholder="Keller Williams, etc.">
-              </div>
-            </div>
-
-            <div class="form-divider">Kit Details</div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="kit-type" class="form-label">Kit Type <span class="req">*</span></label>
-                <select id="kit-type" name="kit-type" class="form-select" required aria-required="true">
-                  <option value="">Select one…</option>
-                  <option value="open-house">Open House</option>
-                  <option value="just-listed">Just Listed</option>
-                  <option value="just-sold">Just Sold</option>
-                  <option value="event">Event / Broker Tour</option>
-                  <option value="other">Other</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="package" class="form-label">Package</label>
-                <select id="package" name="package" class="form-select">
-                  <option value="">Not sure yet</option>
-                  <option value="base">Base — $89 (Flyer + 3 social posts + QR)</option>
-                  <option value="standard">Standard — $149 (+ lead landing page)</option>
-                  <option value="premium">Premium — $199 (+ AI video invite)</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="form-group">
-                <label for="property-name" class="form-label">Property / Event Name</label>
-                <input type="text" id="property-name" name="property-name" class="form-input" placeholder="123 Main St, Frederick MD">
-              </div>
-              <div class="form-group">
-                <label for="event-date" class="form-label">Date of Event / Open House</label>
-                <input type="date" id="event-date" name="event-date" class="form-input">
-              </div>
-            </div>
-            <div class="form-group">
-              <label for="listing-url" class="form-label">Listing URL (if available)</label>
-              <input type="url" id="listing-url" name="listing-url" class="form-input" placeholder="https://zillow.com/…">
-            </div>
-            <div class="form-group">
-              <label for="notes" class="form-label">Key Details / CTA</label>
-              <textarea id="notes" name="notes" class="form-textarea" placeholder="e.g. 3 bed / 2 bath, asking $425k, light-filled colonial — want the CTA to say ‘RSVP to tour’"></textarea>
-            </div>
-
-            <button type="submit" class="request-cta">Send My Request →</button>
-            <div id="form-status" class="form-status" role="status" aria-live="polite"></div>
-            <p class="request-disclaimer">Submitting this form is not a commitment. I’ll reply to confirm details and next steps before any work begins.</p>
-          </form>
-        </div>
+      <!-- Tally embedded form -->
+      <div class="tally-wrap">
+        <h2>Kit Request Form</h2>
+        <iframe
+          data-tally-src="https://tally.so/embed/441VG5?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+          loading="lazy"
+          width="100%"
+          height="1452"
+          frameborder="0"
+          marginheight="0"
+          marginwidth="0"
+          title="Get Your 24-Hour Marketing Kit">
+        </iframe>
       </div>
 
       <!-- Sidebar -->
@@ -404,57 +242,9 @@
   </footer>
 
   <script src="/js/main.js"></script>
+  <!-- Tally embed loader -->
   <script>
-    (function () {
-      var form = document.getElementById('contact-form');
-      var status = document.getElementById('form-status');
-      if (!form || !status) return;
-
-      form.addEventListener('submit', async function (e) {
-        e.preventDefault();
-        status.className = 'form-status';
-        status.textContent = '';
-
-        var action = form.getAttribute('action') || '';
-        if (!action || action.indexOf('YOUR_TALLY_ID') !== -1) {
-          status.className = 'form-status error show';
-          status.textContent = 'The form is not connected yet. Please email juan@jovelcreative.com or call 240-579-7858 directly.';
-          return;
-        }
-
-        var submitBtn = form.querySelector('button[type="submit"]');
-        var originalText = submitBtn ? submitBtn.textContent : '';
-        if (submitBtn) {
-          submitBtn.disabled = true;
-          submitBtn.textContent = 'Sending…';
-        }
-
-        try {
-          var response = await fetch(action, {
-            method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
-          });
-
-          if (response.ok) {
-            form.reset();
-            status.className = 'form-status success show';
-            status.textContent = 'Thank you — your request was sent successfully! I will review your details and follow up with next steps within a few hours.';
-          } else {
-            status.className = 'form-status error show';
-            status.textContent = 'Something went wrong. Please try again or email juan@jovelcreative.com directly.';
-          }
-        } catch (error) {
-          status.className = 'form-status error show';
-          status.textContent = 'Something went wrong. Please try again or email juan@jovelcreative.com directly.';
-        } finally {
-          if (submitBtn) {
-            submitBtn.disabled = false;
-            submitBtn.textContent = originalText;
-          }
-        }
-      });
-    })();
+    var d=document,w="https://tally.so/widgets/embed.js",v=function(){"undefined"!=typeof Tally?Tally.loadEmbeds():d.querySelectorAll("iframe[data-tally-src]:not([src])").forEach((function(e){e.src=e.dataset.tallySrc}))};if("undefined"!=typeof Tally)v();else if(d.querySelector('script[src="'+w+'"]')==null){var s=d.createElement("script");s.src=w,s.onload=v,s.onerror=v,d.body.appendChild(s);}
   </script>
 </body>
 </html>
