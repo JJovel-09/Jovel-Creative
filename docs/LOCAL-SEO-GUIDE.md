@@ -27,7 +27,7 @@ Comprehensive guide to dominating local search results for "web developer Freder
 - **Category**: Primary: "Website Designer" | Secondary: "Web Developer", "Marketing Agency"
 - **Address**: Frederick, MD 21704 (use your actual address if you have an office, or select "I deliver goods and services to my customers")
 - **Service Areas**: Add all cities you serve (see list below)
-- **Phone**: 240-579-7858 (use call tracking number if you have one)
+- **Phone**: 240-381-5207 (use call tracking number if you have one)
 - **Website**: https://jovelcreative.com
 - **Appointment URL**: https://jovelcreative.com/contact.html
 
@@ -152,7 +152,7 @@ Thank you again!
 
 Juan Jovel
 Jovel Creative
-240-579-7858
+240-381-5207
 ```
 
 2. **Find Your Review Link:**
@@ -185,7 +185,7 @@ Thank you for your review, [Name]! I appreciate your feedback on [mention positi
 
 **For Negative Reviews:**
 ```
-Hi [Name], I'm sorry to hear about your experience. This isn't the level of service we strive for. Please contact me directly at juan@jovelcreative.com so I can understand what happened and make it right.
+Hi [Name], I'm sorry to hear about your experience. This isn't the level of service we strive for. Please contact me directly at hello@jovelcreative.com so I can understand what happened and make it right.
 
 - Juan
 ```
@@ -240,9 +240,9 @@ Citations = Your business Name, Address, Phone (NAP) listed on other websites.
 ```
 Business Name: Jovel Creative
 Address: Frederick, MD 21704 (or your full address)
-Phone: 240-579-7858
+Phone: 240-381-5207
 Website: https://jovelcreative.com
-Email: juan@jovelcreative.com
+Email: hello@jovelcreative.com
 
 Category: Web Design Services, Website Development
 

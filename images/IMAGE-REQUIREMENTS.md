@@ -300,6 +300,6 @@ If you need to launch quickly, here's the bare minimum:
 
 ---
 
-**Questions?** Contact juan@jovelcreative.com
+**Questions?** Contact hello@jovelcreative.com
 
 **Last Updated**: January 2025

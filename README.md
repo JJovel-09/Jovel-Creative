@@ -149,8 +149,8 @@ Follow **[docs/SEO-CHECKLIST.md](docs/SEO-CHECKLIST.md)** for search engine opti
 
 ## 📞 Support
 
-**Email**: juan@jovelcreative.com
-**Phone**: 240-579-7858
+**Email**: hello@jovelcreative.com
+**Phone**: 240-381-5207
 **Hours**: Monday-Friday 9am-6pm ET
 
 ---
