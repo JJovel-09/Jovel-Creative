@@ -17,7 +17,7 @@
 .pricing-list { display: grid; border-bottom: var(--border); }
 .pricing-row {
   display: grid;
-  gap: var(--space-5, 1.25rem);
+  gap: 1.25rem;
   border-top: var(--border);
   padding: var(--space-6) 0;
 }
@@ -29,7 +29,6 @@
     padding: var(--space-8) 0;
   }
 }
-.pricing-row-featured { background: linear-gradient(to right, transparent 0, transparent 0); }
 .pricing-service { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-4); align-items: start; }
 .pricing-index {
   font-family: var(--font-mono);
