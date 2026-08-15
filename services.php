@@ -60,7 +60,7 @@ require __DIR__ . '/includes/header.php';
             <span class="price-tag">Starting at $650</span>
           </div>
           <div class="service-detail">
-            <p>One organized place for the information you are already keeping track of: customers, jobs, deposits, follow ups, statuses and what happens next.</p>
+            <p>One organized place for the information you are already keeping track of: customers, jobs, deposits, follow-ups, statuses and what happens next.</p>
             <p class="service-fit"><span class="service-fit-label">Good fit when</span> the same details live in three different places and nobody is certain which one is current.</p>
           </div>
         </article>
@@ -84,7 +84,7 @@ require __DIR__ . '/includes/header.php';
             <span class="price-tag">Starting at $375</span>
           </div>
           <div class="service-detail">
-            <p>Clear, professional client facing proposals and documents, built around how your business actually sells and delivers its work.</p>
+            <p>Clear, professional client-facing proposals and documents, built around how your business actually sells and delivers its work.</p>
             <p class="service-fit"><span class="service-fit-label">Good fit when</span> what you hand a client does not represent the standard of the work behind it.</p>
           </div>
         </article>
@@ -134,7 +134,6 @@ require __DIR__ . '/includes/header.php';
         <p>You do not need to know which of these you need.
           <small>Start with what is not working. Working out what to build, and which of these it turns out to be, is part of the service.</small>
         </p>
-        <a class="btn btn-primary" href="/start-a-project">Start a Project</a>
       </div>
     </div>
   </section>
