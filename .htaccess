@@ -9,6 +9,32 @@
   RewriteEngine On
   RewriteBase /
 
+  # ============================================
+  # NON-PUBLIC SOURCE AND INCLUDE PATHS
+  # ============================================
+  # HTTP access protection only. No routing, no redirects, no
+  # canonicalization. Placed first so a request for one of these
+  # paths is refused before any other rule can act on it.
+  #
+  # Server side PHP require() calls read from the filesystem and
+  # never travel over HTTP, so the shared layout includes continue
+  # to work normally. The include files also carry their own direct
+  # request guard, which keeps them safe if this file is ever
+  # reverted or mod_rewrite is unavailable.
+
+  # Shared PHP layout includes.
+  RewriteRule ^includes(?:/|$) - [F,L]
+
+  # Project documentation, development material only.
+  RewriteRule ^docs(?:/|$) - [F,L]
+
+  # Markdown source anywhere in the tree. This covers README.md,
+  # everything under docs/ and images/IMAGE-REQUIREMENTS.md.
+  # The site serves no public .md file. Deliberately narrow: .txt is
+  # NOT blocked, because assets/fonts/ibm-plex/LICENSE.txt and
+  # robots.txt are both legitimately public.
+  RewriteRule \.md$ - [F,L]
+
   # Force HTTPS (uncomment after SSL certificate is installed)
   # RewriteCond %{HTTPS} off
   # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
