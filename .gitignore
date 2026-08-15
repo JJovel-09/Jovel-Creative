@@ -1,0 +1,43 @@
+# ============================================================
+# JOVEL CREATIVE
+# Deliberately conservative. The repository root is also the
+# public document root, so anything ignored here is a file that
+# must never reach the server, never a file the live site needs.
+# Assets, fonts, documentation and public page files stay tracked.
+# ============================================================
+
+# ---------- Local environment and secret configuration ----------
+# Nothing of this kind exists in the repository today. These
+# patterns exist so a local credential file cannot be committed
+# by accident later. A .gitignore is not secret management:
+# real credentials belong in server or environment configuration
+# outside the document root.
+.env
+.env.*
+!.env.example
+config.local.php
+*.local.php
+secrets.php
+credentials.php
+
+# ---------- Logs ----------
+*.log
+error_log
+logs/
+
+# ---------- Operating system metadata ----------
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+desktop.ini
+
+# ---------- Editor and temporary files ----------
+*.swp
+*.swo
+*~
+*.tmp
+*.orig
+.idea/
+.vscode/

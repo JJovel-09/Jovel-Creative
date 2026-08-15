@@ -367,3 +367,74 @@ h1, h2, h3 { font-weight: var(--font-semibold); line-height: 1.14; letter-spacin
   display: inline-flex; align-items: center; min-height: var(--tap-min);
   color: var(--color-ink-soft);
 }
+
+/* ============================================================
+   INTERIOR PAGES
+   Everything below is shared interior page work, added with the
+   Services page. The homepage rules above are untouched.
+   ============================================================ */
+
+/* ---------- Interior page hero ----------
+   The same construction as the homepage hero, one step quieter,
+   so an interior page opens without competing with the front door. */
+.page-hero { border-bottom: var(--border); padding: var(--space-12) 0; }
+@media (min-width: 900px) { .page-hero { padding: var(--space-16) 0; } }
+.page-hero h1 {
+  font-size: clamp(2rem, 4.4vw, 3rem);
+  margin-top: var(--space-4); max-width: 20ch;
+}
+.page-hero-sub {
+  font-size: 1.15rem; color: var(--color-ink-soft);
+  max-width: 52ch; margin-top: var(--space-6);
+}
+
+/* ---------- Price chip ----------
+   Reusable form of the price treatment the homepage uses inside the
+   translation table, available to interior pages on its own. */
+.price-tag {
+  display: inline-block;
+  font-family: var(--font-mono); font-size: 0.82rem; font-weight: 500;
+  color: var(--color-accent-deep); background: var(--color-accent-wash);
+  border: 1px solid var(--color-line); border-radius: var(--radius-sm);
+  padding: 0.15rem var(--space-2);
+}
+
+/* ---------- Service list ----------
+   Services are explanation, not artifacts, so they take the open
+   top-rule treatment rather than a card. The rule and the mono index
+   carry the structure; nothing is boxed. */
+.service-list { display: grid; }
+.service {
+  border-top: var(--border);
+  padding: var(--space-6) 0;
+  display: grid; gap: var(--space-4);
+}
+@media (min-width: 900px) {
+  .service {
+    grid-template-columns: 1fr 1.35fr;
+    gap: var(--space-8);
+    padding: var(--space-8) 0;
+  }
+}
+.service-lede { display: flex; flex-direction: column; align-items: flex-start; gap: var(--space-3); }
+.service-index {
+  font-family: var(--font-mono); font-size: 0.78rem; font-weight: 500;
+  letter-spacing: 0.08em; color: var(--color-accent-deep);
+}
+.service-lede h3 { font-size: 1.14rem; max-width: 22ch; }
+
+.service-detail { display: flex; flex-direction: column; gap: var(--space-3); }
+.service-detail p { max-width: 58ch; }
+.service-fit, .service-note { color: var(--color-ink-soft); font-size: 0.93rem; }
+.service-fit-label {
+  font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--color-accent-deep); margin-right: var(--space-2);
+}
+.service-note { border-left: 1.5px solid var(--color-line); padding-left: var(--space-4); }
+
+/* ---------- Section footnote ---------- */
+.section-note {
+  margin-top: var(--space-6);
+  color: var(--color-ink-soft); font-size: 0.95rem; max-width: 62ch;
+}
