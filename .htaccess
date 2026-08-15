@@ -48,13 +48,90 @@
   # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
   # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
 
-  # Remove .html extension from URLs
-  # RewriteCond %{REQUEST_FILENAME} !-f
-  # RewriteCond %{REQUEST_FILENAME} !-d
-  # RewriteRule ^([^\.]+)$ $1.html [NC,L]
+  # ============================================
+  # PUBLIC URL ROUTING
+  # ============================================
+  # Public content pages are served from root level PHP files and
+  # exposed at extensionless URLs with no trailing slash.
+  #
+  #   public URL   /services
+  #   source file  services.php
+  #
+  # Rule order below is deliberate and must be preserved:
+  #
+  #   1. homepage canonicalization  (before generic .php stripping)
+  #   2. migrated legacy redirects  (one hop each)
+  #   3. real .php request          -> clean URL   (external 301)
+  #   4. trailing slash removal     (non directories only)
+  #   5. clean slug                 -> .php file   (internal only)
+  #
+  # Rules that must not fire on Apache's own internal rewrites are
+  # gated on %{THE_REQUEST}, which holds the literal client request
+  # line and is never altered by mod_rewrite. Rules gated only on
+  # %{REQUEST_URI} would re-trigger after an internal rewrite and
+  # loop.
+  #
+  # MultiViews is disabled further down in this file so that content
+  # negotiation cannot resolve /services on its own. That matters
+  # while both services.php and the legacy services.html still exist.
 
-  # Redirect old pages
-  Redirect 301 /portfolio.html /
+  # --- 1. Homepage --------------------------------------------
+  # A literal request for the homepage file canonicalizes to /.
+  # The THE_REQUEST guard is required: when Apache resolves / through
+  # DirectoryIndex it serves index.html internally, and a rule keyed
+  # on the rewritten path would bounce / -> / forever.
+  # The -f guard means this only fires for a homepage file that
+  # actually exists. index.php does not exist yet; when it is added
+  # this rule claims /index.php before the generic .php rule below
+  # can strip it to /index.
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/+index\.(?:php|html)[\s?] [NC]
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^index\.(?:php|html)$ / [R=301,L]
+
+  # --- 2. Migrated legacy URLs --------------------------------
+  # Only pages whose redesigned replacement already exists belong
+  # here. Legacy pages that have not been rebuilt yet are served
+  # normally and must NOT be listed until their replacement ships.
+  RewriteRule ^services\.html$ /services [R=301,L]
+  RewriteRule ^portfolio\.html$ / [R=301,L]
+
+  # --- 3. Exposed .php URL -> clean URL -----------------------
+  # External 301 only. Conditions, in order:
+  #   THE_REQUEST      the client literally asked for a .php URL, so
+  #                    the internal /services -> services.php rewrite
+  #                    below cannot re-enter this rule
+  #   -f               the file exists, so /made-up-page.php stays a
+  #                    plain 404 instead of redirecting to another 404
+  # The substitution carries no query string of its own, so any
+  # original query string is preserved automatically.
+  RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/+[^\s?]*\.php[\s?] [NC]
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteRule ^([^/.]+)\.php$ /$1 [R=301,L]
+
+  # --- 4. Trailing slash removal ------------------------------
+  # Content pages carry no trailing slash. Real directories are
+  # excluded by the !-d guard so /css/, /js/, /assets/ and
+  # /images/ keep working. Protected paths never reach this rule,
+  # they are refused above.
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteRule ^(.+?)/+$ /$1 [R=301,L]
+
+  # --- 5. Clean slug -> PHP file ------------------------------
+  # Internal rewrite, no redirect. The browser URL stays put and the
+  # query string is carried through untouched.
+  # Fires only when every one of these holds:
+  #   !-f              nothing real is already at that path
+  #   !-d              it is not a directory
+  #   .php -f          the matching PHP file genuinely exists
+  # So /services resolves, and /examples stays a 404 until
+  # examples.php is actually added. Future pages start working at
+  # their clean URL the moment their PHP file lands, with no change
+  # to this file. Root level only by design, the site has no nested
+  # content pages.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.php -f
+  RewriteRule ^([^/.]+)$ $1.php [L]
 </IfModule>
 
 # ============================================
@@ -202,9 +279,18 @@
 </FilesMatch>
 
 # ============================================
-# DISABLE DIRECTORY BROWSING
+# DIRECTORY BROWSING AND CONTENT NEGOTIATION
 # ============================================
-Options -Indexes
+# -Indexes     no directory listings
+# -MultiViews  no content negotiation. URL resolution is owned by the
+#              rewrite rules above and nothing else. Without this,
+#              Apache could answer /services by negotiating between
+#              services.php and the legacy services.html on its own,
+#              which would both bypass our routing and make the
+#              answer depend on which legacy files still exist.
+# Kept as one directive. A second Options line would replace this
+# one for the directory rather than add to it.
+Options -Indexes -MultiViews
 
 # ============================================
 # DEFAULT DOCUMENT
