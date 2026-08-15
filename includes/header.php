@@ -8,37 +8,36 @@
  * A page sets its own metadata in plain variables before requiring
  * this file. Everything except the page ID has a sensible fallback:
  *
- *   $page_id         required, the trusted identity of the page
- *   $title           full <title> text
- *   $description     meta description
- *   $canonical       canonical path, only for pages outside SITE_NAV
- *   $og_title        defaults to $title
- *   $og_description  defaults to $description
- *   $schema          optional PHP array, emitted as JSON-LD
+ *   $page_id          required, the trusted identity of the page
+ *   $nav_parent       optional, marks a parent navigation item current
+ *   $title            full <title> text
+ *   $description      meta description
+ *   $canonical        canonical path, only for pages outside SITE_NAV
+ *   $og_title         defaults to $title
+ *   $og_description   defaults to $description
+ *   $extra_stylesheet optional site-relative stylesheet for page families
+ *   $schema           optional PHP array, emitted as JSON-LD
  *
  * Every real public content page is expected to set at least
  * $page_id, $title and $description.
  */
 
-/* ---------- Direct request guard ----------
-   Reached only if this file is requested over HTTP on its own, in
-   which case the configuration was never loaded. Nothing renders,
-   so no partial page and no implementation detail is exposed.
-   Defense in depth alongside the root .htaccess rule. */
+/* ---------- Direct request guard ---------- */
 if (!defined('JOVEL_SITE')) {
     http_response_code(404);
     exit;
 }
 
 $page_id        = isset($page_id) ? (string) $page_id : '';
+$nav_current_id = isset($nav_parent) && $nav_parent !== '' ? (string) $nav_parent : $page_id;
 $title          = isset($title) && $title !== '' ? (string) $title : SITE_NAME;
 $description    = isset($description) && $description !== '' ? (string) $description : SITE_DESCRIPTION;
 $canonical_url  = site_url(canonical_path($page_id, $canonical ?? null));
 $og_title       = isset($og_title) && $og_title !== '' ? (string) $og_title : $title;
 $og_description = isset($og_description) && $og_description !== '' ? (string) $og_description : $description;
+$extra_stylesheet = isset($extra_stylesheet) && $extra_stylesheet !== '' ? (string) $extra_stylesheet : '';
 
-/* The body class comes from the trusted page ID, never from the
-   request, so scoped interior styles cannot be triggered by a URL. */
+/* The body class comes from the trusted page ID, never from the request. */
 $body_class = $page_id !== '' ? 'page-' . preg_replace('/[^a-z0-9-]/', '', strtolower($page_id)) : '';
 ?>
 <!DOCTYPE html>
@@ -67,6 +66,9 @@ $body_class = $page_id !== '' ? 'page-' . preg_replace('/[^a-z0-9-]/', '', strto
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
   <link rel="stylesheet" href="/css/jovel.css">
+<?php if ($extra_stylesheet !== ''): ?>
+  <link rel="stylesheet" href="<?= e($extra_stylesheet) ?>">
+<?php endif; ?>
 <?php if (!empty($schema) && is_array($schema)): ?>
 
   <script type="application/ld+json">
@@ -85,7 +87,7 @@ $body_class = $page_id !== '' ? 'page-' . preg_replace('/[^a-z0-9-]/', '', strto
     <nav class="site-nav" id="site-nav" aria-label="Main">
       <ul>
 <?php foreach (SITE_NAV as $nav_id => $item):
-          $is_current = ($nav_id === $page_id); ?>
+          $is_current = ($nav_id === $nav_current_id); ?>
         <li><a<?= !empty($item['cta']) ? ' class="nav-cta"' : '' ?> href="<?= e($item['path']) ?>"<?= $is_current ? ' aria-current="page"' : '' ?>><?= e($item['label']) ?></a></li>
 <?php endforeach; ?>
       </ul>

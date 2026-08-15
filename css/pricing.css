@@ -1,0 +1,119 @@
+/* ============================================================
+   JOVEL CREATIVE, PRICING
+   B2 direction: open explanation, crisp rules, restrained callouts.
+   ============================================================ */
+
+.pricing-hero-note {
+  margin-top: var(--space-8);
+  display: grid;
+  gap: var(--space-1);
+  border-left: 5px solid var(--color-accent-deep);
+  padding-left: var(--space-4);
+  max-width: 44rem;
+}
+.pricing-hero-note strong { font-size: 1rem; }
+.pricing-hero-note span { color: var(--color-ink-soft); font-size: 0.95rem; }
+
+.pricing-list { display: grid; border-bottom: var(--border); }
+.pricing-row {
+  display: grid;
+  gap: var(--space-5, 1.25rem);
+  border-top: var(--border);
+  padding: var(--space-6) 0;
+}
+@media (min-width: 820px) {
+  .pricing-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: center;
+    gap: var(--space-12);
+    padding: var(--space-8) 0;
+  }
+}
+.pricing-row-featured { background: linear-gradient(to right, transparent 0, transparent 0); }
+.pricing-service { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: var(--space-4); align-items: start; }
+.pricing-index {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-accent-deep);
+  letter-spacing: 0.08em;
+  padding-top: 0.2rem;
+}
+.pricing-service h3 { font-size: 1.15rem; margin-bottom: var(--space-2); }
+.pricing-service p { color: var(--color-ink-soft); font-size: 0.95rem; max-width: 58ch; }
+.pricing-amount { display: flex; flex-direction: column; align-items: flex-start; }
+@media (min-width: 820px) { .pricing-amount { min-width: 9.5rem; align-items: flex-end; text-align: right; } }
+.pricing-amount small {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--color-ink-soft);
+}
+.pricing-amount strong { color: var(--color-accent-deep); font-size: 1.75rem; line-height: 1.1; }
+.pricing-footnote { margin-top: var(--space-6); color: var(--color-ink-soft); font-size: 0.9rem; max-width: 72ch; }
+
+.pricing-quote-section { background: var(--color-panel); }
+.quote-factors { display: grid; gap: var(--space-8); }
+@media (min-width: 760px) { .quote-factors { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1040px) { .quote-factors { grid-template-columns: repeat(4, 1fr); gap: var(--space-6); } }
+.quote-factors article { border-top: var(--border); padding-top: var(--space-4); }
+.quote-factors article > span {
+  font-family: var(--font-mono);
+  font-size: 0.76rem;
+  color: var(--color-accent-deep);
+}
+.quote-factors h3 { font-size: 1.05rem; margin: var(--space-2) 0; }
+.quote-factors p { color: var(--color-ink-soft); font-size: 0.93rem; }
+.file-review-callout {
+  margin-top: var(--space-12);
+  border: var(--border);
+  border-left: 6px solid var(--color-accent-deep);
+  background: var(--color-bg);
+  padding: var(--space-6);
+}
+.file-review-callout strong { display: block; font-size: 1.05rem; margin-bottom: var(--space-2); }
+.file-review-callout p { color: var(--color-ink-soft); max-width: 68ch; }
+
+.pricing-two-col { display: grid; gap: var(--space-8); }
+@media (min-width: 900px) { .pricing-two-col { grid-template-columns: 0.8fr 1.2fr; gap: var(--space-16); } }
+.pricing-two-col h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: var(--space-3); max-width: 18ch; }
+.pricing-included { list-style: none; display: grid; }
+.pricing-included li { border-top: 1.5px solid var(--color-line); padding: var(--space-4) 0; display: grid; gap: var(--space-1); }
+.pricing-included li:first-child { border-top: var(--border); }
+.pricing-included strong { font-size: 1rem; }
+.pricing-included span { color: var(--color-ink-soft); font-size: 0.94rem; }
+
+.payment-section { background: var(--color-panel); }
+.payment-grid { display: grid; border: var(--border); background: var(--color-bg); }
+@media (min-width: 800px) { .payment-grid { grid-template-columns: repeat(3, 1fr); } }
+.payment-grid article { padding: var(--space-6); border-bottom: 1px solid var(--color-line); }
+.payment-grid article:last-child { border-bottom: 0; }
+@media (min-width: 800px) {
+  .payment-grid article { border-bottom: 0; border-right: 1px solid var(--color-line); }
+  .payment-grid article:last-child { border-right: 0; }
+}
+.payment-grid small {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--color-accent-deep);
+  margin-bottom: var(--space-3);
+}
+.payment-grid strong { display: block; font-size: 1.5rem; margin-bottom: var(--space-3); }
+.payment-grid p { color: var(--color-ink-soft); font-size: 0.93rem; }
+
+.pricing-scope { display: grid; gap: var(--space-8); }
+@media (min-width: 900px) { .pricing-scope { grid-template-columns: 0.8fr 1.2fr; gap: var(--space-16); } }
+.pricing-scope h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); margin-top: var(--space-3); max-width: 18ch; }
+.pricing-scope > div:last-child { border-top: var(--border); padding-top: var(--space-4); }
+.pricing-scope p { color: var(--color-ink-soft); max-width: 62ch; }
+.pricing-scope p + p { margin-top: var(--space-4); }
+
+@media (max-width: 560px) {
+  .pricing-row { padding: var(--space-6) 0; }
+  .pricing-service { grid-template-columns: 1fr; gap: var(--space-2); }
+  .pricing-index { padding-top: 0; }
+  .file-review-callout { padding: var(--space-4); }
+}
