@@ -54,8 +54,8 @@ function project_choice(string $key, array $allowed, string $fallback = ''): str
     return in_array($value, $allowed, true) ? $value : $fallback;
 }
 
-/* Simple bot controls. A filled honeypot or implausibly fast submission is
- * treated as success so automated senders are not told how they were caught. */
+/* A filled honeypot or implausibly fast submission is treated as success so
+ * automated senders are not told how they were caught. */
 $honeypot = trim((string) ($_POST['website_url'] ?? ''));
 $started  = (int) ($_POST['form_started'] ?? 0);
 $age      = time() - $started;
@@ -67,6 +67,7 @@ $name          = project_line('name', 100);
 $businessName  = project_line('business_name', 140);
 $email         = project_line('email', 160);
 $phone         = project_line('phone', 40);
+$targetDate    = project_line('target_date', 20);
 $problem       = project_text('problem', 2500);
 $desiredResult = project_text('desired_result', 1600);
 $anythingElse  = project_text('anything_else', 1600);
@@ -101,7 +102,11 @@ if (
     project_redirect('invalid');
 }
 
-/* Reject unexpectedly large or link-heavy free text without storing it. */
+if ($targetDate !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $targetDate)) {
+    project_redirect('invalid');
+}
+
+/* Reject unexpectedly link-heavy free text without storing it. */
 $combinedText = $problem . "\n" . $desiredResult . "\n" . $anythingElse;
 if (preg_match_all('~https?://~i', $combinedText) > 5) {
     project_redirect('sent');
@@ -155,6 +160,7 @@ $body = implode("\r\n", [
     '',
     'TIMELINE',
     $display($timeline),
+    'Specific deadline: ' . ($targetDate !== '' ? $targetDate : 'Not provided'),
     '',
     'APPROXIMATE BUDGET',
     $display($budget),
@@ -193,7 +199,7 @@ $headers = [
     'Date: ' . gmdate('D, d M Y H:i:s O'),
     'From: Jovel Creative <' . $from . '>',
     'To: Jovel Creative <' . $to . '>',
-    'Reply-To: ' . $name . ' <' . $email . '>',
+    'Reply-To: <' . $email . '>',
     'Subject: ' . $subject,
     'MIME-Version: 1.0',
     'Content-Type: text/plain; charset=UTF-8',
