@@ -81,6 +81,7 @@
 .project-form input[type="text"],
 .project-form input[type="email"],
 .project-form input[type="tel"],
+.project-form input[type="date"],
 .project-form select,
 .project-form textarea {
   width: 100%;
@@ -94,6 +95,7 @@
 .project-form input[type="text"],
 .project-form input[type="email"],
 .project-form input[type="tel"],
+.project-form input[type="date"],
 .project-form select { min-height: 3rem; }
 .project-form textarea { resize: vertical; min-height: 7rem; }
 .project-form input:focus-visible,
