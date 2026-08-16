@@ -44,6 +44,11 @@ require __DIR__ . '/includes/header.php';
           <strong>Request received.</strong>
           <p>Thanks for reaching out. We will review what you shared and follow up at the email address you provided.</p>
         </div>
+<?php elseif ($status === 'invalid'): ?>
+        <div class="form-status form-status-error" role="alert">
+          <strong>Please check the required fields.</strong>
+          <p>Your request was not sent. Complete the required information and try again.</p>
+        </div>
 <?php elseif ($status === 'error'): ?>
         <div class="form-status form-status-error" role="alert">
           <strong>Your request could not be sent.</strong>
@@ -151,6 +156,11 @@ require __DIR__ . '/includes/header.php';
                   <option value="3000-plus">$3,000+</option>
                 </select>
               </div>
+            </div>
+
+            <div class="form-field">
+              <label for="target_date">Specific deadline <span class="optional">Optional</span></label>
+              <input id="target_date" name="target_date" type="date">
             </div>
 
             <div class="form-field">
