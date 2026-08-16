@@ -51,6 +51,10 @@ $faqs = [
         'a' => 'After full payment, you receive the customized final deliverables for your business to keep, edit and use. Jovel Creative retains its general methods, know-how and reusable non-client-specific components.',
     ],
     [
+        'q' => 'What if a tracker or calculator does not work as delivered?',
+        'a' => 'Custom trackers and calculators include a 14-day functionality guarantee for the functionality Jovel Creative delivered in the agreed platform. If something we built is not working as delivered, we correct it. New features, changed requirements or later client modifications are separate updates.',
+    ],
+    [
         'q' => 'Can I upload my working files through the website?',
         'a' => 'No public file uploads are used. If reviewing source files is necessary before a fixed quote, we arrange that privately after the project appears to be a good fit. Sensitive information should not be sent through the public project form.',
     ],
