@@ -1,0 +1,224 @@
+/* ============================================================
+   JOVEL CREATIVE, START A PROJECT
+   Conversion page: clear qualification, low visual noise, no uploads.
+   ============================================================ */
+
+.project-hero h1 { max-width: 16ch; }
+.project-hero .page-hero-sub { max-width: 52ch; }
+
+.project-section { padding-top: var(--space-10); }
+.project-layout {
+  display: grid;
+  gap: var(--space-12);
+  align-items: start;
+}
+@media (min-width: 980px) {
+  .project-layout {
+    grid-template-columns: minmax(0, 1fr) 20rem;
+    gap: var(--space-16);
+  }
+}
+
+.project-form-wrap { min-width: 0; }
+.project-form-head {
+  border-top: var(--border);
+  padding-top: var(--space-4);
+  margin-bottom: var(--space-8);
+}
+.project-form-head h2 {
+  font-size: clamp(1.6rem, 3vw, 2.15rem);
+  margin: var(--space-3) 0 var(--space-3);
+}
+.project-form-head p { color: var(--color-ink-soft); max-width: 48ch; }
+
+.form-status {
+  border: var(--border);
+  padding: var(--space-5, 1.25rem);
+  margin-bottom: var(--space-8);
+}
+.form-status strong { display: block; margin-bottom: var(--space-1); }
+.form-status p { color: var(--color-ink-soft); }
+.form-status-success { border-left: 6px solid var(--color-accent-deep); background: var(--color-accent-wash); }
+.form-status-error { border-left: 6px solid #8b2f2f; background: #fff7f7; }
+.form-status-error a { color: var(--color-accent-deep); }
+
+.project-form { display: grid; gap: var(--space-10); }
+.project-form fieldset {
+  border: 0;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: var(--space-6);
+}
+.project-form legend {
+  width: 100%;
+  border-bottom: var(--border);
+  padding-bottom: var(--space-3);
+  margin-bottom: var(--space-6);
+  font-size: 1.2rem;
+  font-weight: var(--font-semibold);
+}
+.form-grid { display: grid; gap: var(--space-5, 1.25rem); }
+@media (min-width: 720px) {
+  .form-grid-two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+.form-field { display: grid; gap: var(--space-2); }
+.form-field label {
+  font-weight: var(--font-semibold);
+  font-size: 0.95rem;
+}
+.optional {
+  font-weight: 400;
+  color: var(--color-ink-soft);
+  font-size: 0.82rem;
+  margin-left: var(--space-1);
+}
+.field-help {
+  color: var(--color-ink-soft);
+  font-size: 0.88rem;
+  max-width: 62ch;
+}
+.project-form input[type="text"],
+.project-form input[type="email"],
+.project-form input[type="tel"],
+.project-form select,
+.project-form textarea {
+  width: 100%;
+  border: 1.5px solid var(--color-line);
+  border-radius: var(--radius-sm);
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font: inherit;
+  padding: 0.8rem 0.9rem;
+}
+.project-form input[type="text"],
+.project-form input[type="email"],
+.project-form input[type="tel"],
+.project-form select { min-height: 3rem; }
+.project-form textarea { resize: vertical; min-height: 7rem; }
+.project-form input:focus-visible,
+.project-form select:focus-visible,
+.project-form textarea:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+  border-color: var(--color-accent-deep);
+}
+
+.form-privacy {
+  border-top: var(--border);
+  border-bottom: var(--border);
+  padding: var(--space-6) 0;
+  display: grid;
+  gap: var(--space-5, 1.25rem);
+}
+.form-privacy-copy strong { display: block; margin-bottom: var(--space-1); }
+.form-privacy-copy p { color: var(--color-ink-soft); max-width: 68ch; font-size: 0.92rem; }
+.form-check {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+  color: var(--color-ink-soft);
+  font-size: 0.9rem;
+  line-height: 1.5;
+  cursor: pointer;
+}
+.form-check input {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-top: 0.15rem;
+  accent-color: var(--color-accent-deep);
+}
+.form-check input:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
+}
+
+.form-submit-row {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+.form-submit-row p {
+  color: var(--color-ink-soft);
+  font-size: 0.86rem;
+  max-width: 58ch;
+}
+
+.form-hp {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  padding: 0 !important;
+  margin: -1px !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+  border: 0 !important;
+}
+
+.project-aside {
+  display: grid;
+  gap: var(--space-6);
+}
+@media (min-width: 980px) {
+  .project-aside {
+    position: sticky;
+    top: 6.5rem;
+  }
+}
+.project-aside-section {
+  border-top: var(--border);
+  padding-top: var(--space-4);
+}
+.project-steps {
+  list-style: none;
+  display: grid;
+  gap: var(--space-5, 1.25rem);
+  margin-top: var(--space-5, 1.25rem);
+}
+.project-steps li {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: var(--space-3);
+  align-items: start;
+}
+.project-steps li > span {
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  color: var(--color-accent-deep);
+  padding-top: 0.15rem;
+}
+.project-steps strong { display: block; font-size: 0.95rem; margin-bottom: var(--space-1); }
+.project-steps p { color: var(--color-ink-soft); font-size: 0.88rem; }
+
+.project-fit-note {
+  border-left: 5px solid var(--color-accent-deep);
+  padding-left: var(--space-4);
+}
+.project-fit-note strong { display: block; margin-bottom: var(--space-2); }
+.project-fit-note p { color: var(--color-ink-soft); font-size: 0.9rem; }
+
+.project-direct p { margin: var(--space-3) 0 var(--space-2); }
+.project-direct a { color: var(--color-accent-deep); font-weight: var(--font-semibold); }
+.project-direct small { color: var(--color-ink-soft); font-size: 0.82rem; }
+.project-aside-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-5, 1.25rem);
+  border-top: 1px solid var(--color-line);
+  padding-top: var(--space-4);
+}
+.project-aside-links a {
+  color: var(--color-accent-deep);
+  font-size: 0.9rem;
+  font-weight: var(--font-semibold);
+}
+
+@media (max-width: 560px) {
+  .project-section { padding-top: var(--space-8); }
+  .project-form { gap: var(--space-8); }
+  .project-form fieldset { gap: var(--space-5, 1.25rem); }
+  .project-aside { gap: var(--space-5, 1.25rem); }
+}
