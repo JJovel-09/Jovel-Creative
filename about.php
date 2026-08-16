@@ -50,8 +50,9 @@ require __DIR__ . '/includes/header.php';
         <article>
           <span class="tag">Behind the work</span>
           <h2>I'm Juan Jovel.</h2>
-          <p>My background is in strategic communications, digital content and making complex information easier to understand and use.</p>
-          <p>That same discipline drives Jovel Creative. Whether the finished product is a spreadsheet, calculator, proposal, SOP or connected toolkit, the goal is the same: make the work clearer and easier to manage.</p>
+          <p>For more than 12 years, my work has centered on taking complicated information and making it clearer, more organized and easier for people to use. My background includes strategic communications and public-sector work where accuracy, deadlines and attention to detail matter, along with a Master of Public Administration from the University of Baltimore.</p>
+          <p>That experience shaped how I approach Jovel Creative. I start by understanding the information you already have, how the work actually gets done and where the process is breaking down. Then I build something practical around it.</p>
+          <p>I work in both English and Spanish.</p>
         </article>
       </div>
     </div>
