@@ -13,7 +13,6 @@ config.local.php
 *.local.php
 secrets.php
 credentials.php
-private-config/mail-config.php
 
 # ---------- Composer generated dependencies ----------
 /vendor/
