@@ -25,6 +25,10 @@
   # Shared PHP layout includes.
   RewriteRule ^includes(?:/|$) - [F,L]
 
+  # SMTP configuration and Composer dependencies are server-side only.
+  RewriteRule ^private-config(?:/|$) - [F,L]
+  RewriteRule ^vendor(?:/|$) - [F,L]
+
   # Project documentation, development material only.
   RewriteRule ^docs(?:/|$) - [F,L]
 
@@ -89,11 +93,16 @@
   RewriteRule ^index\.(?:php|html)$ / [R=301,L]
 
   # --- 2. Migrated legacy URLs --------------------------------
-  # Only pages whose redesigned replacement already exists belong
-  # here. Legacy pages that have not been rebuilt yet are served
-  # normally and must NOT be listed until their replacement ships.
+  # Each old public page now redirects in one hop to its redesigned
+  # replacement. Keep these explicit so old links and bookmarks do
+  # not depend on content negotiation or file deletion timing.
   RewriteRule ^services\.html$ /services [R=301,L]
-  RewriteRule ^portfolio\.html$ / [R=301,L]
+  RewriteRule ^portfolio\.html$ /examples [R=301,L]
+  RewriteRule ^about\.html$ /about [R=301,L]
+  RewriteRule ^contact\.html$ /start-a-project [R=301,L]
+  RewriteRule ^privacy-policy\.html$ /privacy [R=301,L]
+  RewriteRule ^accessibility\.html$ /accessibility [R=301,L]
+  RewriteRule ^terms-of-service\.html$ /terms [R=301,L]
 
   # --- 3. Exposed .php URL -> clean URL -----------------------
   # External 301 only. Conditions, in order:
@@ -123,11 +132,9 @@
   #   !-f              nothing real is already at that path
   #   !-d              it is not a directory
   #   .php -f          the matching PHP file genuinely exists
-  # So /services resolves, and /examples stays a 404 until
-  # examples.php is actually added. Future pages start working at
-  # their clean URL the moment their PHP file lands, with no change
-  # to this file. Root level only by design, the site has no nested
-  # content pages.
+  # So /services resolves, and future pages start working at their
+  # clean URL the moment their PHP file lands, with no change here.
+  # Root level only by design, the site has no nested content pages.
   RewriteCond %{REQUEST_FILENAME} !-f
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.php -f
