@@ -42,8 +42,9 @@ if (!defined('JOVEL_SITE')) {
     <div class="footer-bottom">
       <span>&copy; <?= date('Y') ?> <?= e(SITE_NAME) ?>. All rights reserved.</span>
       <span>Built by Juan Jovel</span>
-      <a href="/accessibility.html">Accessibility</a>
-      <a href="/privacy-policy.html">Privacy Policy</a>
+      <a href="/accessibility">Accessibility</a>
+      <a href="/privacy">Privacy</a>
+      <a href="/terms">Website Terms</a>
     </div>
   </div>
 </footer>
