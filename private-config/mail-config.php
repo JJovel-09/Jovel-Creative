@@ -13,8 +13,14 @@ declare(strict_types=1);
 
 $home = getenv('HOME');
 if (!is_string($home) || $home === '') {
-    // Hostinger fallback for .../domains/<domain>/public_html/private-config.
-    $home = dirname(__DIR__, 4);
+    $home = '';
+    if (preg_match('#^(/home/[^/]+)(?:/|$)#', __DIR__, $matches) === 1) {
+        $home = $matches[1];
+    }
+}
+
+if ($home === '') {
+    return [];
 }
 
 $secretPath = rtrim($home, DIRECTORY_SEPARATOR)
