@@ -1,0 +1,13 @@
+{
+  "name": "jovelcreative/website",
+  "description": "Jovel Creative public website",
+  "type": "project",
+  "require": {
+    "php": "^8.2",
+    "phpmailer/phpmailer": "^7.1.1"
+  },
+  "config": {
+    "optimize-autoloader": true,
+    "sort-packages": true
+  }
+}
