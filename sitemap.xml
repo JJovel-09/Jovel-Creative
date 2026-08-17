@@ -1,63 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
-        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-
-  <!-- Homepage -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://jovelcreative.com/</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
-  <!-- Packages & Pricing -->
   <url>
-    <loc>https://jovelcreative.com/services.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jovelcreative.com/services</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
-  <!-- Contact / Request Your Kit -->
   <url>
-    <loc>https://jovelcreative.com/contact.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://jovelcreative.com/examples</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
-  <!-- About -->
   <url>
-    <loc>https://jovelcreative.com/about.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://jovelcreative.com/ays-hospitality-operations-system</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
-  <!-- Accessibility -->
   <url>
-    <loc>https://jovelcreative.com/accessibility.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://jovelcreative.com/pricing</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
-  <!-- Privacy Policy -->
   <url>
-    <loc>https://jovelcreative.com/privacy-policy.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://jovelcreative.com/about</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
-  <!-- Terms of Service -->
   <url>
-    <loc>https://jovelcreative.com/terms-of-service.html</loc>
-    <lastmod>2026-05-03</lastmod>
-    <changefreq>yearly</changefreq>
-    <priority>0.3</priority>
+    <loc>https://jovelcreative.com/faq</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
-
+  <url>
+    <loc>https://jovelcreative.com/start-a-project</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://jovelcreative.com/accessibility</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://jovelcreative.com/privacy</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://jovelcreative.com/terms</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
 </urlset>
