@@ -1,0 +1,17 @@
+Create a file named mail-config.php in this same directory on the server.
+Do not commit mail-config.php to GitHub.
+
+Use this structure:
+
+<?php
+return [
+    'host'       => 'smtp.hostinger.com',
+    'port'       => 465,
+    'encryption' => 'smtps',
+    'username'   => 'hello@jovelcreative.com',
+    'password'   => 'ENTER THE MAILBOX PASSWORD ON THE SERVER ONLY',
+    'from'       => 'hello@jovelcreative.com',
+    'to'         => 'hello@jovelcreative.com',
+];
+
+For Hostinger port 587, change port to 587 and encryption to starttls.
