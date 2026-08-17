@@ -1,6 +1,7 @@
 {
   "name": "jovelcreative/website",
   "description": "Jovel Creative public website",
+  "license": "MIT",
   "type": "project",
   "require": {
     "php": "^8.2",
