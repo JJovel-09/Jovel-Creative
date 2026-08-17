@@ -1,25 +1,23 @@
 <?php
 declare(strict_types=1);
 
+use PHPMailer\PHPMailer\PHPMailer;
+
 require __DIR__ . '/includes/config.php';
 
 /*
  * JOVEL CREATIVE, PROJECT REQUEST HANDLER
  *
- * This endpoint accepts only POST requests from the public Start a Project
- * form. It stores nothing and accepts no files. Delivery uses authenticated
- * SMTP through PHP cURL. SMTP credentials must be provided by server or
- * environment configuration outside the public document root.
+ * Accepts only POST requests from the public Start a Project form.
+ * It stores nothing and accepts no files. Delivery uses PHPMailer over
+ * authenticated SMTP.
  *
- * Required environment values:
- *   JOVEL_SMTP_HOST
- *   JOVEL_SMTP_PORT
- *   JOVEL_SMTP_USER
- *   JOVEL_SMTP_PASS
+ * Dependencies are installed from composer.json into /vendor.
+ * SMTP credentials live only on the server in:
+ *   /private-config/mail-config.php
  *
- * Optional:
- *   JOVEL_SMTP_FROM   defaults to the SMTP user when it is an email address
- *   JOVEL_PROJECT_TO  defaults to CONTACT_EMAIL
+ * That credential file is ignored by Git and the directory is denied
+ * over HTTP. Never add the mailbox password to this repository.
  */
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -177,79 +175,73 @@ $body = implode("\r\n", [
     'Privacy acknowledgment: Yes',
 ]);
 
-$smtpHost = trim((string) getenv('JOVEL_SMTP_HOST'));
-$smtpPort = (int) (getenv('JOVEL_SMTP_PORT') ?: 0);
-$smtpUser = trim((string) getenv('JOVEL_SMTP_USER'));
-$smtpPass = (string) getenv('JOVEL_SMTP_PASS');
-$fromEnv  = trim((string) getenv('JOVEL_SMTP_FROM'));
-$toEnv    = trim((string) getenv('JOVEL_PROJECT_TO'));
+$autoloadPath = __DIR__ . '/vendor/autoload.php';
+$configPath   = __DIR__ . '/private-config/mail-config.php';
 
-$from = filter_var($fromEnv, FILTER_VALIDATE_EMAIL)
-    ? $fromEnv
-    : (filter_var($smtpUser, FILTER_VALIDATE_EMAIL) ? $smtpUser : CONTACT_EMAIL);
-$to = filter_var($toEnv, FILTER_VALIDATE_EMAIL) ? $toEnv : CONTACT_EMAIL;
-
-if ($smtpHost === '' || $smtpPort <= 0 || $smtpUser === '' || $smtpPass === '' || !function_exists('curl_init')) {
-    error_log('Jovel Creative project form: authenticated SMTP is not configured.');
+if (!is_readable($autoloadPath)) {
+    error_log('Jovel Creative project form: Composer dependencies are not installed.');
+    project_redirect('error');
+}
+if (!is_readable($configPath)) {
+    error_log('Jovel Creative project form: SMTP configuration file is missing.');
     project_redirect('error');
 }
 
-$subject = 'New project inquiry from jovelcreative.com';
-$headers = [
-    'Date: ' . gmdate('D, d M Y H:i:s O'),
-    'From: Jovel Creative <' . $from . '>',
-    'To: Jovel Creative <' . $to . '>',
-    'Reply-To: <' . $email . '>',
-    'Subject: ' . $subject,
-    'MIME-Version: 1.0',
-    'Content-Type: text/plain; charset=UTF-8',
-    'Content-Transfer-Encoding: 8bit',
-];
-$payload = implode("\r\n", $headers) . "\r\n\r\n" . $body . "\r\n";
+require $autoloadPath;
+$mailConfig = require $configPath;
 
-$stream = fopen('php://temp', 'r+');
-if ($stream === false) {
-    project_redirect('error');
-}
-fwrite($stream, $payload);
-rewind($stream);
-
-$scheme = $smtpPort === 465 ? 'smtps' : 'smtp';
-$curl = curl_init($scheme . '://' . $smtpHost . ':' . $smtpPort);
-if ($curl === false) {
-    fclose($stream);
+if (!is_array($mailConfig)) {
+    error_log('Jovel Creative project form: SMTP configuration is invalid.');
     project_redirect('error');
 }
 
-$options = [
-    CURLOPT_USERNAME       => $smtpUser,
-    CURLOPT_PASSWORD       => $smtpPass,
-    CURLOPT_MAIL_FROM      => '<' . $from . '>',
-    CURLOPT_MAIL_RCPT      => ['<' . $to . '>'],
-    CURLOPT_UPLOAD         => true,
-    CURLOPT_RETURNTRANSFER => true,
-    CURLOPT_TIMEOUT        => 25,
-    CURLOPT_SSL_VERIFYPEER => true,
-    CURLOPT_SSL_VERIFYHOST => 2,
-    CURLOPT_READFUNCTION   => static function ($ch, $fd, int $length) use ($stream): string {
-        $data = fread($stream, $length);
-        return $data === false ? '' : $data;
-    },
-];
+$smtpHost   = trim((string) ($mailConfig['host'] ?? ''));
+$smtpPort   = (int) ($mailConfig['port'] ?? 0);
+$encryption = strtolower(trim((string) ($mailConfig['encryption'] ?? '')));
+$smtpUser   = trim((string) ($mailConfig['username'] ?? ''));
+$smtpPass   = (string) ($mailConfig['password'] ?? '');
+$from       = trim((string) ($mailConfig['from'] ?? $smtpUser));
+$to         = trim((string) ($mailConfig['to'] ?? CONTACT_EMAIL));
 
-if ($scheme === 'smtp') {
-    $options[CURLOPT_USE_SSL] = CURLUSESSL_ALL;
+if (
+    $smtpHost === ''
+    || $smtpPort <= 0
+    || $smtpUser === ''
+    || $smtpPass === ''
+    || !filter_var($from, FILTER_VALIDATE_EMAIL)
+    || !filter_var($to, FILTER_VALIDATE_EMAIL)
+    || !in_array($encryption, ['smtps', 'starttls'], true)
+) {
+    error_log('Jovel Creative project form: SMTP configuration is incomplete or invalid.');
+    project_redirect('error');
 }
 
-curl_setopt_array($curl, $options);
-$result = curl_exec($curl);
-$curlError = curl_error($curl);
-$curlCode = curl_errno($curl);
-curl_close($curl);
-fclose($stream);
+try {
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host       = $smtpHost;
+    $mail->Port       = $smtpPort;
+    $mail->SMTPAuth   = true;
+    $mail->Username   = $smtpUser;
+    $mail->Password   = $smtpPass;
+    $mail->SMTPSecure = $encryption === 'smtps'
+        ? PHPMailer::ENCRYPTION_SMTPS
+        : PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Timeout    = 25;
+    $mail->CharSet    = PHPMailer::CHARSET_UTF8;
+    $mail->Encoding   = PHPMailer::ENCODING_8BIT;
 
-if ($result === false || $curlCode !== 0) {
-    error_log('Jovel Creative project form SMTP error: ' . $curlCode . ' ' . $curlError);
+    $mail->setFrom($from, 'Jovel Creative');
+    $mail->addAddress($to, 'Jovel Creative');
+    $mail->addReplyTo($email, $name);
+
+    $mail->Subject = 'New project inquiry from jovelcreative.com';
+    $mail->isHTML(false);
+    $mail->Body = $body;
+
+    $mail->send();
+} catch (Throwable $exception) {
+    error_log('Jovel Creative project form SMTP error: ' . $exception->getMessage());
     project_redirect('error');
 }
 
