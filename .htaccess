@@ -82,12 +82,10 @@
   # --- 1. Homepage --------------------------------------------
   # A literal request for the homepage file canonicalizes to /.
   # The THE_REQUEST guard is required: when Apache resolves / through
-  # DirectoryIndex it serves index.html internally, and a rule keyed
+  # DirectoryIndex it serves index.php internally, and a rule keyed
   # on the rewritten path would bounce / -> / forever.
-  # The -f guard means this only fires for a homepage file that
-  # actually exists. index.php does not exist yet; when it is added
-  # this rule claims /index.php before the generic .php rule below
-  # can strip it to /index.
+  # The -f guard means this fires only for a homepage file that
+  # actually exists.
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/+index\.(?:php|html)[\s?] [NC]
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^index\.(?:php|html)$ / [R=301,L]
@@ -302,7 +300,7 @@ Options -Indexes -MultiViews
 # ============================================
 # DEFAULT DOCUMENT
 # ============================================
-DirectoryIndex index.html index.htm
+DirectoryIndex index.php index.html index.htm
 
 # ============================================
 # ERROR PAGES (optional - create custom error pages)
