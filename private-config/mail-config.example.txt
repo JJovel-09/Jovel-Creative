@@ -1,7 +1,12 @@
-Create a file named mail-config.php in this same directory on the server.
-Do not commit mail-config.php to GitHub.
+PRODUCTION SECRET LOCATION
 
-Use this structure:
+Create the real SMTP credential outside public_html and outside Git at:
+
+~/.config/jovelcreative/mail-config.php
+
+The tracked file private-config/mail-config.php is only a secret-free loader. Do not put the mailbox password in that tracked file.
+
+Use this structure for ~/.config/jovelcreative/mail-config.php:
 
 <?php
 return [
@@ -14,4 +19,9 @@ return [
     'to'         => 'hello@jovelcreative.com',
 ];
 
+Recommended permissions:
+- ~/.config/jovelcreative directory: 700
+- mail-config.php: 600
+
 For Hostinger port 587, change port to 587 and encryption to starttls.
+Never commit the real secret file or paste its contents into chat.
