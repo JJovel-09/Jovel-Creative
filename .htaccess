@@ -39,18 +39,14 @@
   # robots.txt are both legitimately public.
   RewriteRule \.md$ - [F,L]
 
-  # Force HTTPS (uncomment after SSL certificate is installed)
-  # RewriteCond %{HTTPS} off
-  # RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [R=301,L]
-
-  # Force www (choose one: www or non-www)
-  # Force www version:
-  # RewriteCond %{HTTP_HOST} !^www\. [NC]
-  # RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1 [R=301,L]
-
-  # OR Force non-www version:
-  # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
-  # RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+  # ============================================
+  # CANONICAL HOST
+  # ============================================
+  # The public site uses the non-www HTTPS hostname. Hostinger already
+  # handles HTTP -> HTTPS. This rule removes the duplicate www host in
+  # one hop while preserving the requested path and query string.
+  RewriteCond %{HTTP_HOST} ^www\.jovelcreative\.com$ [NC]
+  RewriteRule ^ https://jovelcreative.com%{REQUEST_URI} [R=301,L,NE]
 
   # ============================================
   # PUBLIC URL ROUTING
@@ -76,24 +72,21 @@
   # loop.
   #
   # MultiViews is disabled further down in this file so that content
-  # negotiation cannot resolve /services on its own. That matters
-  # while both services.php and the legacy services.html still exist.
+  # negotiation cannot resolve /services on its own.
 
   # --- 1. Homepage --------------------------------------------
-  # A literal request for the homepage file canonicalizes to /.
+  # A literal request for an existing homepage file canonicalizes to /.
   # The THE_REQUEST guard is required: when Apache resolves / through
   # DirectoryIndex it serves index.php internally, and a rule keyed
   # on the rewritten path would bounce / -> / forever.
-  # The -f guard means this fires only for a homepage file that
-  # actually exists.
   RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\s/+index\.(?:php|html)[\s?] [NC]
   RewriteCond %{REQUEST_FILENAME} -f
   RewriteRule ^index\.(?:php|html)$ / [R=301,L]
 
   # --- 2. Migrated legacy URLs --------------------------------
-  # Each old public page now redirects in one hop to its redesigned
-  # replacement. Keep these explicit so old links and bookmarks do
-  # not depend on content negotiation or file deletion timing.
+  # index.html no longer exists, so it needs an explicit redirect rather
+  # than the existing-file homepage rule above.
+  RewriteRule ^index\.html$ / [R=301,L]
   RewriteRule ^services\.html$ /services [R=301,L]
   RewriteRule ^portfolio\.html$ /examples [R=301,L]
   RewriteRule ^about\.html$ /about [R=301,L]
@@ -244,7 +237,7 @@
   # X-Frame-Options: Prevent clickjacking
   Header always set X-Frame-Options "SAMEORIGIN"
 
-  # X-XSS-Protection: Enable XSS filter in browser
+  # X-XSS-Protection: Enable legacy XSS filter in older browsers
   Header set X-XSS-Protection "1; mode=block"
 
   # Referrer-Policy: Control referrer information
@@ -253,11 +246,7 @@
   # Permissions-Policy: Control browser features
   Header set Permissions-Policy "geolocation=(), microphone=(), camera=()"
 
-  # Content Security Policy (basic - adjust as needed)
-  # Uncomment and customize based on your needs
-  # Header set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' https://www.googletagmanager.com https://www.google-analytics.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://www.google-analytics.com;"
-
-  # Remove server signature
+  # Remove server signature where the hosting layer allows it
   Header unset Server
   Header unset X-Powered-By
 </IfModule>
@@ -288,13 +277,7 @@
 # ============================================
 # -Indexes     no directory listings
 # -MultiViews  no content negotiation. URL resolution is owned by the
-#              rewrite rules above and nothing else. Without this,
-#              Apache could answer /services by negotiating between
-#              services.php and the legacy services.html on its own,
-#              which would both bypass our routing and make the
-#              answer depend on which legacy files still exist.
-# Kept as one directive. A second Options line would replace this
-# one for the directory rather than add to it.
+#              rewrite rules above and nothing else.
 Options -Indexes -MultiViews
 
 # ============================================
@@ -303,20 +286,16 @@ Options -Indexes -MultiViews
 DirectoryIndex index.php index.html index.htm
 
 # ============================================
-# ERROR PAGES (optional - create custom error pages)
+# BRANDED ERROR PAGES
 # ============================================
-# ErrorDocument 404 /404.html
-# ErrorDocument 403 /403.html
-# ErrorDocument 500 /500.html
+# /404 is a real PHP-backed route that explicitly returns status 404,
+# so direct requests and Apache error subrequests both remain correct.
+ErrorDocument 404 /404
 
 # ============================================
 # PROTECT AGAINST CODE INJECTION
 # ============================================
 <IfModule mod_rewrite.c>
-  # Block access to PHP files (if you're not using PHP)
-  # RewriteCond %{REQUEST_URI} \.php$ [NC]
-  # RewriteRule .* - [F,L]
-
   # Block suspicious query strings
   RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
   RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
@@ -335,18 +314,12 @@ AddDefaultCharset UTF-8
 # ============================================
 # CORS (Cross-Origin Resource Sharing)
 # ============================================
-# Enable if you need to load resources from other domains
-# <IfModule mod_headers.c>
-#   <FilesMatch "\.(ttf|ttc|otf|eot|woff|woff2|font.css|css|js)$">
-#     Header set Access-Control-Allow-Origin "*"
-#   </FilesMatch>
-# </IfModule>
+# Enable only if resources intentionally need to be loaded cross-origin.
 
 # ============================================
 # NOTES:
 # ============================================
-# 1. Test your site after uploading this file
-# 2. If you get a 500 Internal Server Error, some directives may not be supported
-#    Comment out sections one by one to find the issue
-# 3. Backup this file before making changes
-# 4. Some shared hosting providers may not allow all directives
+# 1. Test routing immediately after deployment on the Hostinger runtime.
+# 2. If a hosting-layer directive is unsupported, isolate that directive
+#    rather than weakening unrelated routing or access controls.
+# 3. Keep this file under version control and use Git for rollback.
