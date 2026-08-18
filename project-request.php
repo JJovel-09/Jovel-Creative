@@ -13,11 +13,9 @@ require __DIR__ . '/includes/config.php';
  * authenticated SMTP.
  *
  * Dependencies are installed from composer.json into /vendor.
- * SMTP credentials live only on the server in:
- *   /private-config/mail-config.php
- *
- * That credential file is ignored by Git and the directory is denied
- * over HTTP. Never add the mailbox password to this repository.
+ * The tracked /private-config/mail-config.php file is a secret-free loader.
+ * Real SMTP credentials live outside the public web root in the account's
+ * ~/.config/jovelcreative/mail-config.php file and are never committed.
  */
 
 if (($_SERVER['REQUEST_METHOD'] ?? '') !== 'POST') {
@@ -240,8 +238,8 @@ try {
     $mail->Body = $body;
 
     $mail->send();
-} catch (Throwable $exception) {
-    error_log('Jovel Creative project form SMTP error: ' . $exception->getMessage());
+} catch (Throwable) {
+    error_log('Jovel Creative project form: SMTP delivery failed.');
     project_redirect('error');
 }
 

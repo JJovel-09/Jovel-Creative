@@ -1,8 +1,8 @@
 /* ============================================================
    JOVEL CREATIVE, HOMEPAGE BEHAVIOR
-   Mobile navigation only. Progressive enhancement: with
-   JavaScript disabled every link in the header remains
-   reachable in the document order.
+   Mobile navigation only. At the mobile breakpoint the header menu
+   requires JavaScript; the footer retains the same destination links
+   if scripting is unavailable.
    ============================================================ */
 (function () {
   'use strict';
