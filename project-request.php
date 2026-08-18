@@ -98,6 +98,14 @@ if (
     project_redirect('invalid');
 }
 
+if ($timeline === 'specific-date' && $targetDate === '') {
+    project_redirect('invalid');
+}
+
+if ($timeline !== 'specific-date') {
+    $targetDate = '';
+}
+
 if ($targetDate !== '' && !preg_match('/^\d{4}-\d{2}-\d{2}$/', $targetDate)) {
     project_redirect('invalid');
 }
