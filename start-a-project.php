@@ -158,9 +158,10 @@ require __DIR__ . '/includes/header.php';
               </div>
             </div>
 
-            <div class="form-field">
-              <label for="target_date">Specific deadline <span class="optional">Optional</span></label>
-              <input id="target_date" name="target_date" type="date">
+            <div class="form-field" id="target-date-field">
+              <label for="target_date">Specific deadline <span class="optional" data-date-optional>Optional</span><span aria-hidden="true" data-date-required hidden>*</span></label>
+              <p class="field-help" id="target-date-help">Requested dates aren't confirmed until Jovel Creative reviews the project scope and current availability.</p>
+              <input id="target_date" name="target_date" type="date" aria-describedby="target-date-help">
             </div>
 
             <div class="form-field">
@@ -216,5 +217,43 @@ require __DIR__ . '/includes/header.php';
       </aside>
     </div>
   </section>
+
+<script>
+(function () {
+  'use strict';
+
+  var timeline = document.getElementById('timeline');
+  var field = document.getElementById('target-date-field');
+  var input = document.getElementById('target_date');
+
+  if (!timeline || !field || !input) {
+    return;
+  }
+
+  var optionalMarker = field.querySelector('[data-date-optional]');
+  var requiredMarker = field.querySelector('[data-date-required]');
+
+  function syncTargetDate() {
+    var needsDate = timeline.value === 'specific-date';
+
+    field.hidden = !needsDate;
+    input.required = needsDate;
+
+    if (!needsDate) {
+      input.value = '';
+    }
+
+    if (optionalMarker) {
+      optionalMarker.hidden = needsDate;
+    }
+    if (requiredMarker) {
+      requiredMarker.hidden = !needsDate;
+    }
+  }
+
+  timeline.addEventListener('change', syncTargetDate);
+  syncTargetDate();
+})();
+</script>
 
 <?php require __DIR__ . '/includes/footer.php'; ?>
