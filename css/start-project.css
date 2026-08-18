@@ -85,7 +85,7 @@
 .project-form select,
 .project-form textarea {
   width: 100%;
-  border: 1.5px solid var(--color-line);
+  border: 1.5px solid #7F8A93;
   border-radius: var(--radius-sm);
   background: var(--color-bg);
   color: var(--color-ink);
