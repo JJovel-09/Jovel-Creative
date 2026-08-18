@@ -288,9 +288,10 @@ DirectoryIndex index.php index.html index.htm
 # ============================================
 # BRANDED ERROR PAGES
 # ============================================
-# /404 is a real PHP-backed route that explicitly returns status 404,
-# so direct requests and Apache error subrequests both remain correct.
-ErrorDocument 404 /404
+# Point directly to the real PHP file. Hostinger's error subrequest path
+# does not reliably pass through the clean-slug rewrite used by normal
+# browser requests, so /404 can fall back to the host's generic page.
+ErrorDocument 404 /404.php
 
 # ============================================
 # PROTECT AGAINST CODE INJECTION
