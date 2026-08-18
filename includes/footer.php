@@ -3,7 +3,7 @@
  * JOVEL CREATIVE, SHARED SITE FOOTER
  *
  * Owns the document from the closing </main> to the closing </html>,
- * including the shared script tag. Requires includes/config.php to
+ * including the shared script tags. Requires includes/config.php to
  * have been loaded first.
  */
 
@@ -49,6 +49,16 @@ if (!defined('JOVEL_SITE')) {
   </div>
 </footer>
 
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-35FR0319ZT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  window.gtag = gtag;
+  gtag('js', new Date());
+  gtag('config', 'G-35FR0319ZT');
+</script>
 <script src="/js/jovel.js"></script>
+<script src="/js/analytics.js"></script>
 </body>
 </html>
