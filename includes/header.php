@@ -13,8 +13,11 @@
  *   $title            full <title> text
  *   $description      meta description
  *   $canonical        canonical path, only for pages outside SITE_NAV
+ *   $robots           defaults to index, follow
  *   $og_title         defaults to $title
  *   $og_description   defaults to $description
+ *   $og_image         defaults to the shared Jovel Creative social card
+ *   $og_image_alt     defaults to the core positioning line
  *   $extra_stylesheet optional site-relative stylesheet for page families
  *   $schema           optional PHP array, emitted as JSON-LD
  *
@@ -33,8 +36,14 @@ $nav_current_id = isset($nav_parent) && $nav_parent !== '' ? (string) $nav_paren
 $title          = isset($title) && $title !== '' ? (string) $title : SITE_NAME;
 $description    = isset($description) && $description !== '' ? (string) $description : SITE_DESCRIPTION;
 $canonical_url  = site_url(canonical_path($page_id, $canonical ?? null));
+$robots         = isset($robots) && $robots !== '' ? (string) $robots : 'index, follow';
 $og_title       = isset($og_title) && $og_title !== '' ? (string) $og_title : $title;
 $og_description = isset($og_description) && $og_description !== '' ? (string) $og_description : $description;
+$og_image       = isset($og_image) && $og_image !== '' ? (string) $og_image : '/images/jovel-creative-social-card.png';
+$og_image_url   = preg_match('~^https?://~i', $og_image) ? $og_image : site_url($og_image);
+$og_image_alt   = isset($og_image_alt) && $og_image_alt !== ''
+    ? (string) $og_image_alt
+    : 'Jovel Creative. You have the information. We build the tool.';
 $extra_stylesheet = isset($extra_stylesheet) && $extra_stylesheet !== '' ? (string) $extra_stylesheet : '';
 
 /* The body class comes from the trusted page ID, never from the request. */
@@ -49,7 +58,7 @@ $body_class = $page_id !== '' ? 'page-' . preg_replace('/[^a-z0-9-]/', '', strto
   <title><?= e($title) ?></title>
   <meta name="description" content="<?= e($description) ?>">
   <meta name="author" content="Juan Jovel, <?= e(SITE_NAME) ?>">
-  <meta name="robots" content="index, follow">
+  <meta name="robots" content="<?= e($robots) ?>">
   <link rel="canonical" href="<?= e($canonical_url) ?>">
 
   <meta property="og:type" content="website">
@@ -58,10 +67,18 @@ $body_class = $page_id !== '' ? 'page-' . preg_replace('/[^a-z0-9-]/', '', strto
   <meta property="og:description" content="<?= e($og_description) ?>">
   <meta property="og:site_name" content="<?= e(SITE_NAME) ?>">
   <meta property="og:locale" content="en_US">
+  <meta property="og:image" content="<?= e($og_image_url) ?>">
+  <meta property="og:image:secure_url" content="<?= e($og_image_url) ?>">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:image:alt" content="<?= e($og_image_alt) ?>">
 
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="<?= e($og_title) ?>">
   <meta name="twitter:description" content="<?= e($og_description) ?>">
+  <meta name="twitter:image" content="<?= e($og_image_url) ?>">
+  <meta name="twitter:image:alt" content="<?= e($og_image_alt) ?>">
 
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
 
