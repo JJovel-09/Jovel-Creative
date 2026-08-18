@@ -20,7 +20,7 @@ require __DIR__ . '/includes/header.php';
         <h1>We collect what we need to respond and do the work.</h1>
         <p class="legal-hero-sub">This page explains what information Jovel Creative receives through the website, why we use it and how to contact us about it.</p>
         <div class="legal-meta">
-          <span>Last updated: August 17, 2026</span>
+          <span>Last updated: August 18, 2026</span>
           <span>Applies to: jovelcreative.com</span>
         </div>
       </div>
@@ -45,7 +45,7 @@ require __DIR__ . '/includes/header.php';
       <div class="legal-content">
         <div class="legal-summary">
           <h2>The short version</h2>
-          <p>Jovel Creative uses information to respond to inquiries, prepare quotes, communicate about projects and operate the website. We do not sell personal information. The public project form does not accept file uploads, and we ask visitors not to submit sensitive working data through it.</p>
+          <p>Jovel Creative uses information to respond to inquiries, prepare quotes, communicate about projects, understand basic website usage and operate the website. We do not sell personal information. The public project form does not accept file uploads, and we ask visitors not to submit sensitive working data through it.</p>
         </div>
 
         <section class="legal-block" id="information">
@@ -56,8 +56,9 @@ require __DIR__ . '/includes/header.php';
           <h3>Email and project communications</h3>
           <p>If you email Jovel Creative or move forward with a project, we receive the information you choose to provide in those communications. If reviewing working files is necessary, that exchange is arranged privately after initial qualification rather than through the public website form.</p>
 
-          <h3>Technical information</h3>
+          <h3>Technical and analytics information</h3>
           <p>Our hosting and security systems may automatically record limited technical information needed to serve and protect the website, such as IP address, browser or device information, request time, requested page and security or error logs.</p>
+          <p>We also use Google Analytics to understand basic website usage. That may include page views, approximate location, browser and device information, referral source and limited interaction events such as clicks on Start a Project, example pages and email links. Jovel Creative does not send the contents of project inquiry fields to Google Analytics.</p>
 
           <div class="legal-note"><strong>Please do not send sensitive information through the public form.</strong> Do not include passwords, account credentials, Social Security numbers, payment card details, health information or other highly sensitive data unless Jovel Creative has specifically arranged an appropriate method for the project.</div>
         </section>
@@ -70,6 +71,7 @@ require __DIR__ . '/includes/header.php';
             <li>Determining whether a project appears to be a good fit.</li>
             <li>Clarifying scope and preparing a fixed quote.</li>
             <li>Communicating about approved work, revisions, delivery and support.</li>
+            <li>Understanding which website pages and calls to action are being used.</li>
             <li>Operating, maintaining, troubleshooting and securing the website.</li>
             <li>Keeping business records when reasonably necessary.</li>
           </ul>
@@ -78,7 +80,7 @@ require __DIR__ . '/includes/header.php';
 
         <section class="legal-block" id="sharing">
           <h2>Service providers and sharing</h2>
-          <p>Jovel Creative may use service providers that are necessary to operate the business and website, such as website hosting, email delivery, file exchange, payment or business administration providers. Those providers may process information as needed to provide their services.</p>
+          <p>Jovel Creative may use service providers that are necessary to operate the business and website, such as website hosting, email delivery, analytics, file exchange, payment or business administration providers. Those providers may process information as needed to provide their services.</p>
           <p>We may also disclose information when reasonably necessary to comply with law, protect the security or rights of Jovel Creative or others, investigate misuse or respond to a valid legal request.</p>
           <p><strong>Jovel Creative does not sell personal information.</strong> We also do not use personal information from project inquiries for targeted advertising.</p>
         </section>
